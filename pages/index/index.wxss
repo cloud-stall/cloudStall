@@ -1,0 +1,4 @@
+/**index.wxss**/
+.map{
+  height: 900rpx;
+}
