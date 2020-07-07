@@ -1,1 +1,97 @@
 /* pages/my/my.wxss */
+/**my.wxss**/
+.infoBg{
+  width:100%;
+  height:334rpx;
+  background: url("http://m.qpic.cn/psc?/V13njLzF0YMcwJ/2u1lLKz1aykDtRBqWOUT3PN2vZHAwbuzTUcdcgtRtxHZ8MFnK4lSjiPyak5Cdp5Gyny4zo3VZvxNAOiatIrqIw!!/b&bo=bwOwAQAAAAADB*8!&rf=viewer_4");
+  background-size: 100% 334rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #fdffff;
+}
+
+.userfans {
+  width: 100%;
+  height:190rpx;
+ background-color: #f9f9f9;
+  /* background-color: #767171; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.fans,.collection{
+  flex:1 1;
+  height:190rpx;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.bor{
+  flex:0 0 4rpx;
+  height:52rpx;
+  background-color: #e9e9e9;
+}
+
+.fansCount{
+  font-size: 36rpx;
+  color:#fe1700
+}
+.fansTxt{
+  font-size: 24rpx;
+  color:#9da6b0
+}
+
+
+.userOperate{
+  width: 100%;
+  height: 188rpx;
+  background-color: red;
+  margin-top:14rpx;
+  box-sizing: border-box;
+  padding: 24rpx 0 0;
+  display: flex;
+  flex-direction: column;
+}
+.operate{
+  height:60rpx;
+  margin-bottom:12rpx;
+  background-color: #fdffff;
+  padding: 0 28rpx;
+}
+.iconLeft{
+  width:40rpx;
+  height:60rpx;
+  float:left;
+}
+.operateName{
+  color:#4a4a4a;
+  font:24rpx/60rpx "宋体";
+  float:left;
+  margin-left:20rpx;
+}
+.iconRight{
+  width:40rpx;
+  height:60rpx;
+  float:right;
+}
+
