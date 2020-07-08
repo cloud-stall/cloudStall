@@ -1,2 +1,12 @@
 <!--pages/regist/regist.wxml-->
-<text>pages/regist/regist.wxml</text>
+<view class="logo">
+<image src="../../imgs/logo.png" class="logo" mode="widthFix"></image>
+
+<view class="getuser">
+<text>请允许获取你的微信信息</text>
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="btn">微信授权登录</button>
+</view>
+  
+
+</view>
+

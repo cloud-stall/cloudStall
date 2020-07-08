@@ -1,1 +1,27 @@
 /* pages/regist/regist.wxss */
+.logo{
+  text-align: center;
+  margin-top:100rpx;
+}
+.logo image{
+  width:400rpx;
+}
+.getuser{
+  display: block;
+  height:200rpx;
+  text-align: center;
+  width:100%;
+}
+.getuser{  
+  color: #868383;
+  padding-top:200rpx;
+}
+button.btn{
+  width:80%;
+  font-size:32rpx;
+  letter-spacing: 4rpx;
+  background-color: #00B030;
+  border-radius:20rpx;
+  margin: 146rpx auto;
+  color: #fff;
+}

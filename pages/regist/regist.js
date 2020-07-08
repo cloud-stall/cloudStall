@@ -12,7 +12,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
+  },
+  getUserInfo: function(e){
+    let that = this
+    wx.getSetting({
+      success(res){       
+        if(res.authSetting['scope.userInfo']){
+          wx.getUserInfo({
+            success(res) {
+              console.log("获取用户信息成功", res)
+              that.setData({
+                name: res.userInfo.nickName
+              })
+            },
+            fail(res) {
+              console.log("获取用户信息失败", res)
+            }
+          })
+        }
+      }
+    })
+    
+   
+    
   },
 
   /**
