@@ -1,6 +1,6 @@
 <!--pages/my/my.wxml-->
 <!--index.wxml-->
-<view class="userViewBox">
+<view class="container">
   <view class="infoBg">
      <view class="userinfo">
         <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称11111 </button>
@@ -31,26 +31,26 @@
   <!-- 个人主页 操作功能 -->
   <view class ="userOperate">
     <view class="operate">
-      <icon class="iconLeft iconfont iconIcon"></icon>
+      <icon class="iconLeft"></icon>
       <text class="operateName">修改我的名字</text>
-      <icon class="iconRight iconfont iconjiantouxia"></icon>
+      <icon class="iconRight"></icon>
     </view>
     <view class="operate">
-      <icon class="iconLeft iconfont iconcaidan2"></icon>
+      <icon class="iconLeft"></icon>
       <text class="operateName">修改店铺名字</text>
-      <icon class="iconRight iconfont iconjiantouxia"></icon>
+      <icon class="iconRight"></icon>
     </view>
   </view>
   <view class ="userOperate">
       <view class="operate">
-        <icon class="iconLeft iconfont icondaohang"></icon>
+        <icon class="iconLeft"></icon>
         <text class="operateName">进入我的店铺</text>
-        <icon class="iconRight iconfont iconjiantouxia"></icon>
+        <icon class="iconRight"></icon>
       </view>
       <view class="operate">
-        <icon class="iconLeft iconfont icontuichu"></icon>
+        <icon class="iconLeft"></icon>
         <text class="operateName">退出登录</text>
-        <icon class="iconRight iconfont iconjiantouxia"></icon>
+        <icon class="iconRight"></icon>
       </view>
   </view>
 </view>
