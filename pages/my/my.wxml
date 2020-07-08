@@ -54,3 +54,9 @@
       </view>
   </view>
 </view>
+
+<!-- 底部导航 -->
+
+<view class = "navFooter">
+  
+</view>

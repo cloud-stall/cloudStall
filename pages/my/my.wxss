@@ -68,14 +68,14 @@
   color:#fe1700
 }
 .fansTxt{
-  font-size: 24rpx;
+  font-size: 28rpx;
   color:#9da6b0
 }
 
-
+/* 用户操作布局 样式 */
 .userOperate{
   width: 100%;
-  height: 188rpx;
+  height: 200rpx;
   background-color: #f9f9f9;
   margin-top:14rpx;
   box-sizing: border-box;
@@ -85,7 +85,7 @@
 }
 .operate{
   height:60rpx;
-  margin-bottom:12rpx;
+  margin-bottom:20rpx;
   background-color: #f9f9f9;
   padding: 0 28rpx;
 }
@@ -96,9 +96,10 @@
 }
 .operateName{
   color:#4a4a4a;
-  font:24rpx/60rpx "宋体";
+  /* font-weight:bold; */
+  font:500 28rpx/60rpx "微软雅黑";
   float:left;
-  margin-left:20rpx;
+  margin-left:30rpx;
 }
 .iconRight{
   width:40rpx;
@@ -107,5 +108,15 @@
 }
 
 
+/* 底部导航  */
+
+.navFooter{
+  width: 100%;
+  height:150rpx;
+  background-color: #fe1700;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 
 
