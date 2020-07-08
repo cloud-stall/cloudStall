@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+  <view class="map">
   <map
       id="myMap"
       style="width: 100%; height: 300px;"
@@ -8,5 +9,7 @@
       markers="{{markers}}"
       covers="{{covers}}"
       show-location
-    ></map> 
+    ></map>
+  </view>
+  
 </view>
