@@ -1,24 +1,48 @@
-// pages/my/my.js
-const app = getApp()
+// pages/regist/regist.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData)
-    if(app.globalData.userInfo){
-      this.setData({
-        userInfo: app.globalData.userInfo
-      })
-    }
+    
+  },
+  getUserInfo: function(e){
+    let that = this
+    wx.getSetting({
+      success(res){       
+        if(res.authSetting['scope.userInfo']){
+          wx.getUserInfo({
+            success(res) {
+              console.log("获取用户信息成功", res)
+              that.setData({
+                name: res.userInfo.nickName
+              })
+            },
+            fail(res) {
+              console.log("获取用户信息失败", res)
+            }
+          })
+        }
+      }
+    })
+    
+   
+    
+  },
+  bindgetphonenumber: (e)=>{
+    console.log('11111',e)
+    wx.navigateTo({
+      url: '../my/my',
+    })
+
   },
 
   /**

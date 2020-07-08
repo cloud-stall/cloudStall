@@ -3,6 +3,7 @@
 
 /* iconfont */
 @import "iconfont.wxss";
+
 .userViewBox{
   height: 100%;
   display: flex;

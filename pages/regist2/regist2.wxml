@@ -1,0 +1,12 @@
+<!--pages/regist/regist.wxml-->
+<view class="logo">
+<image src="../../imgs/logo.png" class="logo" mode="widthFix"></image>
+
+<view class="getuser">
+<text>请允许获取你的电话号码</text>
+  <button open-type="getPhoneNumber" bindgetphonenumber="bindgetphonenumber" class="btn">获取电话授权登录</button>
+</view>
+  
+
+</view>
+

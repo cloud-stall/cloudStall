@@ -1,11 +1,13 @@
 // pages/regist/regist.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {},
+    name: ''
   },
 
   /**
@@ -21,13 +23,22 @@ Page({
         if(res.authSetting['scope.userInfo']){
           wx.getUserInfo({
             success(res) {
-              console.log("获取用户信息成功", res)
+              console.log('res',res)
+              app.globalData.userInfo = res.userInfo
+              
+              console.log("获取用户信息成功", res, app.globalData)
               that.setData({
                 name: res.userInfo.nickName
               })
             },
             fail(res) {
               console.log("获取用户信息失败", res)
+            }
+          })
+          wx.navigateTo({
+            url: '../regist2/regist2',
+            success: (res)=>{
+              console.log(res)
             }
           })
         }

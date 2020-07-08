@@ -1,6 +1,6 @@
 <!--pages/my/my.wxml-->
 <!--index.wxml-->
-<view class="userViewBox">
+<view class="container">
   <view class="infoBg">
      <view class="userinfo">
         <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称11111 </button>
@@ -58,5 +58,5 @@
 <!-- 底部导航 -->
 
 <view class = "navFooter">
-    
+
 </view>
