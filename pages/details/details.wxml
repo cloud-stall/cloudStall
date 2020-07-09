@@ -30,6 +30,23 @@
     <view class="time">时间:<text>10:00~12:00</text></view>
     <view class="goodsDic"><text>菜心虽一年四季均有，但立秋后的菜心口感更嫩、更脆。生活小窍门网告诉告诉大家，菜心性微寒，常食具有除烦解渴、利尿通便和清热解毒之功效</text></view>
   </view>
-  <view class="contactBox"></view>
+  <view class="contactBox">
+    <view class="contact"><icon class="iconfont icondianhua1"></icon> <text>联系方式</text></view>
+    <view class="contactInfo"> 
+      <view class="iconLef">
+          <icon class="iconfont icondianhuasvg"></icon>
+      </view>
+      <text>1352768****</text>
+      <view class="call"><icon class="iconfont icondianhua"></icon></view>  
+    </view>
+    <view class="contactInfo"> 
+      <view class="iconLef">
+          <icon class="iconfont iconweixin1"></icon>
+      </view>
+       
+      <text>1352768****</text>
+      <view class="call"><icon class="iconfont  iconfuzhi1"></icon></view>  
+    </view>
+  </view>
   <view class="mapBox"></view>
 </view>
