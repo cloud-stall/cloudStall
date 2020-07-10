@@ -10,7 +10,7 @@ page{height: 100%;}
   position: relative;
 }
 .distance{
-  position: absolute;
+  position: fixed;
   top:66rpx;
   left:28rpx;
   background:#ED1B1C;

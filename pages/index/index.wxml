@@ -11,8 +11,14 @@
       show-location
     ></map>
     <view class="distance">
-      <text>500m</text>
-      <text>1500m</text>
+      <view class="section">
+  <view class="section__title">普通选择器</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      当前选择：{{array[index]}}
+    </view>
+  </picker>
+</view>
     </view>
   </view> 
   <view class="title">
