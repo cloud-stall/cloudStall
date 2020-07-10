@@ -24,5 +24,19 @@ Page({
   },
   onReady: function(e){
     this.mapCtx = wx.createMapContext('myMap')
+  },
+  onShow: function(){
+    console.log(this.data.longitude)
+    wx.getSetting({
+      complete: (res) => {
+        console.log(res)
+        if(res.authSetting.scope.address){
+          wx.getLocation({
+            altitude: this.data.latitude,
+            longitude: this.data.longitude
+          })
+        }     
+      },     
+  })
   }
 })

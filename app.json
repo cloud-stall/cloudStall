@@ -5,8 +5,15 @@
     "pages/home/home",
     "pages/regist/regist",
     "pages/regist2/regist2",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/publish/publish",
+    "pages/myshop/myshop"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "请允许获取你的位置"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ED1B1C",
