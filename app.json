@@ -6,8 +6,18 @@
     "pages/regist/regist",
     "pages/regist2/regist2",
     "pages/my/my",
+<<<<<<< HEAD
     "pages/details/details"
+=======
+    "pages/publish/publish",
+    "pages/myshop/myshop"
+>>>>>>> 70fc0779e4b393ff83acb9c44e9b6cde7c4d8f3e
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "请允许获取你的位置"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ED1B1C",

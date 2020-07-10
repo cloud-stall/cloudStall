@@ -1,7 +1,6 @@
 // pages/regist/regist.js
 const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -35,6 +34,22 @@ Page({
               console.log("获取用户信息失败", res)
             }
           })
+          wx.login({
+            success (res) {
+              console.log(res)
+              if (res.code) {
+                //发起网络请求
+                wx.request({
+                  url: '../../index',
+                  data: {
+                    code: res.code
+                  }
+                })
+              } else {
+                console.log('登录失败！' + res.errMsg)
+              }
+            }
+          }),
           wx.navigateTo({
             url: '../regist2/regist2',
             success: (res)=>{
@@ -43,10 +58,7 @@ Page({
           })
         }
       }
-    })
-    
-   
-    
+    })    
   },
 
   /**

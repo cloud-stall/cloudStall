@@ -1,5 +1,142 @@
 /**index.wxss**/
+@import '../../iconfont/iconfont.wxss';
+page{height: 100%;}
+.container{
+  align-self:flex-start
+}
 .map{
   width:100%;
-  height: 500rpx;
+  height: 780rpx;
+  position: relative;
+}
+.distance{
+  position: fixed;
+  top:66rpx;
+  left:28rpx;
+  background:#ED1B1C;
+  color:#fff;
+  width:200rpx;
+  height:60rpx;
+  overflow: hidden;
+  font-size:32rpx;
+  text-align: left;
+}
+.distance text{
+  display: block;
+  padding:12rpx 20rpx 16rpx 20rpx;
+}
+.icon{
+  width:120rpx;
+  height:120rpx;
+  color:black
+}
+.title{
+  text-align: center;
+}
+.icon-dw{
+  font-size: 42rpx;
+  color:#B2B1B1;
+  margin-right: 30rpx;
+}
+.red{
+  color:#ED1B1C;
+  font-weight: bold;
+  font-size:36rpx;
+  display: inline-block;
+}
+/*搜索*/
+.search-main{
+  width: 100%;
+  display: flex;
+  line-height: 60rpx;
+}
+.search{
+  width:80%;
+  height:72rpx;
+  border:solid 1px #c5c5c5;
+  border-radius: 32rpx;
+  margin: 20rpx 0 20rpx 20rpx;
+  vertical-align: top;
+}
+.icon-search{
+  margin-left:32rpx;
+  margin-top:16rpx;  
+}
+
+.search-main view:nth-child(1){
+  flex: 5
+}
+.search-main view:nth-child(2){
+  flex:1; 
+  align-self: center;
+  margin-left:20rpx;
+}
+.sousuo{
+  width: 70%;
+  display: inline-block;
+  margin-left:100rpx;
+  padding-top:8rpx;
+  text-align: left;
+  color:#DFDBDB;
+}
+/*菜单*/
+.menu {
+  display: flex;
+  width:98%;
+  font-size:32rpx;
+  line-height: 70rpx;
+}
+.active{
+  color:#ffffff;
+  background:#ED1B1C;
+  border-radius:10rpx;
+}
+.menu text{
+  flex:1;
+  text-align: center;
+}
+/*商品*/
+.goods{
+  margin:20rpx auto 20rpx auto;
+  display: flex;
+  width:90%;
+  padding:2%;
+  border:solid 1px #ccc;
+  border-radius: 30rpx;
+}
+.goods image{
+  width:184rpx;
+  height:180rpx;
+  align-self: center;
+  margin:0 20rpx;
+}
+.goods-info{
+  flex:3;
+  font-size:28rpx;
+}
+.km{
+  flex:1;
+  color:#333;
+  align-self: center;
+  font-size:32rpx;
+}
+.goods-text{
+  font-size:28rpx;
+  color:#7d7d7d;
+  line-height: 48rpx;
+}
+.goods-text view{display: flex;}
+.goods-text text{
+  flex:1;
+  text-align: left;
+}
+.goods-title{
+  font-size:36rpx;
+  font-weight: bold;
+}
+.f-hui{
+  color:7D7D7D
+}
+.red2{
+  color:#ED1B1C
 }

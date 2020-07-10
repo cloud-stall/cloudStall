@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    site: ['0.5km', '1km', '2km', '3km', '4km', '5km'],
     latitude: 23.099994,
     longitude: 113.324520,
     markers: [{
@@ -24,5 +25,19 @@ Page({
   },
   onReady: function(e){
     this.mapCtx = wx.createMapContext('myMap')
+  },
+  onShow: function(){
+    console.log(this.data.longitude)
+    wx.getSetting({
+      complete: (res) => {
+        console.log(res)
+        if(res.authSetting[scope.userLocation]){
+          wx.getLocation({
+            altitude: this.data.latitude,
+            longitude: this.data.longitude
+          })
+        }     
+      },     
+  })
   }
 })
