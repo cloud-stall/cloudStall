@@ -5,7 +5,8 @@
     "pages/home/home",
     "pages/regist/regist",
     "pages/regist2/regist2",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/details/details"
   ],
   "window": {
     "backgroundTextStyle": "light",
