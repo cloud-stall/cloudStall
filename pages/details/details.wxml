@@ -1,2 +1,52 @@
 <!--pages/details/details.wxml-->
-<text>pages/details/details.wxml</text>
+<view class="detailsPage">
+  <view class="banner">
+    <swiper indicator-dots='true' indicator-color='#ddd' indicator-active-color='#ed2526' autoplay='true' circular="true">
+      <swiper-item>
+        <image src='http://m.qpic.cn/psc?/V13njLzF0YMcwJ/2u1lLKz1aykDtRBqWOUT3PJXi12KedLhsWe1udwh2gqBpGy8KJuXQ1VlkzuDLUDQfpp0b8pK20pgns00PIW3VQ!!/b&bo=9AF2AQAAAAARB7I!&rf=viewer_4'></image>
+      </swiper-item>
+      <swiper-item>
+        <image src='http://m.qpic.cn/psc?/V13njLzF0YMcwJ/T7ZeoLlLvDuhDKIHjjjMLdzVOfRh13pU4XOx7zposwtK7uke8ghvxfISU9B9ZagvDx7e6pIZuKUbgDQQz5iiqTgz1lLvTsLs6cGILa5ZjBY!/b&bo=9AH0AQAAAAARFyA!&rf=viewer_4&t=5'></image>
+      </swiper-item>
+      <swiper-item>
+        <image src='http://m.qpic.cn/psc?/V13njLzF0YMcwJ/T7ZeoLlLvDuhDKIHjjjMLfihZ72ExMIP4DubczQaD1*etZcxSNRy3p8b.xcA1XrYDW8NE4zWkeecKIkjPYNzzjPU2OTk1JiZ1svEfwC2ow4!/b&bo=7gL0AQAAAAARFzk!&rf=viewer_4&t=5'></image>
+      </swiper-item>
+      <swiper-item>
+        <image src='http://m.qpic.cn/psc?/V13njLzF0YMcwJ/T7ZeoLlLvDuhDKIHjjjMLTmt1fH1V1F*ychSRvwC3gULISb4olJ.LAj6mPoy.Q4.IegpRtESGq3YNqlFuBmToAgy4FllfaeHSlQ4QIcNeEs!/b&bo=RAJEAgAAAAARFyA!&rf=viewer_4&t=5'></image>
+      </swiper-item>
+      <swiper-item>
+        <image src='http://m.qpic.cn/psc?/V13njLzF0YMcwJ/T7ZeoLlLvDuhDKIHjjjMLbmFAUE2Yexjqzax2c4qt6pyyM5Qhygz9OrTN7PUqI1LwAS02Xjnok1BoGOCytKV29AJfSa5FYa9bVJ0BAY2GtE!/b&bo=IAMgAwAAAAARFyA!&rf=viewer_4&t=5'></image>
+      </swiper-item>
+    </swiper>
+
+    <view class="btnCollection"> <icon class="iconfont iconlabelb" color="#ed2526"></icon> <text>收藏</text> </view>
+    <view class="btnShare"> <icon class="iconfont iconfenxiang" color="#ed2526"></icon> <text>分享</text> </view> 
+  </view>
+  <view class="goodsInfo">
+    <view class="userName">人生一场戏的地摊</view>
+    <view class="goods"><text class="goodsName">新鲜蔬菜</text> <text class="goodsStatus">全新</text></view>
+    <view class="goodsPice">现价:<text class="price">6</text>元</view>
+    <view class="site">南口西大桥</view>
+    <view class="time">时间:<text>10:00~12:00</text></view>
+    <view class="goodsDic"><text>菜心虽一年四季均有，但立秋后的菜心口感更嫩、更脆。生活小窍门网告诉告诉大家，菜心性微寒，常食具有除烦解渴、利尿通便和清热解毒之功效</text></view>
+  </view>
+  <view class="contactBox">
+    <view class="contact"><icon class="iconfont icondianhua1"></icon> <text>联系方式</text></view>
+    <view class="contactInfo"> 
+      <view class="iconLef">
+          <icon class="iconfont icondianhuasvg"></icon>
+      </view>
+      <text>1352768****</text>
+      <view class="call"><icon class="iconfont icondianhua"></icon></view>  
+    </view>
+    <view class="contactInfo"> 
+      <view class="iconLef">
+          <icon class="iconfont iconweixin1"></icon>
+      </view>
+       
+      <text>1352768****</text>
+      <view class="call"><icon class="iconfont  iconfuzhi1"></icon></view>  
+    </view>
+  </view>
+  <view class="mapBox"></view>
+</view>
