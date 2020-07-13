@@ -87,6 +87,13 @@
 				},
 				{
 					"id": -1,
+					"name": "pages/publish/publish",
+					"pathName": "pages/publish/publish",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
 					"query": "",

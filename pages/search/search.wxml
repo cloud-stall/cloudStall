@@ -1,0 +1,8 @@
+<!--pages/search/search.wxml-->
+<view class="search-main">
+    <view class="search">
+      <icon type="search" size="16" class="icon-search"></icon>
+      <input confirm-type="搜索" class="sousuo" type="text" placeholder="请输入商品名称或店铺" focus="goSearch"></input>
+    </view>    
+    <view class="red">搜索</view>
+  </view>

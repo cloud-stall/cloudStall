@@ -1,2 +1,114 @@
 <!--pages/publish/publish.wxml-->
-<text>pages/publish/publish.wxml</text>
+<view class="container">
+  <view class="logo">
+    <image src="../../imgs/logo.png"></image>
+  </view>
+  <view class="content">
+    <view class="content-text">
+      <view class="left">
+        商品类型：
+      </view>
+      <view class="right">
+      <view class="picker">
+        <picker mode="selector" range="{{goodsTypes}}" value="{{index}}" bindchange="bindchange">
+          <view >
+            {{goodsTypes[index]}}
+          </view>
+        </picker> 
+      </view>
+         
+      </view>
+    </view>
+    <view class="content-text">
+      <view class="left">
+        交易地点：
+      </view>
+      <view class="right">
+        <view class="bord">
+          <input type="text" value="" placeholder="输入或选择交易地点"></input>
+        </view>        
+      </view>
+    </view>    
+    <view class="content-text">
+        <view class="left">
+          现     价：
+        </view>
+        <view class="right price">
+          <input type="text" value="" placeholder="现价"></input>
+          <text class="price-text">
+             原价：
+          </text>
+          <input type="text" value="" placeholder="原价"></input>
+        </view>
+    </view>
+    <view class="content-text">
+      <view class="left">
+        交易时间：
+      </view>
+      <view class="right">
+       <view class="picker">
+        <picker mode="selector" range="{{goodsTypes}}" value="{{index}}" bindchange="bindchange">
+          <view>
+            {{goodsTypes[index]}}
+          </view>
+        </picker>  
+        </view>
+      </view>
+    </view>
+     <view class="content-text">
+      <view class="left">
+        产品新旧：
+      </view>
+      <view class="right">
+      <view class="newOrOld">      
+        <label class="radio">
+          <radio value="r1" checked="true"/> 全新
+        </label>
+        <label class="radio">
+          <radio value="r1" checked="true"/> 二手
+        </label>
+        </view>
+       <view >
+        <picker mode="selector" range="{{goodsTypes}}" value="{{index}}" bindchange="bindchange">
+          <view>几成新           
+          </view>
+        </picker>  
+        </view>
+      </view>
+    </view>
+
+    <view class="content-text">
+      <view class="left">
+        商品描述：
+      </view>
+      <view class="textarea">
+        <view class="bord">
+          <textarea placeholder=" 输入商品描述" maxlength="100" />
+        </view>
+      </view>
+    </view>
+
+    <!--产品图片--->
+    <view class="content-text">
+      <view class="left">
+        产品图片：
+      </view>
+      <view class="right">
+        <view class="">
+          <image src="../../imgs/addpic.png" style="width:260rpx; height:260rpx;"></image>
+        </view>
+      </view>
+    </view>
+   <!--阅读--->
+    <view class="content-text">
+      <label class="checkbox">
+        <checkbox value="cb" checked="true"/> 已阅读并同意
+        <text>云地摊发布协议</text>
+      </label>
+    </view> 
+    <!--按钮--->
+    <view class="publish">
+      <button>提交发布</button>
+    </view> 
+  </view>
+</view>
