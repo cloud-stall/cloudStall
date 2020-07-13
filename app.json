@@ -6,9 +6,10 @@
     "pages/regist/regist",
     "pages/regist2/regist2",
     "pages/my/my",
+    "pages/details/details",
     "pages/publish/publish",
-    "pages/myshop/myshop",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/myshop/myshop"
   ],
   "permission": {
     "scope.userLocation": {
