@@ -1,1 +1,161 @@
 /* pages/myshop/myshop.wxss */
+@import "iconfont.wxss";
+.myshop{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.toptitle{
+  width:100%;
+  height:180rpx;
+  
+  background:url("http://m.qpic.cn/psc?/V13njLzF0YMcwJ/T7ZeoLlLvDuhDKIHjjjMLdZ1x2PPhISBU257iWG7Jx6SP5DeB*H*uiQvj6XrunXqvnKS.bagkm8CM*4JSbntAaCE0xHvybqnTB.3rDGlKUQ!/b&bo=WAKWAAAAAAADF*4!&rf=viewer_4");
+  /* border-radius: 20rpx; */
+  background-size: cover;
+  margin-top:10rpx;
+}
+
+.myshoptitle{
+  width: 100%;
+  display: flex;
+  height: 80rpx ;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  flex-direction: row;
+  background: #fff;
+  justify-content: space-between; 
+  /* margin-top:10rpx; */
+  padding:0 40rpx;
+  position: relative;
+}
+
+
+
+/* 按钮 */
+.btnCollection{
+  position: absolute;
+  width:150rpx;
+  height:60rpx;
+  top:10rpx;
+  border:1px solid #ddd;
+  box-shadow: 1px 1px 0px 0px #ddd;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  font: 500 28rpx/60rpx "微软雅黑";
+  color:#ed2526;
+  border-radius: 20rpx;
+  right:30rpx;
+}
+.btnCollection text,.btnCollection icon{
+  float: left;
+}
+.btnCollection text{
+  margin-left:10rpx;
+}
+
+.listMyShop{
+  width:100%;
+  background: #fff;
+  padding: 0 10rpx 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-top:20rpx;
+
+}
+
+.list-item{
+  width:100%;
+  /* height:220rpx; */
+  border:2rpx solid #eee;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: 40rpx;
+
+}
+
+.imgBox{
+  width: 160rpx;
+  height:160rpx;
+  background-color: #333;
+}
+.item-info{
+  flex:1 1;
+  height:160rpx;
+  background-color:#fff;
+  padding: 0 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.goods-dic,.goods-hot{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  color:#aaaaaa;
+  font-size: 20rpx;
+}
+.goods-dic view,.goods-hot view{
+  margin-right:34rpx;
+  line-height:40rpx;
+}
+.goods-name{
+  line-height: 60rpx;
+}
+
+.item-operate{
+  width:100%;
+  height:60rpx;
+  background-color:#fff;
+
+  display: flex;
+  justify-content: flex-end;
+
+}
+.item-operate view{
+  font-size: 24rpx;
+  line-height: 60rpx;
+  margin-left:40rpx;
+}
+
+.item-operate view icon{
+  font-size: 28rpx;
+  color:#ed2526;
+}
+
+.item-operate view text{
+  margin-left:10rpx;
+}
+
+.shopStatus{
+  width:100%;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  position: fixed;
+  bottom:92rpx;
+  /* background: red; */
+} 
+
+
+.openShop,.closeShop{
+  width:334rpx;
+  height:64rpx;
+  text-align:center;
+  font-size: 24rpx;
+  color:#fff;
+  line-height: 64rpx;
+  border: 2rpx solid #a9abac;
+}
+.openShop{
+  float:left;
+  background-color: #e92828;
+}
+.closeShop{
+  float: right;
+  background-color: #777f83;
+}

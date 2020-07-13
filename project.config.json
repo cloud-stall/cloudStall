@@ -20,25 +20,15 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
-<<<<<<< HEAD
 		"compileHotReLoad": false,
-=======
->>>>>>> 70fc0779e4b393ff83acb9c44e9b6cde7c4d8f3e
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-<<<<<<< HEAD
 		"useIsolateContext": true,
 		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
-=======
-		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"compileHotReLoad": false,
-		"useIsolateContext": true
->>>>>>> 70fc0779e4b393ff83acb9c44e9b6cde7c4d8f3e
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.3",
@@ -97,14 +87,22 @@
 				},
 				{
 					"id": -1,
-<<<<<<< HEAD
-					"name": "pages/details/details",
-					"pathName": "pages/details/details",
-=======
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
->>>>>>> 70fc0779e4b393ff83acb9c44e9b6cde7c4d8f3e
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/details/details",
+					"pathName": "pages/details/details",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/myshop/myshop",
+					"pathName": "pages/myshop/myshop",
 					"scene": null
 				}
 			]

@@ -5,14 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    site: ['0.5km', '1km', '2km', '3km', '4km', '5km'],
+    latitude: 23.099994,
+    longitude: 113.324520,
+    markers: [{
+      id: 1,
+      latitude: 23.099994,
+      longitude: 113.324520,
+      name: 'T.I.T 创意园'
+    }],
+    covers: [{
+      latitude: 23.099994,
+      longitude: 113.344520,
+      iconPath: '/image/location.png'
+    }, {
+      latitude: 23.099994,
+      longitude: 113.304520,
+      iconPath: '/image/location.png'
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.mapCtx = wx.createMapContext('myMap')
   },
 
   /**
@@ -25,8 +42,19 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+   onShow: function(){
+    console.log(this.data.longitude)
+    wx.getSetting({
+      complete: (res) => {
+        console.log(res)
+        if(res.authSetting[scope.userLocation]){
+          wx.getLocation({
+            altitude: this.data.latitude,
+            longitude: this.data.longitude
+          })
+        }     
+      },     
+  })
   },
 
   /**

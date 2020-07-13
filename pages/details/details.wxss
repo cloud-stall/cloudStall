@@ -160,3 +160,35 @@
   line-height:60rpx;
   color:#fff;
 }
+.map{
+  position: relative;
+}
+.go{
+  /* z-index: 9; */
+  position: absolute;
+  right:40rpx;
+  top:30rpx;
+  width:180rpx;
+  height:60rpx;
+  box-sizing: border-box;
+  border:1px solid #ccc;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 0 10rpx;
+  line-height: 60rpx;
+}
+.go icon{
+  float:left;
+  width:40rpx;
+  height:50rpx;
+  margin-left: 10rpx;
+  /* background-color: red; */
+ 
+}
+.go text{
+  
+  float:left;
+  /* margin-left: 10rpx; */
+  font-size: 28rpx;
+  color:#ed2526;
+}

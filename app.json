@@ -6,12 +6,9 @@
     "pages/regist/regist",
     "pages/regist2/regist2",
     "pages/my/my",
-<<<<<<< HEAD
-    "pages/details/details"
-=======
+    "pages/details/details",
     "pages/publish/publish",
     "pages/myshop/myshop"
->>>>>>> 70fc0779e4b393ff83acb9c44e9b6cde7c4d8f3e
   ],
   "permission": {
     "scope.userLocation": {
