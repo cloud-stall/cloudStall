@@ -25,7 +25,7 @@
       </view>
       <view class="right">
         <view class="bord">
-          <input type="text" value="" placeholder="输入或选择交易地点"></input>
+          <input type="text" bindfocus="selectMap" value="" placeholder="输入或选择交易地点"></input>
         </view>        
       </view>
     </view>    
@@ -112,3 +112,7 @@
     </view> 
   </view>
 </view>
+<view>
+<tabbars></tabbars>
+</view>
+

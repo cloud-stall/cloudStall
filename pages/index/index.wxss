@@ -203,4 +203,25 @@ page{height: 100%;}
   color:#fff;
   font-size:36rpx;
 }
+/*tabbar*/
+.bottom-tabbar{
+  position: fixed;
+  bottom:100rpx;
+  right:0;
+  
+}
+
+.my,.publish{
+  width:100rpx;
+  height: 50rpx;  
+  color:#ED1B1C;
+  border-radius: 10rpx;
+  text-align: center;
+  margin-top:40rpx;
+}
+.my{
+  background: #ED1B1C;
+  color:#fff;
+  padding:6rpx 0;
+}
 /*底部end*/

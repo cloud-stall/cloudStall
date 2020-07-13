@@ -141,6 +141,11 @@ Page({
       navIndex: e.currentTarget.dataset.gotypeindex
     })
   },
+  goPublist: ()=>{
+    wx.switchTab({
+      url: '/pages/publish/publish',
+    })
+  },
   onReady: function(e){
     this.mapCtx = wx.createMapContext('myMap')
   }  

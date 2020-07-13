@@ -111,11 +111,15 @@
   <view class="menus">
     <view class="menus-text">  
        <text wx:for="{{goodsTypeList}}" wx:key="index" data-goTypeIndex="{{index}}" bindtap="goGoodsType" class="{{navIndex==index ? 'active': ''}}">{{item.name}}</text>
-    </view>
-    
+    </view>    
   </view>
   <view class="red-bottom">
     <text class="iconfont icon-shuangjiantouxia"></text>
   </view>
+  <view class="bottom-tabbar">
+    <view class="publish iconfont icon-icon-feixingmanyou"></view>
+    <view class="my" bindtap="goPublist">发布</view>
+  </view>
+  
 </view>
 

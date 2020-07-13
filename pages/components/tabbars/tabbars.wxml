@@ -1,0 +1,6 @@
+<!--pages/components/tabbars.wxml-->
+<view class="tabbar">
+  <navigator  url="../../index/index">首页</navigator>
+  <text>发布</text>
+  <text>我的</text>
+</view>

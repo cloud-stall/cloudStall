@@ -17,7 +17,7 @@
   },
   "tabBar": {
     "selectedColor":"#ff0000",
-    "list": [
+    "list": [    
       {
         "pagePath": "pages/publish/publish",
         "text": "发布"

@@ -16,6 +16,18 @@ Page({
       index: e.detail.value
     })
   },
+  selectMap: () => {
+    wx.getLocation({
+      type: 'wgs84',
+      success: (res) => {
+        console.log(res)
+        wx.openLocation({
+          latitude: res.latitude,
+          longitude: res.longitude
+        })
+      } 
+    })
+  },
   onLoad: function (options) {
 
   },
