@@ -8,12 +8,26 @@
     "pages/my/my",
     "pages/details/details",
     "pages/publish/publish",
-    "pages/myshop/myshop"
+    "pages/myshop/myshop",
+    "pages/search/search"
   ],
   "permission": {
     "scope.userLocation": {
       "desc": "请允许获取你的位置"
     }
+  },
+  "tabBar": {
+    "selectedColor":"#ff0000",
+    "list": [    
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
   },
   "window": {
     "backgroundTextStyle": "light",

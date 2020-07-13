@@ -1,1 +1,83 @@
 /* pages/publish/publish.wxss */
+page{
+  background: #F9F9F9;
+}
+.container{
+  flex-wrap:wrap;
+}
+.logo{
+  width:100%;
+  height: 92rpx;
+  text-align: center;
+  padding:20rpx;
+}
+.logo image{
+  width:248rpx;
+  height: 90rpx;
+}
+.content-text{
+  display: flex;
+  padding:20rpx 24rpx;
+}
+.picker{
+  border:solid 1px #eee;
+  border-radius: 12rpx;
+  padding:10rpx 20rpx;
+  width:91%;
+  background: #fff;
+}
+.left{
+  width:188rpx;
+  padding:10rpx 0rpx;
+  text-align: right;
+}
+.right{
+  flex:1;
+  display: flex;
+}
+.price input{
+  width:160rpx;
+  height: 68rpx;
+  border:solid 1px #eee;
+  border-radius: 12rpx;
+  padding-left:16rpx;
+  background: #fff;
+}
+.price-text{
+  padding: 0 0rpx 0 40rpx;
+  line-height: 22rpx;
+}
+.bord{
+  border:solid 1px #eee;
+  border-radius: 12rpx;
+  width:94%;
+  padding:10rpx 10rpx;
+  background: #fff;
+}
+.newOrOld label{
+  margin:0 15rpx 0 10rpx;
+}
+.textarea{
+  flex:1;
+  width:60%;
+  background: #fff;
+}
+.checkbox{
+  color: #ccc;
+}
+.checkbox text{
+  color: #666;
+}
+.publish button{
+  width:80%;
+  height: 80rpx;
+  margin: 20rpx auto;
+  text-align: center;
+  font-size:36rpx;
+  color:#fff;
+  background: #F63737;
+  margin-bottom:150rpx;
+}
+.bord textarea{
+  height: 186rpx;
+}

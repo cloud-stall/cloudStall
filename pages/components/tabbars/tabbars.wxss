@@ -1,0 +1,11 @@
+/* pages/components/tabbars.wxss */
+.tabbar{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+}
+.tabbar text{
+  flex:1;
+  text-align: center;
+  font-size:28rpx;
+}

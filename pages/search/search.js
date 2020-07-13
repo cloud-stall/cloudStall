@@ -1,33 +1,16 @@
-// pages/publish/publish.js
+// pages/search/search.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    index:0,
-    goodsTypes: ['水果','家具','服装','电器']
+
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  bindchange: function(e){
-    this.setData({
-      index: e.detail.value
-    })
-  },
-  selectMap: () => {
-    wx.getLocation({
-      type: 'wgs84',
-      success: (res) => {
-        console.log(res)
-        wx.openLocation({
-          latitude: res.latitude,
-          longitude: res.longitude
-        })
-      } 
-    })
-  },
   onLoad: function (options) {
 
   },

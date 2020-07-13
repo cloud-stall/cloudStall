@@ -3,45 +3,40 @@
   <view class="map">
   <map
       id="myMap"
-      style="width: 100%; height: 300px;"
+      style="width: 100%; height: 240px;"
       latitude="{{latitude}}"
       longitude="{{longitude}}"
       markers="{{markers}}"
       covers="{{covers}}"
       show-location
-    ></map>
+    >
+    </map>
     <view class="distance">
       <view class="section">
-  <view class="section__title">普通选择器</view>
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-    <view class="picker">
-      当前选择：{{array[index]}}
-    </view>
-  </picker>
-</view>
+        <picker bindchange="bindChanges" value="{{index}}" range="{{site}}">
+          <view class="picker">
+            距离为：{{siteText}}
+          </view>
+        </picker>
+      </view>
     </view>
   </view> 
   <view class="title">
     <text class="iconfont icon-ziyuan icon-dw"></text>
-    <text class="red">附件的地摊</text> 
+    <text class="red">附近的地摊</text> 
   </view>
   <view class="search-main">
     <view class="search">
       <icon type="search" size="16" class="icon-search"></icon>
-      <input confirm-type="search" class="sousuo" type="text" placeholder="请输入商品名称"></input>
+      <view class="sousuo" bindtap="goSearch">请输入商品名称或店铺</view>
     </view>    
     <view class="red">搜索</view>
   </view>
   <view class="menu">
-    <block>
-      <text class="active">云摊位</text>
-      <text>综合</text>
-      <text>销量</text>
-      <text>服务</text>
-    </block>
+    <text class="{{typeIndex ==index?'active': ''}}" data-index="{{index}}" bindtap="getType" wx:for="{{type}}" wx:key="index">{{item}}</text>
   </view>
   <!---产品列表-->
-  <view>
+  <view class="googs-list">
    <view class="goods">
     <image src="../../imgs/gg1.png"></image>
     <view class="goods-info">
@@ -49,8 +44,8 @@
       <view class="goods-text"> 
         <view>味道：甜</view>  
         <view>
-          <text  class="red2">现价：10</text>
-          <text>原价： 100</text>
+          <text  class="red2">现价：10.00</text>
+          <text>原价： 100.00</text>
         </view>    
       <view>发布日期：2020-05-02</view>
       <view>营业时间：10:00-20:00</view>    
@@ -59,55 +54,25 @@
       <view class="km">10km</view>
     </view>
 
-    <view class="goods">
+    <view class="goods" wx:for="{{goodsList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
       <image src="../../imgs/gg2.png"></image>
       <view class="goods-info">
-        <view class="goods-title">GCE贴纸套装无纺布箱子套, 和箱子</view>
+        <view class="goods-title">{{item.title}}</view>
         <view class="goods-text"> 
-          <view>味道：甜</view>  
+          <view>{{item.dis}}</view>  
           <view>
-            <text  class="red2">现价：10</text>
-            <text>原价： 100</text>
+            <text  class="red2">现价：{{item.newPrice}}</text>
+            <text>原价： {{item.oldPrice}}</text>
           </view>    
-        <view>发布日期：2020-05-02</view>
-        <view>营业时间：10:00-20:00</view>    
+        <view>发布日期：{{item.postTime}}</view>
+        <view>营业时间：{{item.openTime}}</view>    
         </view>
       </view>
-      <view class="km">10km</view>
+      <view class="km">10.00km</view>
     </view>
-     <view class="goods">
-    <image src="../../imgs/gg1.png"></image>
-    <view class="goods-info">
-      <view class="goods-title">正宗无锡阳山水蜜桃应季</view>
-      <view class="goods-text"> 
-        <view>味道：甜</view>  
-        <view>
-          <text  class="red2">现价：10</text>
-          <text>原价： 100</text>
-        </view>    
-      <view>发布日期：2020-05-02</view>
-      <view>营业时间：10:00-20:00</view>    
-      </view>
-    </view>
-    <view class="km">10km</view>
-  </view>
+    
 
-  <view class="goods">
-    <image src="../../imgs/gg3.png"></image>
-    <view class="goods-info">
-      <view class="goods-title">GCE贴纸套装无纺布箱子套, 和箱子</view>
-      <view class="goods-text"> 
-        <view>味道：甜</view>  
-        <view>
-          <text  class="red2">现价：10</text>
-          <text>原价： 100</text>
-        </view>    
-      <view>发布日期：2020-05-02</view>
-      <view>营业时间：10:00-20:00</view>    
-      </view>
-    </view>
-    <view class="km">10km</view>
-  </view>
+  
    <view class="goods">
     <image src="../../imgs/gg4.png"></image>
     <view class="goods-info">
@@ -143,4 +108,18 @@
   </view>
   </view>
   <!---产品列表 end-->
+  <view class="menus">
+    <view class="menus-text">  
+       <text wx:for="{{goodsTypeList}}" wx:key="index" data-goTypeIndex="{{index}}" bindtap="goGoodsType" class="{{navIndex==index ? 'active': ''}}">{{item.name}}</text>
+    </view>    
+  </view>
+  <view class="red-bottom">
+    <text class="iconfont icon-shuangjiantouxia"></text>
+  </view>
+  <view class="bottom-tabbar">
+    <view class="publish iconfont icon-icon-feixingmanyou"></view>
+    <view class="my" bindtap="goPublist">发布</view>
+  </view>
+  
 </view>
+

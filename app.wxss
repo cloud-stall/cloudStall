@@ -1,5 +1,4 @@
 /**app.wxss**/
-@import './iconfont.wxss';
 .container {
   height: 100%;
   display: flex;
@@ -9,6 +8,6 @@
   padding: 0rpx 0;
   box-sizing: border-box;
   font-family: "微软雅黑";
-  font-size:32rpx;
+  font-size:32rpx;  
 } 
 
