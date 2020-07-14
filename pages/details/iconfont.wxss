@@ -37,6 +37,9 @@
 
 .icondaohang2:before {
   content: "\e618";
+  /* line-height: 30rpx;
+  font-size: 28rpx; */
+  color:#ed2526;
 }
 
 .iconweixin:before {
