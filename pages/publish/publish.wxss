@@ -19,12 +19,18 @@ page{
   display: flex;
   padding:20rpx 24rpx;
 }
-.picker{
+.picker1,.picker{
   border:solid 1px #eee;
   border-radius: 12rpx;
   padding:10rpx 20rpx;
-  width:91%;
+  width:42%;
   background: #fff;
+}
+.picker1{
+  width:93%;
+}
+.space10{
+  padding:0 20rpx
 }
 .left{
   width:188rpx;
@@ -37,7 +43,7 @@ page{
 }
 .price input{
   width:160rpx;
-  height: 68rpx;
+  height: 63rpx;
   border:solid 1px #eee;
   border-radius: 12rpx;
   padding-left:16rpx;
@@ -47,12 +53,29 @@ page{
   padding: 0 0rpx 0 40rpx;
   line-height: 22rpx;
 }
+.map-site{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+}
 .bord{
   border:solid 1px #eee;
   border-radius: 12rpx;
-  width:94%;
-  padding:10rpx 10rpx;
+  flex:2;
   background: #fff;
+  font-size:24rpx;
+  padding:0 10rpx;
+  color: #aaa;
+  line-height: 42rpx;
+}
+.oldNumber{
+  margin-left: 60rpx;
+  line-height: 60rpx;
+}
+.select-btn{
+  flex:1;
+  font-size:28rpx;
+  padding:0;
 }
 .newOrOld label{
   margin:0 15rpx 0 10rpx;
@@ -78,6 +101,11 @@ page{
   background: #F63737;
   margin-bottom:150rpx;
 }
-.bord textarea{
+.textarea2{
+  border:solid 1px #eee;
+}
+.textarea2 textarea{
   height: 186rpx;
+  width:92%;
+  padding:20rpx;
 }

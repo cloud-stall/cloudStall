@@ -9,7 +9,7 @@
         商品类型：
       </view>
       <view class="right">
-      <view class="picker">
+      <view class="picker1">
         <picker mode="selector" range="{{goodsTypes}}" value="{{index}}" bindchange="bindchange">
           <view >
             {{goodsTypes[index]}}
@@ -24,9 +24,12 @@
         交易地点：
       </view>
       <view class="right">
-        <view class="bord">
-          <input type="text" bindfocus="selectMap" value="" placeholder="输入或选择交易地点"></input>
-        </view>        
+      <view class="map-site">
+        <text class="bord">{{location}}</text>
+        <button bindtap='getLocation' class="select-btn">重新定位</button>
+      </view>
+        
+        
       </view>
     </view>    
     <view class="content-text">
@@ -47,12 +50,21 @@
       </view>
       <view class="right">
        <view class="picker">
-        <picker mode="selector" range="{{goodsTypes}}" value="{{index}}" bindchange="bindchange">
+        <picker mode="time" range="{{time}}" value="{{time}}" start="09:01" end="21:01" bindchange="bindchangeTime">
           <view>
-            {{goodsTypes[index]}}
+            {{time}}
           </view>
         </picker>  
         </view>
+        <text class="space10">  -   </text>
+        <view  class="picker">
+          <picker mode="time" range="{{time2}}" value="{{time2}}" start="09:01" end="21:01"  bindchange="bindchangeTime2">
+            <view>
+              {{time2}}
+            </view>
+          </picker> 
+        </view>
+        
       </view>
     </view>
      <view class="content-text">
@@ -60,29 +72,27 @@
         产品新旧：
       </view>
       <view class="right">
-      <view class="newOrOld">      
-        <label class="radio">
-          <radio value="r1" checked="true"/> 全新
-        </label>
-        <label class="radio">
-          <radio value="r1" checked="true"/> 二手
-        </label>
+        <view class="newOrOld"> 
+          <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio" wx:for="{{radioItems}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+          </radio-group>        
         </view>
-       <view >
-        <picker mode="selector" range="{{goodsTypes}}" value="{{index}}" bindchange="bindchange">
-          <view>几成新           
+       <view wx:if="{{newValue=='二手'}}" class="oldNumber">
+        <picker mode="selector" range="{{oldValue}}" value="{{index}}" bindchange="bindchange">
+          <view>{{oldValue[index]}}          
           </view>
         </picker>  
         </view>
       </view>
     </view>
-
     <view class="content-text">
       <view class="left">
         商品描述：
       </view>
       <view class="textarea">
-        <view class="bord">
+        <view class="textarea2">
           <textarea placeholder=" 输入商品描述" maxlength="100" />
         </view>
       </view>
@@ -101,10 +111,10 @@
     </view>
    <!--阅读--->
     <view class="content-text">
-      <label class="checkbox">
+      <view class="checkbox">
         <checkbox value="cb" checked="true"/> 已阅读并同意
-        <text>云地摊发布协议</text>
-      </label>
+        <text bindtap="goAgree">11云地摊发布协议</text>
+      </view>
     </view> 
     <!--按钮--->
     <view class="publish">
