@@ -196,16 +196,8 @@ Page({
               } else {
                 console.log('登录失败！' + res.errMsg)
               }
-            }
-            
+            }            
           }) 
-          ,
-          wx.navigateTo({
-            url: '../regist2/regist2',
-            success: (res)=>{
-              console.log(res)
-            }
-          })
         }
       }
     })   
