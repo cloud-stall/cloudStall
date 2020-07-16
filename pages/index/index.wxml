@@ -38,7 +38,9 @@
   <!---产品列表-->
   <view class="googs-list">
    <view class="goods">
-    <image src="../../imgs/gg1.png"></image>
+    <view class="goods-pic">
+      <image src="../../imgs/gg1.png" mode="widthFix"></image>
+    </view>
     <view class="goods-info">
       <view class="goods-title">1111扬州新鲜荔枝</view>
       <view class="goods-main">
@@ -58,7 +60,9 @@
     </view>
 
     <view class="goods" wx:for="{{goodsList}}" wx:key="index" data-id="{{item.id}}" data-latitude="{{item.latitude}}" data-logitude="{{item.logitude}}" bindtap="goDetail">
-      <image src="../../imgs/gg2.png"></image>
+      <view class="goods-pic">
+      <image src="../../imgs/gg2.png" mode="widthFix"></image>
+      </view>
       <view class="goods-info">
         <view class="goods-title">{{item.title}}</view>
         <view class="goods-main">
@@ -76,7 +80,9 @@
       </view>      
     </view>  
    <view class="goods">
-    <image src="../../imgs/gg4.png"></image>
+   <view class="goods-pic">
+    <image src="../../imgs/gg4.png" mode="widthFix"></image>
+    </view>
     <view class="goods-info">
       <view class="goods-title">11111石英表，时间精准，防水</view>
       <view class="goods-main">
@@ -96,7 +102,9 @@
   </view>
 
   <view class="goods">
-    <image src="../../imgs/gg5.png"></image>
+    <view class="goods-pic">
+    <image src="../../imgs/gg5.png" mode="widthFix"></image>
+    </view>
     <view class="goods-info">
       <view class="goods-title">111正宗无锡阳山水蜜桃应季</view>
       <view class="goods-main">
