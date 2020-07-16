@@ -1,5 +1,8 @@
 // pages/my/my.js
 const app = getApp()
+import {My} from "./model-my"
+
+var my = new My();
 Page({
   /**
    * 页面的初始数据
@@ -17,6 +20,17 @@ Page({
         userInfo: app.globalData.userInfo
       })
     }
+
+    console.log(1)
+    this._loadData()
+
+  },
+
+  _loadData(){
+    //测试修改用户名
+    my.changeUserName("test",(res)=>{
+      console.log(res)
+    })
   },
 
   /**
@@ -67,4 +81,8 @@ Page({
   onShareAppMessage: function () {
 
   }
+
+
+
+
 })

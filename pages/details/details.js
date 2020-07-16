@@ -29,12 +29,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-<<<<<<< HEAD
     this.mapCtx = wx.createMapContext('myMap')
-=======
     console.log(options)
     let id = options.id
->>>>>>> df082b42bcaebc82af11d2cbc84831385a342ad9
   },
 
   /**
