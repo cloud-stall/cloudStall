@@ -237,5 +237,6 @@ Page({
   },
   onReady: function(e){
     this.mapCtx = wx.createMapContext('myMap')
-  }  
+  }
+   
 })

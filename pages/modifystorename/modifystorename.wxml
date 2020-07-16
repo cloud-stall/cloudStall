@@ -1,0 +1,23 @@
+<view>
+
+
+  <view>
+      <view><text>修改店铺名</text></view>
+      <view><text>修改后店铺名后将新名称公布给用户</text></view>
+  </view>
+  <!-- 用户信息修改 -->
+  <view class="modifyUserInfo">
+    <!-- 用户头像 -->
+    <view class="userinfo">
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称11111 </button>
+        <block wx:else>
+          <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+      </view>
+      <!-- 用户店铺修改 -->
+      <view></view>
+  </view>
+
+
+</view>

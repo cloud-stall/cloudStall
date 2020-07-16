@@ -25,7 +25,6 @@
         "text": "首页",
         "iconPath": "./imgs/tabbar-1.png",
         "selectedIconPath": "./imgs/tabbar-1s.png"
-
       },
       {
         "pagePath": "pages/publish/publish",

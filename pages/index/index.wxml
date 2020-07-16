@@ -137,6 +137,5 @@
     </view>
     <view class="publish" bindtap="goPublist">发布</view>
   </view>
-  
 </view>
 
