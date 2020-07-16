@@ -1,4 +1,5 @@
 // pages/regist/regist.js
+var app = getApp()
 Page({
 
   /**
@@ -12,35 +13,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    // wx.login({
+    //   success: (res) => {
+    //     wx.request({
+    //       url: 'http://192.168.32.196/weixin/getopenid',
+    //       code: res.code
+    //     })
+    //   },
+    // })
   },
-  getUserInfo: function(e){
-    let that = this
-    wx.getSetting({
-      success(res){       
-        if(res.authSetting['scope.userInfo']){
-          wx.getUserInfo({
-            success(res) {
-              console.log("获取用户信息成功", res)
-              that.setData({
-                name: res.userInfo.nickName
-              })
-            },
-            fail(res) {
-              console.log("获取用户信息失败", res)
-            }
-          })
-        }
-      }
-    })
-    
-   
-    
-  },
-  bindgetphonenumber: (e)=>{
+   bindgetphonenumber: (e)=>{
+     
     console.log('11111',e)
+    Object.assign(app.globalData.userInfo,'{aa:1}')
     wx.navigateTo({
-      url: '../my/my',
+      url: '../index/index',
     })
 
   },

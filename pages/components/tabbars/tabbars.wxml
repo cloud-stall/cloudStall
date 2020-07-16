@@ -1,6 +1,14 @@
 <!--pages/components/tabbars.wxml-->
 <view class="tabbar">
-  <navigator  url="../../index/index">首页</navigator>
-  <text>发布</text>
-  <text>我的</text>
+  <view>
+    <text class="iconfont "></text>
+    <text>首页</text>
+  </view>
+  <view>
+    <text>发布</text>
+  </view>
+  <view>
+    <text>我的</text>
+  </view>
 </view>
+<!-- <text wx:for="{{grade}}">我的--{{item}}</text> -->

@@ -70,7 +70,16 @@ page{
 }
 .oldNumber{
   margin-left: 60rpx;
-  line-height: 60rpx;
+  line-height: 52rpx;
+  background: #fff;
+  border:solid 1px #ccc;
+  color:#999;
+  padding:0rpx 20rpx;
+  border-radius: 10rpx;
+  font-size:28rpx;
+}
+.radio{
+  margin-left:20rpx;
 }
 .select-btn{
   flex:1;

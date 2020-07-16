@@ -40,9 +40,17 @@ Page({
               if (res.code) {
                 //发起网络请求
                 wx.request({
-                  url: '../../index',
+                  method:'POST',
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded' // 默认值
+                  },
+                  url: 'http://192.168.32.196/weixin/getopenid',
                   data: {
                     code: res.code
+                  },
+                  'content-type': 'application/x-www-form-urlencoded',
+                  success: (datas) => {
+                    console.log(datas)
                   }
                 })
               } else {
@@ -58,7 +66,7 @@ Page({
           })
         }
       }
-    })    
+    })   
   },
 
   /**

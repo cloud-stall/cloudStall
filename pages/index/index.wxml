@@ -40,7 +40,8 @@
    <view class="goods">
     <image src="../../imgs/gg1.png"></image>
     <view class="goods-info">
-      <view class="goods-title">扬州新鲜荔枝</view>
+      <view class="goods-title">1111扬州新鲜荔枝</view>
+      <view class="goods-main">
       <view class="goods-text"> 
         <view>味道：甜</view>  
         <view>
@@ -50,14 +51,17 @@
       <view>发布日期：2020-05-02</view>
       <view>营业时间：10:00-20:00</view>    
       </view>
-    </view>
       <view class="km">10km</view>
+      </view>
+    </view>
+      
     </view>
 
-    <view class="goods" wx:for="{{goodsList}}" wx:key="index" data-id="{{item.id}}" bindtap="goDetail">
+    <view class="goods" wx:for="{{goodsList}}" wx:key="index" data-id="{{item.id}}" data-latitude="{{item.latitude}}" data-logitude="{{item.logitude}}" bindtap="goDetail">
       <image src="../../imgs/gg2.png"></image>
       <view class="goods-info">
         <view class="goods-title">{{item.title}}</view>
+        <view class="goods-main">
         <view class="goods-text"> 
           <view>{{item.dis}}</view>  
           <view>
@@ -67,16 +71,15 @@
         <view>发布日期：{{item.postTime}}</view>
         <view>营业时间：{{item.openTime}}</view>    
         </view>
-      </view>
-      <view class="km">10.00km</view>
-    </view>
-    
-
-  
+        <view class="km">10.00km</view>
+        </view>
+      </view>      
+    </view>  
    <view class="goods">
     <image src="../../imgs/gg4.png"></image>
     <view class="goods-info">
-      <view class="goods-title">石英表，时间精准，防水</view>
+      <view class="goods-title">11111石英表，时间精准，防水</view>
+      <view class="goods-main">
       <view class="goods-text"> 
         <view>味道：甜</view>  
         <view>
@@ -86,14 +89,17 @@
       <view>发布日期：2020-05-02</view>
       <view>营业时间：10:00-20:00</view>    
       </view>
+      <view class="km">10km</view>
+      </view>
     </view>
-    <view class="km">10km</view>
+    
   </view>
 
   <view class="goods">
     <image src="../../imgs/gg5.png"></image>
     <view class="goods-info">
-      <view class="goods-title">正宗无锡阳山水蜜桃应季</view>
+      <view class="goods-title">111正宗无锡阳山水蜜桃应季</view>
+      <view class="goods-main">
       <view class="goods-text"> 
         <view>味道：甜</view>  
         <view>
@@ -103,22 +109,25 @@
       <view>发布日期：2020-05-02</view>
       <view>营业时间：10:00-20:00</view>    
       </view>
-    </view>
-    <view class="km">10km</view>
+      <view class="km">10km</view>
+      </view>
+    </view>    
   </view>
   </view>
   <!---产品列表 end-->
   <view class="menus">
     <view class="menus-text">  
-       <text wx:for="{{goodsTypeList}}" wx:key="index" data-goTypeIndex="{{index}}" bindtap="goGoodsType" class="{{navIndex==index ? 'active': ''}}">{{item.name}}</text>
+       <text wx:for="{{goodsTypeList}}" wx:key="index" data-goTypeIndex="{{index}}"  bindtap="goGoodsType" class="{{navIndex==index ? 'active': ''}}">{{item.name}}</text>
     </view>    
   </view>
   <view class="red-bottom">
     <text class="iconfont icon-shuangjiantouxia"></text>
   </view>
   <view class="bottom-tabbar">
-    <view class="publish iconfont icon-icon-feixingmanyou"></view>
-    <view class="my" bindtap="goPublist">发布</view>
+    <view class="my" bindtap="goMy">
+      <text class="iconfont icon-wode"></text>
+    </view>
+    <view class="publish" bindtap="goPublist">发布</view>
   </view>
 </view>
 
