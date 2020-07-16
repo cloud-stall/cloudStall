@@ -1,36 +1,18 @@
-// pages/my/my.js
-const app = getApp()
-import {My} from "./model-my"
-
-var my = new My();
+// pages/agree/agree.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(app.globalData.userInfo){
-      this.setData({
-        userInfo: app.globalData.userInfo
-      })
-    }
 
-    console.log(1)
-    this._loadData()
-
-  },
-
-  _loadData(){
-    //测试修改用户名
-    my.changeUserName("testName",(res)=>{
-      console.log(res)
-    })
   },
 
   /**
@@ -81,8 +63,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-
-
-
-
 })

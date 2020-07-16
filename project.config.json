@@ -26,8 +26,8 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"useCompilerModule": false,
 		"useIsolateContext": true,
-		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -66,8 +66,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"query": "",
 					"scene": null
 				},
@@ -79,21 +79,28 @@
 					"scene": null
 				},
 				{
-					"id": 1,
+					"id": 2,
 					"name": "pages/my/my",
 					"pathName": "pages/my/my",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "pages/publish/publish",
 					"pathName": "pages/publish/publish",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": 4,
+					"id": 3,
+					"name": "pages/details/details",
+					"pathName": "pages/details/details",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
 					"query": "",

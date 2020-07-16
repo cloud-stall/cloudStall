@@ -8,8 +8,9 @@
     "pages/my/my",
     "pages/details/details",
     "pages/publish/publish",
+    "pages/search/search",
     "pages/myshop/myshop",
-    "pages/search/search"
+    "pages/agree/agree"
   ],
   "permission": {
     "scope.userLocation": {
