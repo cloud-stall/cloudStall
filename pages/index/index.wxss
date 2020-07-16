@@ -106,7 +106,7 @@ page{height: 100%;}
 .goods{
   margin:20rpx auto 20rpx auto;
   display: flex;
-  width:90%;
+  width:93%;
   padding:2%;
   border:solid 1px #ccc;
   border-radius: 30rpx;
@@ -118,13 +118,19 @@ page{height: 100%;}
   margin:0 20rpx 0 0;
 }
 .goods-info{
-  flex:5;
+  flex:1;
   font-size:28rpx;
-  max-width:440rpx;
-  min-width: 380rpx;
+  /* max-width:440rpx;
+  min-width: 380rpx; */
+}
+.goods-main{
+  display: flex;
+}
+.googs-text{
+  flex:1
 }
 .km{
-  flex:1;
+  width:140rpx;
   color:#ccc;
   align-self: center;
   font-size:28rpx;
@@ -218,10 +224,21 @@ page{height: 100%;}
   border-radius: 10rpx;
   text-align: center;
   margin-top:40rpx;
+  background: #fff;
 }
-.my{
+.publish{
   background: #ED1B1C;
   color:#fff;
   padding:6rpx 0;
+}
+.my{
+  width:100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #ED1B1C;
+  color:#fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /*底部end*/

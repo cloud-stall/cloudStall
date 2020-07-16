@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    rank:['a','b'],
     index:0,
     goodsTypes: ['水果','家具','服装','电器'],
     location:'qqq',
@@ -109,7 +110,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.showTabBar({
+      animation: true
+    })
   },
 
   /**

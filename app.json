@@ -1,9 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/home/home",
-    "pages/regist/regist",
+    "pages/regist/regist",    
+    "pages/home/home",    
     "pages/regist2/regist2",
     "pages/my/my",
     "pages/details/details",
@@ -19,14 +18,26 @@
   },
   "tabBar": {
     "selectedColor":"#ff0000",
+    "borderStyle": "white",    
     "list": [    
       {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./imgs/tabbar-1.png",
+        "selectedIconPath": "./imgs/tabbar-1s.png"
+
+      },
+      {
         "pagePath": "pages/publish/publish",
-        "text": "发布"
+        "text": "发布",
+        "iconPath": "./imgs/tabbar-2.png",
+        "selectedIconPath": "./imgs/tabbar-2s.png"
       },
       {
         "pagePath": "pages/my/my",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "./imgs/tabbar-3.png",
+        "selectedIconPath": "./imgs/tabbar-3s.png"
       }
     ]
   },

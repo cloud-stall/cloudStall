@@ -25,7 +25,9 @@ Page({
         newPrice: 10.00,
         oldPrice: 100.00,
         postTime: '2020-02-20',
-        openTime: '2020-10-09'
+        openTime: '2020-10-09',
+        latitude: 23.099994,
+        longitude: 113.324520
       },
       {
         id: 1002,
@@ -35,7 +37,9 @@ Page({
         newPrice: 10.00,
         oldPrice: 100.00,
         postTime: '2020-02-20',
-        openTime: '2020-10-09'
+        openTime: '2020-10-09',
+        latitude: 23.099994,
+        longitude: 113.324520
       },
       {
         id: 1003,
@@ -45,7 +49,9 @@ Page({
         newPrice: 10.00,
         oldPrice: 100.00,
         postTime: '2020-02-20',
-        openTime: '2020-10-09'
+        openTime: '2020-10-09',
+        latitude: 23.099994,
+        longitude: 113.324520,
       }
     ],
     goodsTypeList: [
@@ -60,21 +66,14 @@ Page({
     ],
     navIndex: 0
   },
-  getType: function(e){
-    console.log(e)
-    this.setData({
-      typeIndex: e.currentTarget.dataset.index
-    })
+  onLoad: function(options){
+    this.getUserInfo()
   },
-  bindChanges: function(e){
-    console.log(e)
-    this.setData({     
-      siteText: e.detail.value
-    })
-  },
-  onShow: function(){
-   
+  onShow: function(){   
     var that = this
+    wx.hideTabBar({
+      animation: true
+    })
     wx.getSetting({
       complete: (res) => {
         console.log(res)
@@ -123,6 +122,95 @@ Page({
       },     
   })
   },
+  getType: function(e){
+    console.log(e)
+    this.setData({
+      typeIndex: e.currentTarget.dataset.index
+    })
+  },
+  bindChanges: function(e){
+    console.log(e)
+    this.setData({     
+      siteText: e.detail.value
+    })
+  },
+
+  /*登录*/
+  getUserInfo: function(e){
+    let that = this
+    wx.getSetting({
+      success(res){
+        console.log(res)    
+        if(res.authSetting['scope.userInfo']){
+          wx.login({
+            success (res) {
+              console.log(res)
+              if (res.code) {
+                //发起网络请求
+                wx.request({
+                  method:'POST',
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded' // 默认值
+                  },
+                  url: 'http://192.168.32.196/weixin/getopenid',
+                  data: {
+                    code: res.code
+                  },
+                  success: (datas) => {
+                    console.log(datas)
+                    wx.getUserInfo({
+                      success(res2) {              
+                        app.globalData.userInfo = res.userInfo              
+                        console.log("获取用户信息成功", res2)
+                        that.setData({
+                          name: res2.userInfo.nickName
+                        })
+                     
+                   
+                    wx.request({
+                      method: 'POST',
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded',
+                      },
+                      url: 'http://192.168.32.196/weixin/gettoken',
+                      data: {
+                        city: res2.userInfo.city,
+                        country: res2.userInfo.country,
+                        createdate: '',
+                        headimgurl: res2.userInfo.avatarUrl,
+                        iphone: '1579655656',
+                        nickname: res2.userInfo.nickName,
+                        province: res2.userInfo.province
+                      },
+                      success: (data2)=>{
+                        console.log(data2)
+                      }
+                    })
+                  },
+                  fail(res3) {
+                    console.log("获取用户信息失败", res)
+                  }
+                })
+                  }
+                })
+              } else {
+                console.log('登录失败！' + res.errMsg)
+              }
+            }
+            
+          }) 
+          ,
+          wx.navigateTo({
+            url: '../regist2/regist2',
+            success: (res)=>{
+              console.log(res)
+            }
+          })
+        }
+      }
+    })   
+  },
+  /*登录end*/
   goSearch: ()=>{
     wx.navigateTo({
       url: '../search/search'
@@ -130,8 +218,10 @@ Page({
   },
   goDetail:function(e){
     let id = e.currentTarget.dataset.id
+    let latitude = e.currentTarget.dataset.latitude
+    let longitude = e.currentTarget.dataset.longitude
     wx.navigateTo({
-      url: '../details/details?id='+id,
+      url: '../details/details?id='+id+'&latitude='+latitude+'&logitude='+longitude,
     })
     console.log(e)
   },
@@ -141,9 +231,16 @@ Page({
       navIndex: e.currentTarget.dataset.gotypeindex
     })
   },
+  // 去发布
   goPublist: ()=>{
     wx.switchTab({
       url: '/pages/publish/publish',
+    })
+  },
+  // 去我的
+  goMy: () => {
+    wx.switchTab({
+      url: '/pages/my/my',
     })
   },
   onReady: function(e){
