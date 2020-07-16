@@ -61,7 +61,7 @@
         ></map>
         <view class="go">
           <icon class="iconfont icondaohang2"></icon>
-          <text>去这里</text>
+          <text bindtap="goHere">去这里</text>
         </view>
         <!-- <view class="distance">
           <view class="section">

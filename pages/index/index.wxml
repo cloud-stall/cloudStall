@@ -59,7 +59,13 @@
       
     </view>
 
-    <view class="goods" wx:for="{{goodsList}}" wx:key="index" data-id="{{item.id}}" data-latitude="{{item.latitude}}" data-logitude="{{item.logitude}}" bindtap="goDetail">
+    <view class="goods" wx:for="{{goodsList}}" wx:key="index" 
+    data-id="{{item.id}}" 
+    data-latitude="{{latitude}}"
+    data-longitude="{{longitude}}"
+    data-markers="{{markers}}"
+    data-covers="{{covers}}" 
+    bindtap="goDetail">
       <view class="goods-pic">
       <image src="../../imgs/gg2.png" mode="widthFix"></image>
       </view>
@@ -125,7 +131,8 @@
   <!---产品列表 end-->
   <view class="menus">
     <view class="menus-text">  
-       <text wx:for="{{goodsTypeList}}" wx:key="index" data-goTypeIndex="{{index}}"  bindtap="goGoodsType" class="{{navIndex==index ? 'active': ''}}">{{item.name}}</text>
+       <text wx:for="{{goodsTypeList}}" wx:key="index" data-goTypeIndex="{{index}}"    
+       bindtap="goGoodsType" class="{{navIndex==index ? 'active': ''}}">{{item.name}}</text>
     </view>    
   </view>
   <view class="red-bottom">

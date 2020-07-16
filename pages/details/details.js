@@ -8,38 +8,43 @@ Page({
     site: ['0.5km', '1km', '2km', '3km', '4km', '5km'],
     latitude: 0,
     longitude: 0,
-    markers: [{
-      id: 1,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      name: 'T.I.T 创意园'
-    }],
-    covers: [{
-      latitude: 23.099994,
-      longitude: 113.344520,
-      iconPath: '/image/location.png'
-    }, {
-      latitude: 23.099994,
-      longitude: 113.304520,
-      iconPath: '/image/location.png'
-    }]
+    markers: [],
+    covers: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that =  this
     console.log(options)
     let id = options.id
     let longitude = options.longitude
     let latitude = options.latitude
     this.setData({
       id,
-      latitude,
-      longitude
+      latitude:latitude,
+      longitude:longitude
     })
-
+    // map
+    
+    wx.getSetting({
+      complete: (res) => {
+        console.log(res)
+        if(res.authSetting['scope.userLocation']){
+          wx.getLocation({
+            type:'wgs84',
+            success: function(res2){
+              console.log(res2)
+              that.setData({
+                latitude: res2.latitude,
+                longitude: res2.longitude 
+              })            
+            }
+          })
+        }     
+      },     
+  })
   },
 
   /**
@@ -48,23 +53,30 @@ Page({
   onReady: function () {
 
   },
-
+goHere: function(){
+  let that = this
+  //选择地图
+  wx.chooseLocation({
+    success: function(res){
+      console.log(res)
+      that.setData({
+        latitude: res.latitude,
+        longitude: res.longitude,
+        name: res.address
+      })    
+      wx.openLocation({
+        latitude: res.latitude,
+        longitude: res.longitude,
+        name: res.name
+      })
+    }      
+  })
+},
   /**
    * 生命周期函数--监听页面显示
    */
    onShow: function(){
-    console.log(this.data.longitude)
-  //   wx.getSetting({
-  //     complete: (res) => {
-  //       console.log(res)
-  //       if(res.authSetting[scope.userLocation]){
-  //         wx.getLocation({
-  //           altitude: this.data.latitude,
-  //           longitude: this.data.longitude
-  //         })
-  //       }     
-  //     },     
-  // })
+
   },
 
   /**
