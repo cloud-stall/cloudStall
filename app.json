@@ -9,7 +9,9 @@
     "pages/publish/publish",
     "pages/search/search",
     "pages/myshop/myshop",
-    "pages/agree/agree"
+    "pages/agree/agree",
+    "pages/changename/changename"
+
   ],
   "permission": {
     "scope.userLocation": {

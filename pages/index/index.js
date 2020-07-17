@@ -67,7 +67,8 @@ Page({
     navIndex: 0,
     query: {},
     menuPosition: {bottom:'50rpx', top: 'auto'},
-    redBottom: {bottom:0, top: 'auto'}
+    redBottom: {bottom:0, top: 'auto'},
+    mainTop:0
   },
   onLoad: function(options){
     this.getUserInfo()
@@ -77,6 +78,7 @@ Page({
     wx.hideTabBar({
       animation: true
     })
+
           wx.getLocation({
             type: 'gcj02',
             success: (res2)=>{
@@ -109,8 +111,7 @@ Page({
                       padding: "5px",
                       borderRadius: "2px",
                       borderWidth: "1px",
-                      borderColor: "#07c160",
-                     
+                      borderColor: "#07c160"                     
                     }
                   }
                 ]
@@ -179,7 +180,7 @@ Page({
                       },
                       success: (data2)=>{
                         console.log(data2)
-                        wx.setStorageSync('token', data2.code)
+                        wx.setStorageSync('token', data2.data.code)
                       }
                     })
                   },
@@ -228,12 +229,14 @@ console.log(bottom1, bottom2)
     if( bottom1 == '50rpx' && bottom2 == '0'){
       this.setData({
         menuPosition: {top: 0, bottom:'auto'},
-        redBottom: {top: '134rpx', bottom: 'auto'}
+        redBottom: {top: '78rpx', bottom: 'auto'},
+        mainTop: '140rpx'
       })
     } else {
       this.setData({
         menuPosition: {top: 'auto', bottom:'50rpx'},
-        redBottom: {top: 'auto', bottom: '0'}
+        redBottom: {top: 'auto', bottom: '0'},
+        mainTop: '0'
       })
     }
     

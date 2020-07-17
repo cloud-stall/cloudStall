@@ -21,6 +21,7 @@
       </view>
     </view>
   </view> 
+  <view class="main" style="margin-top:{{mainTop}}">
   <view class="title">
     <text class="iconfont icon-ziyuan icon-dw"></text>
     <text class="red">附近的地摊</text> 
@@ -126,6 +127,7 @@
       <view class="km">10km</view>
       </view>
     </view>    
+  </view>
   </view>
   </view>
   <!---产品列表 end-->
