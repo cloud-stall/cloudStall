@@ -76,7 +76,7 @@ Page({
     })
     wx.getSetting({
       complete: (res) => {
-        console.log(res)
+        console.log(res) 
         if(res.authSetting['scope.address']){
           wx.getLocation({
             type: 'gcj02',

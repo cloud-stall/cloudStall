@@ -1,6 +1,6 @@
 class Base {
   constructor(){
-    this.baseRequestUrl = "http://192.168.32.196/"
+    this.baseRequestUrl = "http://192.168.32.230/"
   }
 
   request(params){
