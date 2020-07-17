@@ -64,7 +64,10 @@ Page({
       {name:'盆栽'},
       {name:'五金'}
     ],
-    navIndex: 0
+    navIndex: 0,
+    query: {},
+    menuPosition: {bottom:'50rpx', top: 'auto'},
+    redBottom: {bottom:0, top: 'auto'}
   },
   onLoad: function(options){
     this.getUserInfo()
@@ -74,10 +77,6 @@ Page({
     wx.hideTabBar({
       animation: true
     })
-    wx.getSetting({
-      complete: (res) => {
-        console.log(res)
-        if(res.authSetting['scope.address']){
           wx.getLocation({
             type: 'gcj02',
             success: (res2)=>{
@@ -118,16 +117,15 @@ Page({
               })
             }            
           })
-        }     
-      },     
-  })
   },
+  // 获取类型
   getType: function(e){
     console.log(e)
     this.setData({
       typeIndex: e.currentTarget.dataset.index
     })
   },
+  // 改变距离
   bindChanges: function(e){
     console.log(e)
     this.setData({     
@@ -138,13 +136,10 @@ Page({
   /*登录*/
   getUserInfo: function(e){
     let that = this
-    wx.getSetting({
-      success(res){
-        console.log(res)    
-        if(res.authSetting['scope.userInfo']){
           wx.login({
             success (res) {
-              console.log(res)
+              console.log('rrr', res)
+              let token1 = res.code
               if (res.code) {
                 //发起网络请求
                 wx.request({
@@ -152,27 +147,27 @@ Page({
                   header: {
                     'content-type': 'application/x-www-form-urlencoded' // 默认值
                   },
-                  url: 'http://192.168.32.196/weixin/getopenid',
+                  url: 'http://192.168.32.230/weixin/getopenid',
                   data: {
                     code: res.code
                   },
                   success: (datas) => {
-                    console.log(datas)
+                    console.log('tttt', datas)
                     wx.getUserInfo({
                       success(res2) {              
                         app.globalData.userInfo = res.userInfo              
                         console.log("获取用户信息成功", res2)
                         that.setData({
                           name: res2.userInfo.nickName
-                        })
-                     
+                        })                    
                    
                     wx.request({
                       method: 'POST',
                       header: {
                         'content-type': 'application/x-www-form-urlencoded',
+                        'token': datas.data.code
                       },
-                      url: 'http://192.168.32.196/weixin/gettoken',
+                      url: 'http://192.168.32.230/weixin/gettoken',
                       data: {
                         city: res2.userInfo.city,
                         country: res2.userInfo.country,
@@ -184,6 +179,7 @@ Page({
                       },
                       success: (data2)=>{
                         console.log(data2)
+                        wx.setStorageSync('token', data2.code)
                       }
                     })
                   },
@@ -196,18 +192,18 @@ Page({
               } else {
                 console.log('登录失败！' + res.errMsg)
               }
-            }            
-          }) 
-        }
-      }
-    })   
+            }
+            
+          })         
   },
   /*登录end*/
+  // 去搜索
   goSearch: ()=>{
     wx.navigateTo({
       url: '../search/search'
     })
   },
+  // 去详情
   goDetail:function(e){
     let id = e.currentTarget.dataset.id
     let latitude = e.currentTarget.dataset.latitude
@@ -217,11 +213,30 @@ Page({
     })
     console.log(e)
   },
+  // 底部分类
   goGoodsType: function(e){
     console.log(e.currentTarget.dataset.gotypeindex)
     this.setData({
       navIndex: e.currentTarget.dataset.gotypeindex
     })
+  },
+  // 去顶部
+  goTop: function(){
+    let bottom1 = this.data.menuPosition.bottom
+    let bottom2 = this.data.redBottom.bottom
+console.log(bottom1, bottom2)
+    if( bottom1 == '50rpx' && bottom2 == '0'){
+      this.setData({
+        menuPosition: {top: 0, bottom:'auto'},
+        redBottom: {top: '134rpx', bottom: 'auto'}
+      })
+    } else {
+      this.setData({
+        menuPosition: {top: 'auto', bottom:'50rpx'},
+        redBottom: {top: 'auto', bottom: '0'}
+      })
+    }
+    
   },
   // 去发布
   goPublist: ()=>{
@@ -236,7 +251,9 @@ Page({
     })
   },
   onReady: function(e){
-    this.mapCtx = wx.createMapContext('myMap')
-  }
-   
+    // this.mapCtx = wx.createMapContext('myMap')
+    this.data.query = wx.createSelectorQuery()
+    
+    console.log(this.data.query.select('.menu').boundingClientRect())
+  }  
 })
