@@ -1,20 +1,22 @@
 class Base {
   constructor(){
-    this.baseRequestUrl = "http://192.168.32.230/"
+    this.baseRequestUrl = "http://192.168.33.22/"
   }
 
   request(params){
-
-    if(params.type){
+   // console.log(params.type)
+    if(!params.type){
+     // console.log(params.type)
       params.type = "GET"
     }
+    
     var url = this.baseRequestUrl+params.url;
     wx.request({
       url:url,
       method:params.type,
       data:params.data,
       header:{
-        "content-type":"application/json",
+        "content-type":"application/x-www-form-urlencoded",
         "token":wx.getStorageSync("token")
       },
       success:function(res){
