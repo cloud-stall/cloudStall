@@ -16,57 +16,15 @@ Page({
     
   },
   getUserInfo: function(e){
-    let that = this
-    wx.getSetting({
-      success(res){       
-        if(res.authSetting['scope.userInfo']){
-          wx.getUserInfo({
-            success(res) {
-              console.log('res',res)
-              app.globalData.userInfo = res.userInfo
-              
-              console.log("获取用户信息成功", res, app.globalData)
-              that.setData({
-                name: res.userInfo.nickName
-              })
-            },
-            fail(res) {
-              console.log("获取用户信息失败", res)
-            }
-          })
-          wx.login({
-            success (res) {
-              console.log(res)
-              if (res.code) {
-                //发起网络请求
-                wx.request({
-                  method:'POST',
-                  header: {
-                    'content-type': 'application/x-www-form-urlencoded' // 默认值
-                  },
-                  url: 'http://192.168.32.196/weixin/getopenid',
-                  data: {
-                    code: res.code
-                  },
-                  'content-type': 'application/x-www-form-urlencoded',
-                  success: (datas) => {
-                    console.log(datas)
-                  }
-                })
-              } else {
-                console.log('登录失败！' + res.errMsg)
-              }
-            }
-          }),
-          wx.navigateTo({
-            url: '../regist2/regist2',
+   console.log(e)         
+          wx.switchTab({          
+            url: '../index/index',
             success: (res)=>{
               console.log(res)
             }
           })
-        }
-      }
-    })   
+      
+    
   },
 
   /**

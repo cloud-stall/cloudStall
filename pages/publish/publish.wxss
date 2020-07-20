@@ -59,14 +59,12 @@ page{
   flex-direction: row;
 }
 .bord{
-  border:solid 1px #eee;
-  border-radius: 12rpx;
   flex:2;
   background: #fff;
-  font-size:24rpx;
+  font-size:26rpx;
   padding:0 10rpx;
-  color: #aaa;
-  line-height: 42rpx;
+  color: #999;
+  line-height: 66rpx;
 }
 .oldNumber{
   margin-left: 60rpx;
@@ -117,4 +115,7 @@ page{
   height: 186rpx;
   width:92%;
   padding:20rpx;
+}
+.red{
+  color:#F63737;
 }

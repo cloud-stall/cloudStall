@@ -35,7 +35,7 @@
       <text class="operateName">修改我的名字</text>
       <icon class="iconRight iconfont iconjiantouxia"></icon>
     </view>
-    <view class="operate">
+    <view class="operate" bindtap="goChange">
       <icon class="iconLeft iconfont iconcaidan2"></icon>
       <text class="operateName">修改店铺名字</text>
       <icon class="iconRight iconfont iconjiantouxia"></icon>

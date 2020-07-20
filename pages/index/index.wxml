@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="map">
+  <view class="map" wx:if="{{menuPosition.top}}">
   <map
       id="myMap"
       style="width: 100%; height: 240px;"
@@ -8,7 +8,7 @@
       longitude="{{longitude}}"
       markers="{{markers}}"
       covers="{{covers}}"
-      show-location
+      show-location      
     >
     </map>
     <view class="distance">
@@ -21,6 +21,7 @@
       </view>
     </view>
   </view> 
+  <view class="main" style="margin-top:{{mainTop}}">
   <view class="title">
     <text class="iconfont icon-ziyuan icon-dw"></text>
     <text class="red">附近的地摊</text> 
@@ -128,14 +129,15 @@
     </view>    
   </view>
   </view>
+  </view>
   <!---产品列表 end-->
-  <view class="menus">
-    <view class="menus-text">  
+  <view class="menus" style="bottom: {{menuPosition.bottom}}; top: {{menuPosition.top}}">
+    <view class="menus-text" >  
        <text wx:for="{{goodsTypeList}}" wx:key="index" data-goTypeIndex="{{index}}"    
        bindtap="goGoodsType" class="{{navIndex==index ? 'active': ''}}">{{item.name}}</text>
     </view>    
   </view>
-  <view class="red-bottom">
+  <view class="red-bottom" style="bottom:{{redBottom.bottom}}; top: {{redBottom.top}}" bindtap="goTop">
     <text class="iconfont icon-shuangjiantouxia"></text>
   </view>
   <view class="bottom-tabbar">

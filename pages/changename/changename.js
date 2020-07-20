@@ -1,4 +1,6 @@
-const app = getApp()
+import {Change} from "./model-change"
+const app = getApp();
+const change = new Change()
 Page({
 
   /**
@@ -12,11 +14,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData.userInfo);
+    
     if(app.globalData.userInfo){
       this.setData({
         userInfo: app.globalData.userInfo
       })
     }
+
+    this._loadData();
+  },
+  //数据请求模块
+  _loadData(){
+    //测试修改用户名
+    change.changeUserName("testName",(res)=>{
+      console.log(res)
+    })
   },
 
   /**
@@ -30,7 +43,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    if(app.globalData.userInfo){
+      this.setData({
+        userInfo: app.globalData.userInfo
+      })
+    }
   },
 
   /**

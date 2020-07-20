@@ -15,21 +15,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData.userInfo)
     if(app.globalData.userInfo){
       this.setData({
         userInfo: app.globalData.userInfo
       })
     }
 
-    console.log(1)
-    this._loadData()
+    // console.log(1)
+    // this._loadData()
 
   },
-
+  //请求数据模块
   _loadData(){
     //测试修改用户名
     my.changeUserName("testName",(res)=>{
       console.log(res)
+    })
+  },
+
+  //跳转页面到修改用户名
+
+  goChange(){
+    wx.navigateTo({
+      url: '../changename/changename'
     })
   },
 
@@ -44,6 +53,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(app.globalData.userInfo)
+    if(app.globalData.userInfo){
+      this.setData({
+        userInfo: app.globalData.userInfo
+      })
+    }
     wx.showTabBar({
       animation: true
     })

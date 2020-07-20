@@ -4,18 +4,20 @@ class Base {
   }
 
   request(params){
-
-    if(params.type){
+   // console.log(params.type)
+    if(!params.type){
+     // console.log(params.type)
       params.type = "GET"
     }
+    
     var url = this.baseRequestUrl+params.url;
     wx.request({
       url:url,
       method:params.type,
       data:params.data,
       header:{
-        "content-type":"application/json",
-        // "token":wx.getStorageSync("token")
+        "content-type":"application/x-www-form-urlencoded",
+        "token":wx.getStorageSync("token")
       },
       success:function(res){
         params.sCallBack&&params.sCallBack(res)

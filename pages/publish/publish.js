@@ -6,9 +6,10 @@ Page({
    */
   data: {
     rank:['a','b'],
-    index:0,
+    typeIndex:0,
     goodsTypes: ['水果','家具','服装','电器'],
     location:'qqq',
+    newPrice: 0,
     time: '10:00',
     time2:'22:00',
     radioItems:[
@@ -32,14 +33,15 @@ Page({
       '7成新',
       '8成新',
       '9成新',
-    ]
+    ],
+    goodsTextarea: ''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   bindchange: function(e){
     this.setData({
-      index: e.detail.value
+      typeIndex: e.detail.value
     })
   },
   radioChange: function(e){
@@ -73,26 +75,63 @@ Page({
         })
       }
     })
-  
-    // wx.getLocation({
-    //   type: 'gcj02',
-    //   success: (res) => {
-    //     console.log(res)
-    //     wx.openLocation({
-    //       latitude: res.latitude,
-    //       longitude: res.longitude,
-    //       success: (res2)=>{
-    //         console.log(res2)
-            
-    //       }
-    //     })
-    //   } 
-    // })
   },
   goAgree: ()=>{
     console.log(1)
     wx.navigateTo({
       url: '../agree/agree',
+    })
+  },
+  // 发布
+  publish: function(){
+    let obj = {
+      typeIndex: this.data.goodsTypes[this.data.typeIndex],
+      location: this.data.location,
+      newPrice: this.data.newPrice,
+      oldPrice:this.data.oldPrice,
+      time: this.data.time,
+      time2: this.data.time2,
+      goodsTextarea: this.data.goodsTextarea,
+      pic: []
+    }
+    console.log(obj)
+    if(!obj.typeIndex || !obj.location || !obj.newPrice){
+      wx.showToast({
+        title: '*必填项不能为空'
+      })
+    }
+  },
+  //获取现价
+  getNewPrice: function(e){
+    this.setData({
+      newPrice: e.detail.value
+    })
+  },
+  //获取商品描述
+  getTextarea: function(e){
+    this.setData({
+      goodsTextarea: e.detail.value
+    })
+  },
+  //上传图片
+  uploadPic: function(e){
+    wx.chooseImage({
+      success (res) {
+        const tempFilePaths = res.tempFilePaths
+        wx.uploadFile({
+          url: 'https://example.weixin.qq.com/upload', //仅为示例，非真实的接口地址
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success (res){
+            const data = res.data
+            //do something
+            console.log(res)
+          }
+        })
+      }
     })
   },
   onLoad: function (options) {
