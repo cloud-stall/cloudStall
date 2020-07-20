@@ -25,3 +25,22 @@ button.btn{
   margin: 146rpx auto;
   color: #fff;
 }
+.phone-text{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.bord{
+  flex:1;
+  border:solid 1px #ccc;
+  padding:10rpx;
+  margin-top:20rpx;
+  position: relative;
+}
+.icon1{
+  width:70rpx;
+  position: absolute;
+  right:0rpx;
+  margin-top:10rpx;
+  z-index:100
+}

@@ -2,11 +2,25 @@
 <view class="logo">
 <image src="../../imgs/logo.png" class="logo" mode="widthFix"></image>
 
-<view class="getuser">
-<text>请允许获取你的微信信息</text>
-  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="btn">微信授权登录</button>
+<view class="getuser" wx:if="{{isAuth}}">
+  <text>请允许获取你的微信信息</text>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="btn">微信授权登录</button>
 </view>
-  
+<view class="getuser" wx:if="{{!isAuth}}">
+  <!-- <text>请允许获取你的电话</text>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="btn">微信授权登录电话</button> -->
+    <label class="icon-box phone-text">
+    输入手机号进行授权：<input type="number" confirm-type="go" bindinput="getPhoneNumber" class="bord" value="{{phoneNumber}}"  placeholder="请输入手机号"></input><icon class="icon-small icon1" type="cancel" size="23" wx:if="{{phoneNumber}}" bindtap="cancelPhone"></icon>
+ 
+   
+      
+    
+   
 
+    </label>
+     
+    <button  bindtap="goPhoneNumber" class="btn">
+      微信授权登录电话
+    </button>
 </view>
-
+</view>
