@@ -1,7 +1,6 @@
-<view>
+<view class="changeShopName">
 
-  <view><text>修改店铺名称</text></view>
-  <view>  <text>给自己的店铺起一个好听得名字吧</text>    </view>
+ <!-- 头像 -->
   <view>
     <view class="userinfo">
         <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称11111 </button>
@@ -11,4 +10,7 @@
         </block>
     </view>
   </view>
+<!-- 修改店铺名 -->
+  <view class="changeNameTitle"><text>修改店铺名称</text></view>
+  <view class="dicText">  <text>给自己的店铺起一个好听得名字吧</text>    </view>
 </view>

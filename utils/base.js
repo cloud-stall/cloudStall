@@ -1,6 +1,6 @@
 class Base {
   constructor(){
-    this.baseRequestUrl = "http://192.168.32.230/"
+    this.baseRequestUrl = "http://192.168.33.22/"
   }
 
   request(params){
@@ -15,7 +15,7 @@ class Base {
       data:params.data,
       header:{
         "content-type":"application/json",
-        "token":wx.getStorageSync("token")
+        // "token":wx.getStorageSync("token")
       },
       success:function(res){
         params.sCallBack&&params.sCallBack(res)
