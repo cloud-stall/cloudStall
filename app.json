@@ -9,6 +9,7 @@
     "pages/publish/publish",
     "pages/search/search",
     "pages/myshop/myshop",
+    "pages/myCollection/myCollection",
     "pages/agree/agree",
     "pages/changename/changename"
 

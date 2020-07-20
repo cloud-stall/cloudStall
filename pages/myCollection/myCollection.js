@@ -1,40 +1,18 @@
-// pages/my/my.js
-const app = getApp()
-import {My} from "./model-my"
-
-var my = new My();
+// pages/myshop/myshop.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+
   },
-  goMyCollection: function(){
-    wx.navigateTo({
-      url: 'pages/myCollection/myCollection',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(app.globalData.userInfo){
-      this.setData({
-        userInfo: app.globalData.userInfo
-      })
-    }
 
-    console.log(1)
-    this._loadData()
-
-  },
-
-  _loadData(){
-    //测试修改用户名
-    my.changeUserName("testName",(res)=>{
-      console.log(res)
-    })
   },
 
   /**
@@ -51,7 +29,6 @@ Page({
     wx.showTabBar({
       animation: true
     })
-    
   },
 
   /**
@@ -88,8 +65,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-
-
-
-
 })

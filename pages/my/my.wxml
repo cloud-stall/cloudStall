@@ -24,7 +24,7 @@
     <view class="collection">
          <block>
             <text class="fansCount">100</text>
-            <text class="fansTxt">我的收藏</text>
+            <text class="fansTxt" bindtap="goMyCollection">我的收藏</text>
         </block>
     </view>
   </view>
