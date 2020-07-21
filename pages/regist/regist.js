@@ -46,7 +46,7 @@ Page({
           header: {
             'content-type': 'application/x-www-form-urlencoded' // 默认值
           },
-          url: 'http://192.168.33.22/weixin/getopenid',
+          url: 'http://192.168.33.92/weixin/getopenid',
           data: {
             code: res.code
           },
@@ -71,7 +71,7 @@ Page({
       'content-type': 'application/x-www-form-urlencoded',
       'token': wx.getStorageInfoSync('token')
     },
-    url: 'http://192.168.33.22/weixin/gettoken',
+    url: 'http://192.168.33.92/weixin/gettoken',
     data: {
       city: e.detail.userInfo.city,
       country: e.detail.userInfo.country,
