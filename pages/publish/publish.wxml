@@ -1,7 +1,7 @@
 <!--pages/publish/publish.wxml-->
 <view class="container">
   <view class="logo">
-    <image src="../../imgs/logo.png"></image>
+    <image src="../../imgs/logo.png" mode="heightFix"></image>
   </view>
   <view class="content">
     <view class="content-text">
@@ -109,6 +109,18 @@
         </view>
       </view>
     </view>
+    <!--图片展示-->
+<view class="question-images">
+  <block wx:for="{{images}}" >
+    <view class="q-image-wrap">
+      <!-- 图片缩略图  -->
+      <image class="q-image" src="{{item}}" mode="aspectFill"  bindtap="handleImagePreview"></image>
+      <!-- 移除图片的按钮  -->
+      <view class="q-image-remover"  bindtap="removeImage">删除</view>
+    </view>
+  </block>
+</view>
+    <!--图片展示end-->
    <!--阅读--->
     <view class="content-text">
       <view class="checkbox">

@@ -14,10 +14,14 @@
   <view class="changeNameTitle"><text>修改店铺名称</text></view>
   <view class="dicText">  <text>给自己的店铺起一个好听得名字吧</text>    </view>
   <!-- 表单输入新的店铺名 -->
-  <view>
+  <view class="formBox">
     <form class="form">
-        <input name="input" style="background-color: #FFFFFF" placeholder="请在这里输入" />
-        <button class="btn-change" name = "save">保存修改</button>
+        <view class="input-view">
+           <input type="text" value="{{shopName}}" focus="true" name="input" placeholder="请在这里输入" bindinput="changeText" />
+           <icon type="clear" bindtap="clearInput"></icon>
+        </view>
+       
+        <button class="btn-change" bindtap="saveChange" name = "save" type="primary">保存修改</button>
     </form>
   </view>
 </view>

@@ -7,8 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: {},
+    shopName:"1223232432",
+    iconType: [
+      'clear'
+    ]
   },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -22,13 +27,59 @@ Page({
       })
     }
 
-    this._loadData();
+    
   },
   //数据请求模块
   _loadData(){
+    
+  },
+
+  //清空输入框
+  clearInput(){
+    console.log(1);
+    
+    this.data.shopName = ''
+    //修改data 中的 shopName
+    this.setData({
+      shopName:this.data.shopName
+    })
+  },
+  //修改框input事件的监听
+  changeText(e){
+    console.log(e.detail.value)
+    this.data.shopName = e.detail.value
+    this.setData({
+      shopName:this.data.shopName
+    })
+  },
+
+  saveChange(){
     //测试修改用户名
-    change.changeUserName("testName",(res)=>{
+    change.changeUserName(this.data.shopName,(res)=>{
       console.log(res)
+      if(res.data.status){
+        this.showFail(res.data.msg)
+      }else{
+        this.showSuccess(res.data.msg)
+      }
+    })
+
+  },
+
+  //弹出成功提示框
+  showSuccess(t) {
+    wx.showToast({
+    title: t,
+    mask: true,
+    icon: 'success'
+    })
+  },
+
+  showFail(t) {
+    wx.showToast({
+    title: t,
+    mask: true,
+    icon: 'success'
     })
   },
 

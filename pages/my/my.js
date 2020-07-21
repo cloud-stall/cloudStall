@@ -10,7 +10,11 @@ Page({
   data: {
     userInfo: {}
   },
-
+  goMyCollection: function(){
+    wx.navigateTo({
+      url: '../myCollection/myCollection',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -39,6 +43,14 @@ Page({
   goChange(){
     wx.navigateTo({
       url: '../changename/changename'
+    })
+  },
+
+
+  //进入我的店铺
+  goMyShop: function(){
+    wx.navigateTo({
+      url: '../myshop/myshop',
     })
   },
 

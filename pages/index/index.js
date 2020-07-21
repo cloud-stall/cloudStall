@@ -229,7 +229,7 @@ console.log(bottom1, bottom2)
     if( bottom1 == '50rpx' && bottom2 == '0'){
       this.setData({
         menuPosition: {top: 0, bottom:'auto'},
-        redBottom: {top: '78rpx', bottom: 'auto'},
+        redBottom: {top: '70rpx', bottom: 'auto'},
         mainTop: '140rpx'
       })
     } else {

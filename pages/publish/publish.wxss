@@ -98,6 +98,26 @@ page{
 .checkbox text{
   color: #666;
 }
+/*图片*/
+.question-images{
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+.q-image-wrap{
+  flex:1;
+  border:solid 1px #eee;
+  background:#fff;
+  border-radius: 10rpx;
+  text-align: center;
+  margin:10rpx 10rpx;
+  padding:20rpx 0;
+  height:270rpx;
+  overflow: hidden;
+}
+.q-image-wrap image{
+  width:92%;
+}
 .publish button{
   width:80%;
   height: 80rpx;

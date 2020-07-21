@@ -137,20 +137,19 @@
   box-sizing: border-box;
   padding: 0 20rpx;
   position: fixed;
-  bottom:1rpx;
+  bottom:92rpx;
   /* background: red; */
 } 
 
 
 .openShop,.closeShop{
-  width:48%;
+  width:334rpx;
   height:64rpx;
   text-align:center;
   font-size: 24rpx;
   color:#fff;
   line-height: 64rpx;
   border: 2rpx solid #a9abac;
-  padding:10rpx 0;
 }
 .openShop{
   float:left;

@@ -34,7 +34,8 @@ Page({
       '8成新',
       '9成新',
     ],
-    goodsTextarea: ''
+    goodsTextarea: '',
+    images: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -115,27 +116,49 @@ Page({
   },
   //上传图片
   uploadPic: function(e){
+    let that =  this
     wx.chooseImage({
+      sizeType:['original', 'compressed'],
+      sourceType: ['album', 'camera'],
       success (res) {
         const tempFilePaths = res.tempFilePaths
-        wx.uploadFile({
-          url: 'https://example.weixin.qq.com/upload', //仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'user': 'test'
-          },
-          success (res){
-            const data = res.data
-            //do something
-            console.log(res)
-          }
+        const images = that.data.images.concat(res.tempFilePaths)
+        that.data.images = images.length <=3 ? images: images.slice(0, 3)
+        console.log('tttt', tempFilePaths, images)
+        that.setData({
+          images: images
         })
+        // wx.uploadFile({
+        //   url: 'https://example.weixin.qq.com/upload', //仅为示例，非真实的接口地址
+        //   filePath: tempFilePaths[0],
+        //   name: 'file',
+        //   formData: {
+        //     'user': 'test'
+        //   },
+        //   success (res){
+        //     const data = res.data
+        //     //do something
+        //     console.log(res)
+        //   }
+        // })
       }
     })
   },
+  // 手机号授权
+  getPhone: function(){
+     let phone = wx.getStorageSync('phone')
+    console.log(phone)
+    if(!phone){
+      console.log(phone)
+      wx.navigateTo({
+        url: '../regist2/regist2',
+      })
+    } else{
+      return
+    }
+  },
   onLoad: function (options) {
-
+   
   },
 
   /**
