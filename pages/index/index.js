@@ -71,7 +71,7 @@ Page({
     mainTop:0
   },
   onLoad: function(options){
-    this.getUserInfo()
+    // this.getUserInfo()
   },
   onShow: function(){   
     var that = this
@@ -135,6 +135,7 @@ Page({
   },
 
   /*登录*/
+<<<<<<< HEAD
   getUserInfo: function(e){
     let that = this
           wx.login({
@@ -161,42 +162,76 @@ Page({
                         that.setData({
                           name: res2.userInfo.nickName
                         })                    
+=======
+  // getUserInfo: function(e){
+  //   let that = this
+          // wx.login({
+          //   success (res) {
+          //     console.log('rrr', res)
+          //     let token1 = res.code
+          //     if (res.code) {
+          //       //发起网络请求
+          //       wx.request({
+          //         method:'POST',
+          //         header: {
+          //           'content-type': 'application/x-www-form-urlencoded' // 默认值
+          //         },
+          //         url: 'http://192.168.32.230/weixin/getopenid',
+          //         data: {
+          //           code: res.code
+          //         },
+          //         success: (datas) => {
+                    // console.log('tttt', datas)
+  //                   wx.getUserInfo({
+  //                     success(res2) {              
+  //                       app.globalData.userInfo = res.userInfo              
+  //                       console.log("获取用户信息成功", res2)
+  //                       that.setData({
+  //                         name: res2.userInfo.nickName
+  //                       })                    
+>>>>>>> 0e2b07172a66355f4721f2d6b4f13a6854d46c20
                    
-                    wx.request({
-                      method: 'POST',
-                      header: {
-                        'content-type': 'application/x-www-form-urlencoded',
-                        'token': datas.data.code
-                      },
-                      url: 'http://192.168.33.22/weixin/gettoken',
-                      data: {
-                        city: res2.userInfo.city,
-                        country: res2.userInfo.country,
-                        createdate: '',
-                        headimgurl: res2.userInfo.avatarUrl,
-                        iphone: '1579655656',
-                        nickname: res2.userInfo.nickName,
-                        province: res2.userInfo.province
-                      },
-                      success: (data2)=>{
-                        console.log(data2)
-                        wx.setStorageSync('token', data2.data.code)
-                      }
-                    })
-                  },
-                  fail(res3) {
-                    console.log("获取用户信息失败", res)
-                  }
-                })
-                  }
-                })
-              } else {
-                console.log('登录失败！' + res.errMsg)
-              }
-            }
+  //                   wx.request({
+  //                     method: 'POST',
+  //                     header: {
+  //                       'content-type': 'application/x-www-form-urlencoded',
+  //                       'token': datas.data.code
+  //                     },
+  //                     url: 'http://192.168.32.230/weixin/gettoken',
+  //                     data: {
+  //                       city: res2.userInfo.city,
+  //                       country: res2.userInfo.country,
+  //                       createdate: '',
+  //                       headimgurl: res2.userInfo.avatarUrl,
+  //                       iphone: '1579655656',
+  //                       nickname: res2.userInfo.nickName,
+  //                       province: res2.userInfo.province
+  //                     },
+  //                     success: (data2)=>{
+  //                       console.log(data2)
+  //                       wx.setStorageSync('token', data2.data.code)
+  //                     }
+  //                   })
+  //                 },
+  //                 fail(res3) {
+  //                   console.log("获取用户信息失败", res)
+  //                 }
+  //               })
+  //                 }
+  //               })
+  //             } else {
+  //               console.log('登录失败！' + res.errMsg)
+  //             }
+  //           }
+
             
+<<<<<<< HEAD
           })         
   },
+=======
+  //         })         
+  // },
+>>>>>>> 0e2b07172a66355f4721f2d6b4f13a6854d46c20
   /*登录end*/
   // 去搜索
   goSearch: ()=>{
