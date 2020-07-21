@@ -12,7 +12,7 @@ Page({
   },
   goMyCollection: function(){
     wx.navigateTo({
-      url: 'pages/myCollection/myCollection',
+      url: '../myCollection/myCollection',
     })
   },
   /**
@@ -43,6 +43,14 @@ Page({
   goChange(){
     wx.navigateTo({
       url: '../changename/changename'
+    })
+  },
+
+
+  //进入我的店铺
+  goMyShop: function(){
+    wx.navigateTo({
+      url: '../myshop/myshop',
     })
   },
 

@@ -44,7 +44,7 @@
   <view class ="userOperate">
       <view class="operate">
         <icon class="iconLeft iconfont icondaohang"></icon>
-        <text class="operateName">进入我的店铺</text>
+        <text class="operateName" bindtap="goMyShop">进入我的店铺</text>
         <icon class="iconRight iconfont iconjiantouxia"></icon>
       </view>
       <view class="operate">
