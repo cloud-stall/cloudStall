@@ -186,6 +186,7 @@ console.log(bottom1, bottom2)
       url: '/pages/publish/publish',
     })
   },
+  
   // 去我的
   goMy: () => {
     wx.switchTab({

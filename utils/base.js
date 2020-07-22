@@ -11,6 +11,7 @@ class Base {
     }
     
     var url = this.baseRequestUrl+params.url;
+    console.log(wx.getStorageSync("token"))
     wx.request({
       url:url,
       method:params.type,
