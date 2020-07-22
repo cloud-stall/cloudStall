@@ -1,5 +1,8 @@
 // pages/regist/regist.js
 const app = getApp()
+import {Base} from '../../utils/base'
+let base = new Base();
+let urls = base.baseRequestUrl
 Page({
   /**
    * 页面的初始数据
@@ -46,7 +49,7 @@ Page({
           header: {
             'content-type': 'application/x-www-form-urlencoded' // 默认值
           },
-          url: 'http://192.168.33.92/weixin/getopenid',
+          url: urls + 'weixin/getopenid',
           data: {
             code: res.code
           },
@@ -71,7 +74,7 @@ Page({
       'content-type': 'application/x-www-form-urlencoded',
       'token': wx.getStorageInfoSync('token')
     },
-    url: 'http://192.168.33.92/weixin/gettoken',
+    url: urls + 'weixin/gettoken',
     data: {
       city: e.detail.userInfo.city,
       country: e.detail.userInfo.country,
@@ -84,12 +87,6 @@ Page({
     success: (data2)=>{
       console.log(data2)
       wx.setStorageSync('token', data2.data.code)
-      // wx.switchTab({          
-      //   url: '../index/index',
-      //   success: (res)=>{
-      //     console.log(res)
-      //   }
-      // })
     }
   })            
   },
