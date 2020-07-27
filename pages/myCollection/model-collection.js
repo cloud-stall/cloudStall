@@ -17,6 +17,22 @@ class MyCollection extends Base{
     }
     this.request(params)
   }
+
+  removeCollection(id,callback){
+    console.log(id)
+    var params = {
+      url:"commodity/deletecollect",
+      type:"POST",
+      data:{
+        commodityid:id
+      },
+      sCallBack:function(res){
+        callback&&callback(res)
+      }
+    }
+    this.request(params)
+  }
+
 }
 
 export {MyCollection}
