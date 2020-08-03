@@ -110,7 +110,11 @@ goHere: function(){
   /**
    * 用户点击右上角分享
    */
+  // 分享到朋友圈
   onShareAppMessage: function () {
-
+    return {
+      title: '智慧云地摊',
+      path: '/detail/detail?id=123'
+    }
   }
 })

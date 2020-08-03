@@ -47,7 +47,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ED1B1C",
     "navigationBarTitleText": "云地摊",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   },
   "sitemapLocation": "sitemap.json"
 }
