@@ -1,4 +1,7 @@
 // pages/details/details.js
+import {Details} from "./model-details"
+
+var myDetails = new Details();
 Page({
 
   /**
@@ -9,7 +12,20 @@ Page({
     latitude: 0,
     longitude: 0,
     markers: [],
-    covers: []
+    covers: [],
+    banner:[],
+    shopName:"",
+    uname:"",
+    iscollect:false,
+    id:"",
+    price:6,
+    where:"南口西大桥",
+    stiartTime:"",
+    endTime:"",
+    dicText:"菜心虽一年四季均有",
+    iphone:"15330227957",
+    wxNum:"15330227957",
+    condition:""
   },
 
   /**
@@ -17,7 +33,7 @@ Page({
    */
   onLoad: function (options) {
     let that =  this
-    console.log(options)
+    console.log(options)  //获取页面传参
     let id = options.id
     let longitude = options.longitude
     let latitude = options.latitude
@@ -26,6 +42,11 @@ Page({
       latitude:latitude,
       longitude:longitude
     })
+
+    //调用详情页数据
+    console.log(this.data.id);
+    
+    this.getDetailData(20)
     // map
     
     wx.getSetting({
@@ -46,6 +67,104 @@ Page({
       },     
   })
   },
+
+
+  //请求详情页数据
+  getDetailData:function(id){
+    var that = this;
+
+    //判断是否已收藏
+    myDetails.iscollect(id,function(res){
+      console.log(res)
+      if(res.data.status){
+        that.setData({
+          isCollect:true
+        })
+      }else{
+        that.setData({
+          isCollect:false
+        })
+      }
+      
+    })
+    myDetails.getDetails(id,function(res){
+      console.log(res);
+      that.setData({
+        latitude: res.data.latitude,
+        longitude: res.data.longitude ,
+        banner: res.data.commodityimages.split(","),
+        shopName:res.data.commodityname,
+        uname:res.data.uname,
+        price:res.data.commodityprice,
+        where:res.data.address,
+        stiartTime:res.data.bigtime,
+        endTime:res.data.endtime,
+        dicText:res.data.commoditydetails,
+        iphone:res.data.iphone,
+        wxNum:res.data.nickname
+      }) 
+
+      if(res.data.commodityoldandnew==100){
+        that.setData({
+          condition:"全新"
+        })
+      }else if(res.data.commodityoldandnew>=90&&res.data.commodityoldandnew<100){
+        that.setData({
+          condition:"9成新"
+        })
+      }else if(res.data.commodityoldandnew>80&&res.data.commodityoldandnew<90){
+        that.setData({
+          condition:"8成新"
+        })
+      }else{
+        that.setData({
+          condition:"旧货"
+        })
+      }
+      
+      console.log(that.data)
+
+    })
+  },
+  //添加收藏
+  insertOrDelCollect:function(e){
+    console.log(e)
+    var that = this
+    let id = this.data.id;
+    console.log(id)
+    if(id){
+      id=20;
+    }
+
+    if(!this.data.isCollect){
+      myDetails.insertcollect(id,function(res){
+        console.log(res)
+        if(res.data.status==1){
+          that.setData({
+            isCollect:true
+          })
+        }
+      })
+
+    }else{
+      //取消收藏
+      myDetails.delcollect(id,function(res){
+        console.log(res)
+        if(res.data.status==1){
+          that.setData({
+            isCollect:false
+          })
+        }
+      })
+
+    }
+    
+
+    
+  },
+
+
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

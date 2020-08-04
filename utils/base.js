@@ -1,12 +1,12 @@
 class Base {
   constructor(){
-    this.baseRequestUrl = "http://192.168.16.83/"
+    this.baseRequestUrl = "http://192.168.35.14/"
   }
-
+  //http://192.168.35.14/swagger-ui.html#/
   request(params){
    // console.log(params.type)
     if(!params.type){
-     // console.log(params.type)
+      // console.log(params.type)
       params.type = "GET"
     }
     
@@ -26,14 +26,10 @@ class Base {
       fail:function(err){
         params.fail&&params.fail(err)
         console.log(err);
-        
       }
 
     })
   }
-  
-
 
 }
-
 export {Base}

@@ -72,6 +72,8 @@ Page({
   },
   onLoad: function(options){
     // this.getUserInfo()
+    console.log(options);
+    
   },
   onShow: function(){   
     var that = this

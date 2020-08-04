@@ -47,6 +47,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+     this.getCollection()
+  },
+
+  getCollection:function(){
     let that = this
     my.getCollectlist(function(res){
       console.log(res)
@@ -54,8 +58,9 @@ Page({
         that.setData({collectList:res.data})
         console.log(that.data.collectList)
       }
-    })  
+    }) 
   },
+
 
 
   //取消收藏
@@ -65,17 +70,10 @@ Page({
     var ip = e.currentTarget.dataset.id;
     console.log(ip)
     my.removeCollection(ip,function(res){
-     
+     //取消收藏后 重新加载页面
       console.log(that.data.collectList)
       if(res.data.status){
-        
-        console.log(res.data.list)
-        that.setData({
-          collectList:res.data.list
-        })
-        console.log(that.data.collectList);
-
-        //that.setData({collectList:res.data.list})
+        that.getCollection()
       }
     })
    
