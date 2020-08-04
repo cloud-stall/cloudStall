@@ -18,3 +18,5 @@ class MyShop extends Base{
     this.request(params)
   }
 }
+
+export { MyShop }

@@ -11,7 +11,8 @@ Page({
     userInfo: {},
     name: '',
     isAuth: true,
-    phoneNumber: ''
+    phoneNumber: '',
+	token: ''
   },
 
   /**
@@ -68,11 +69,13 @@ Page({
     }
       })
   // 
+  
+   let token = wx.getStorageSync('token')
   wx.request({
     method: 'POST',
     header: {
       'content-type': 'application/x-www-form-urlencoded',
-      'token': wx.getStorageInfoSync('token')
+      'token': token
     },
     url: urls + 'weixin/gettoken',
     data: {
@@ -82,7 +85,8 @@ Page({
       headimgurl: e.detail.userInfo.avatarUrl,
       iphone: '1579655656',
       nickname: e.detail.userInfo.nickName,
-      province: e.detail.userInfo.province
+      province: e.detail.userInfo.province,
+      sex: e.detail.userInfo.gender
     },
     success: (data2)=>{
       console.log(data2)

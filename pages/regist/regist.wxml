@@ -9,13 +9,12 @@
 <view class="getuser" wx:if="{{!isAuth}}">
   <!-- <text>请允许获取你的电话</text>
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="btn">微信授权登录电话</button> -->
-    <label class="icon-box phone-text">
-    输入手机号进行授权：<input type="number" confirm-type="go" bindinput="getPhoneNumber" class="bord" value="{{phoneNumber}}"  placeholder="请输入手机号"></input><icon class="icon-small icon1" type="cancel" size="23" wx:if="{{phoneNumber}}" bindtap="cancelPhone"></icon>
- 
-   
-      
-    
-   
+    <label 
+	class="icon-box phone-text">
+    <view>输入手机号进行授权：</view>
+	<view>
+		<input type="number" confirm-type="go" bindinput="getPhoneNumber" class="bord" value="{{phoneNumber}}"  placeholder="请输入手机号"></input><icon class="icon-small icon1" type="cancel" size="23" wx:if="{{phoneNumber}}" bindtap="cancelPhone"></icon>
+	</view>  
 
     </label>
      
