@@ -100,6 +100,9 @@ page{height: 100%;}
   text-align: center;
 }
 /*商品*/
+.scrollView{
+	height: 100%;
+}
 .googs-list{
   padding-bottom:210rpx;
   width: 98%;
