@@ -1,18 +1,84 @@
 // pages/myshop/myshop.js
+const app =  getApp()
+import {MyCollection} from "./model-collection"
+let my = new MyCollection()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    collectList:[
+      {
+      bigtime: "14:00:00",
+      commoditydetails: "dioasofuqwesdafewqrwq",
+      commodityid: 10,
+      commodityimages: "http://file.rongdukj.com/yunditan/tbAOVrvi.jpg",
+      commoditylogo: "http://file.rongdukj.com/yunditan/SiQMcvlogo宽.jpg",
+      commodityname: "dddfsdfasv",
+      commoditytypeid: 1,
+      endtime: "17:00:00"
+    },
+    {
+      bigtime: "14:00:00",
+      commoditydetails: "dioasofuqwesdafewqrwq",
+      commodityid: 11,
+      commodityimages: "http://file.rongdukj.com/yunditan/tbAOVrvi.jpg",
+      commoditylogo: "http://file.rongdukj.com/yunditan/SiQMcvlogo宽.jpg",
+      commodityname: "dddfsdfasv",
+      commoditytypeid: 1,
+      endtime: "17:00:00"
+    },
+    {
+      bigtime: "14:00:00",
+      commoditydetails: "dioasofuqwesdafewqrwq",
+      commodityid: 12,
+      commodityimages: "http://file.rongdukj.com/yunditan/tbAOVrvi.jpg",
+      commoditylogo: "http://file.rongdukj.com/yunditan/SiQMcvlogo宽.jpg",
+      commodityname: "dddfsdfasv",
+      commoditytypeid: 1,
+      endtime: "17:00:00"
+    }
 
+]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
+    my.getCollectlist(function(res){
+      console.log(res)
+      if(res.statusCode==200){
+        that.setData({collectList:res.data})
+        console.log(that.data.collectList)
+      }
+    })  
+  },
 
+
+  //取消收藏
+
+  removeCollect(e){
+    let that = this
+    var ip = e.currentTarget.dataset.id;
+    console.log(ip)
+    my.removeCollection(ip,function(res){
+     
+      console.log(that.data.collectList)
+      if(res.data.status){
+        
+        console.log(res.data.list)
+        that.setData({
+          collectList:res.data.list
+        })
+        console.log(that.data.collectList);
+
+        //that.setData({collectList:res.data.list})
+      }
+    })
+   
   },
 
   /**

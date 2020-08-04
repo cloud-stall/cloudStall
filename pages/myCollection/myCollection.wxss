@@ -85,6 +85,11 @@
   height:160rpx;
   background-color: #333;
 }
+
+.imgBox image{
+  width: 100%;
+  height:100%;
+}
 .item-info{
   flex:1 1;
   height:160rpx;

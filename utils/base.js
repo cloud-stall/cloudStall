@@ -1,6 +1,8 @@
 class Base {
   constructor(){
-    this.baseRequestUrl = "http://192.168.16.32/"
+
+    this.baseRequestUrl = "http://192.168.35.14/"
+
   }
 
   request(params){
@@ -11,6 +13,7 @@ class Base {
     }
     
     var url = this.baseRequestUrl+params.url;
+    console.log(wx.getStorageSync("token"))
     wx.request({
       url:url,
       method:params.type,

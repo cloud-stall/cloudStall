@@ -64,14 +64,14 @@ Page({
     //   }
     // ],
     goodsTypeList: [
-      {name:'全部'},
-      {name:'水果'},
-      {name:'小家电'},
-      {name:'家居'},
-      {name:'日用'},
-      {name:'电器'},
-      {name:'盆栽'},
-      {name:'五金'}
+      // {name:'全部'},
+      // {name:'水果'},
+      // {name:'小家电'},
+      // {name:'家居'},
+      // {name:'日用'},
+      // {name:'电器'},
+      // {name:'盆栽'},
+      // {name:'五金'}
     ],
     navIndex: 0,
     query: {},
@@ -82,6 +82,7 @@ Page({
   onLoad: function(options){
     // this.getUserInfo()
     this.getGoods()
+	  this.getGoodsType()
   },
   onShow: function(){  
     this.getGoods()
@@ -89,61 +90,61 @@ Page({
     wx.hideTabBar({
       animation: true
     })
-//   wx.getLocation({
-// 	type: 'gcj02',
-// 	success: (res2)=>{
-// 	  console.log(res2, that.data.longitude)
-// 	  wx.setStorageSync('location', JSON.stringify({latitude: res2.latitude,
-// 		longitude: res2.longitude}))
-// 	  that.setData({
-// 		latitude: res2.latitude,
-// 		longitude: res2.longitude,
-// 		markers: [{
-// 		  id: 1,
-// 		  latitude: res2.latitude,
-// 		  longitude: res2.longitude,
-// 		  iconPath: '/imgs/icon.png',
-// 		  callout:{
-// 			content:"服务:青少年英语培训\r\n姓名:陶士涵\r\n电话:18808987876",
-// 			bgColor:"#ffffff",
-// 			padding:"5px",
-// 			borderRadius:"2px",
-// 			borderWidth:"1px",
-// 			borderColor:"#07c160",
-// 		  }
-// 		},
-// 		  {
-// 			id: 2,
-// 			latitude: res2.latitude-0.001,
-// 			longitude: res2.longitude,
-// 			iconPath: '/imgs/icon.png',
-// 			callout: {
-// 			  content: "服务:出租龙兴园西区9号楼二单元501\r\n姓名:陶士涵\r\n电话:18808987876",
-// 			  bgColor: "#ffffff",
-// 			  padding: "5px",
-// 			  borderRadius: "2px",
-// 			  borderWidth: "1px",
-// 			  borderColor: "#07c160"                     
-// 			}
-// 		  }
-// 		]
-// 	  })
-// 
-// 	  // 获取当前位置
-// 	  qqmapsdk.reverseGeocoder({
-// 		location: {latitude: res2.latitude,longitude: res2.longitude},
-// 		success: function (res) {
-// 		  //address 城市
-// 		  that.setData({ address: res.result.address_component.city})
-// 		  wx.showToast({
-// 			title: `当前位置： ` + that.data.address,
-// 			icon: 'none'
-// 		  });          
-// 		}
-// 	  });
-// 
-// 	}            
-//   })
+	  wx.getLocation({
+		type: 'gcj02',
+		success: (res2)=>{
+		  console.log(res2, that.data.longitude)
+		  wx.setStorageSync('location', JSON.stringify({latitude: res2.latitude,
+			longitude: res2.longitude}))
+		  that.setData({
+			latitude: res2.latitude,
+			longitude: res2.longitude,
+			// markers: [{
+			//   id: 1,
+			//   latitude: res2.latitude,
+			//   longitude: res2.longitude,
+			//   iconPath: '/imgs/icon.png',
+			//   callout:{
+			// 	content:"服务:青少年英语培训\r\n姓名:陶士涵\r\n电话:18808987876",
+			// 	bgColor:"#ffffff",
+			// 	padding:"5px",
+			// 	borderRadius:"2px",
+			// 	borderWidth:"1px",
+			// 	borderColor:"#07c160",
+			//   }
+			// },
+			//   {
+			// 	id: 2,
+			// 	latitude: res2.latitude-0.001,
+			// 	longitude: res2.longitude,
+			// 	iconPath: '/imgs/icon.png',
+			// 	callout: {
+			// 	  content: "服务:出租龙兴园西区9号楼二单元501\r\n姓名:陶士涵\r\n电话:18808987876",
+			// 	  bgColor: "#ffffff",
+			// 	  padding: "5px",
+			// 	  borderRadius: "2px",
+			// 	  borderWidth: "1px",
+			// 	  borderColor: "#07c160"                     
+			// 	}
+			//   }
+			// ]
+		  })
+
+	  // 获取当前位置
+	 //  qqmapsdk.reverseGeocoder({
+		// location: {latitude: res2.latitude,longitude: res2.longitude},
+		// success: function (res) {
+		//   //address 城市
+		//   that.setData({ address: res.result.address_component.city})
+		//   wx.showToast({
+		// 	title: `当前位置： ` + that.data.address,
+		// 	icon: 'none'
+		//   });          
+		// }
+	 //  });
+
+	}            
+  })
   },
   // 获取类型
   getType: function(e){
@@ -151,6 +152,23 @@ Page({
     this.setData({
       typeIndex: e.currentTarget.dataset.index
     })
+  },
+  // 货取商品类型
+  getGoodsType: function(){
+	  let that = this
+	  wx.request({
+		  method:'POST',
+		   header: {
+		    'content-type': 'application/x-www-form-urlencoded', // 默认值
+		    'token': wx.getStorageSync('token')
+		  },
+		  url: urls+ 'commoditytype/commoditytypelist',
+		  success: function(res){
+			  that.setData({
+				  goodsTypeList: res.data
+			  })
+		  }
+	  })
   },
   // 改变距离
   bindChanges: function(e){
@@ -164,19 +182,27 @@ Page({
   getGoods: function(e){
     let that = this
     console.log(this.data.latitude)
-    wx.getStorage({
-      key: 'location',
-      success (res) {
-        console.log(res,JSON.parse(res.data).latitude,JSON.parse(res.data).longitude)
-        that.setData({
-          latitude: JSON.parse(res.data).latitude,
-          longitude: JSON.parse(res.data).longitude
-        })
-      console.log(that.data.latitude, that.data.longitude)
-      let index = that.data.siteText.indexOf('k')      
-      let siteText = (that.data.siteText.slice(0, index) * 1000).toString()
-      console.log(that.data.siteText, index)
-
+    let locations = wx.getStorageSync('location')
+	that.setData({
+	    latitude: JSON.parse(locations).latitude,
+	    longitude: JSON.parse(locations).longitude
+	  })
+	console.log(that.data.latitude, that.data.longitude)
+	let index = that.data.siteText.indexOf('k')      
+	let siteText = (that.data.siteText.slice(0, index) * 1000).toString()
+	console.log(that.data.siteText, index)
+ //      success (res) {
+ //        console.log(res,JSON.parse(res.data).latitude,JSON.parse(res.data).longitude)
+ //        that.setData({
+ //          latitude: JSON.parse(res.data).latitude,
+ //          longitude: JSON.parse(res.data).longitude
+ //        })
+ //      console.log(that.data.latitude, that.data.longitude)
+ //      let index = that.data.siteText.indexOf('k')      
+ //      let siteText = (that.data.siteText.slice(0, index) * 1000).toString()
+ //      console.log(that.data.siteText, index)
+	//   }
+	// })
       wx.request({
         url: urls+'/commodity/getcommodityls',
         method: 'POST',
@@ -224,8 +250,8 @@ Page({
            wx.stopPullDownRefresh();
         }
       })
-      }
-    })
+      
+    
   },
   /*时间戳*/
   formateDate: function(date){

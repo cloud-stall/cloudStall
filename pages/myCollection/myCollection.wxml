@@ -12,10 +12,10 @@
     </view> 
       <!-- 我的收藏 -->
     <view class="listMyShop">
-        <view class="list-item">
-          <view class="imgBox"><image /></view>
+        <view class="list-item" wx:for="{{collectList}}" wx:key="index" data-id="{{item.commodityid}}" >
+          <view class="imgBox"><image src="{{item.commodityimages}}" /></view>
           <view class="item-info">
-            <view class="goods-name"><text class="title">不锈钢保温水杯滤网</text></view>
+            <view class="goods-name"><text class="title">{{item.commodityname}}</text></view>
             <view class="goods-dic">
               <view>颜色: <text>钛金灰</text> </view>
               <view>原价: <text class="oldPrice">60</text> </view>
@@ -28,10 +28,10 @@
           </view>
           <view class="item-operate">
            
-            <view><icon class="iconfont iconshanchu"></icon><text>取消收藏</text></view>
+            <view bindtap="removeCollect" data-id="{{item.commodityid}}"><icon class="iconfont iconshanchu"></icon><text>取消收藏</text></view>
           </view>
         </view>
-        <view class="list-item">
+        <!-- <view class="list-item">
           <view class="imgBox"><image /></view>
           <view class="item-info">
             <view class="goods-name"><text class="title">不锈钢保温水杯滤网</text></view>
@@ -162,7 +162,8 @@
             
             <view><icon class="iconfont iconshanchu"></icon><text>取消收藏</text></view>
           </view>
-        </view>
+        </view> -->
+        <view wx:if="{{collectList.length==0}}"> ---收藏夹空啦--- </view>
     </view>
 
 
