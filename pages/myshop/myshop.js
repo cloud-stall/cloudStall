@@ -1,3 +1,7 @@
+import {MyShop} from "./modle-myshop"
+
+var myShop = new MyShop();
+
 // pages/myshop/myshop.js
 Page({
 
@@ -14,6 +18,14 @@ Page({
   onLoad: function (options) {
     
   },
+
+ //getusercommodityls 获取我的商品列表
+ getMyShopList:function(){
+  myShop.getMyShopList(function(res){
+    console.log(res)
+  })
+ },
+ 
 
   /**
    * 生命周期函数--监听页面初次渲染完成

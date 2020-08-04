@@ -66,6 +66,13 @@
   right:180rpx;
   display:flex;
 }
+/* .delCollect{
+  width:180rpx;
+} */
+
+.iconStyle{
+  color:#eee;
+}
 .btnShare{
   right:10rpx;
   display:flex;

@@ -81,6 +81,8 @@ Page({
   },
   onLoad: function(options){
     // this.getUserInfo()
+    console.log(options);
+    
     this.getGoods()
 	  this.getGoodsType()
   },
