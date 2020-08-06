@@ -87,66 +87,71 @@ Page({
 	  this.getGoodsType()
   },
   onShow: function(){  
-    this.getGoods()
+    
     var that = this
     wx.hideTabBar({
       animation: true
     })
+	this.getLocation() 
+	this.getGoods() 
+  },
+  getLocation: function(){
+	  let that = this
 	  wx.getLocation({
-		type: 'gcj02',
-		success: (res2)=>{
-		  console.log(res2, that.data.longitude)
-		  wx.setStorageSync('location', JSON.stringify({latitude: res2.latitude,
-			longitude: res2.longitude}))
-		  that.setData({
-			latitude: res2.latitude,
-			longitude: res2.longitude,
-			// markers: [{
-			//   id: 1,
-			//   latitude: res2.latitude,
-			//   longitude: res2.longitude,
-			//   iconPath: '/imgs/icon.png',
-			//   callout:{
-			// 	content:"服务:青少年英语培训\r\n姓名:陶士涵\r\n电话:18808987876",
-			// 	bgColor:"#ffffff",
-			// 	padding:"5px",
-			// 	borderRadius:"2px",
-			// 	borderWidth:"1px",
-			// 	borderColor:"#07c160",
-			//   }
-			// },
-			//   {
-			// 	id: 2,
-			// 	latitude: res2.latitude-0.001,
-			// 	longitude: res2.longitude,
-			// 	iconPath: '/imgs/icon.png',
-			// 	callout: {
-			// 	  content: "服务:出租龙兴园西区9号楼二单元501\r\n姓名:陶士涵\r\n电话:18808987876",
-			// 	  bgColor: "#ffffff",
-			// 	  padding: "5px",
-			// 	  borderRadius: "2px",
-			// 	  borderWidth: "1px",
-			// 	  borderColor: "#07c160"                     
-			// 	}
-			//   }
-			// ]
-		  })
-
-	  // 获取当前位置
-	 //  qqmapsdk.reverseGeocoder({
-		// location: {latitude: res2.latitude,longitude: res2.longitude},
-		// success: function (res) {
-		//   //address 城市
-		//   that.setData({ address: res.result.address_component.city})
-		//   wx.showToast({
-		// 	title: `当前位置： ` + that.data.address,
-		// 	icon: 'none'
-		//   });          
-		// }
-	 //  });
-
-	}            
-  })
+	  		type: 'gcj02',
+	  		success: (res2)=>{
+	  		  console.log('kkkk',res2, that.data.longitude)
+	  		  wx.setStorageSync('location', JSON.stringify({latitude: res2.latitude,
+	  			longitude: res2.longitude}))
+	  		  that.setData({
+	  			latitude: res2.latitude,
+	  			longitude: res2.longitude,
+	  			// markers: [{
+	  			//   id: 1,
+	  			//   latitude: res2.latitude,
+	  			//   longitude: res2.longitude,
+	  			//   iconPath: '/imgs/icon.png',
+	  			//   callout:{
+	  			// 	content:"服务:青少年英语培训\r\n姓名:陶士涵\r\n电话:18808987876",
+	  			// 	bgColor:"#ffffff",
+	  			// 	padding:"5px",
+	  			// 	borderRadius:"2px",
+	  			// 	borderWidth:"1px",
+	  			// 	borderColor:"#07c160",
+	  			//   }
+	  			// },
+	  			//   {
+	  			// 	id: 2,
+	  			// 	latitude: res2.latitude-0.001,
+	  			// 	longitude: res2.longitude,
+	  			// 	iconPath: '/imgs/icon.png',
+	  			// 	callout: {
+	  			// 	  content: "服务:出租龙兴园西区9号楼二单元501\r\n姓名:陶士涵\r\n电话:18808987876",
+	  			// 	  bgColor: "#ffffff",
+	  			// 	  padding: "5px",
+	  			// 	  borderRadius: "2px",
+	  			// 	  borderWidth: "1px",
+	  			// 	  borderColor: "#07c160"                     
+	  			// 	}
+	  			//   }
+	  			// ]
+	  		  })
+	  
+	  	  // 获取当前位置
+	  	 //  qqmapsdk.reverseGeocoder({
+	  		// location: {latitude: res2.latitude,longitude: res2.longitude},
+	  		// success: function (res) {
+	  		//   //address 城市
+	  		//   that.setData({ address: res.result.address_component.city})
+	  		//   wx.showToast({
+	  		// 	title: `当前位置： ` + that.data.address,
+	  		// 	icon: 'none'
+	  		//   });          
+	  		// }
+	  	 //  });
+	  
+	  	}            
+	  })
   },
   // 获取类型
   getType: function(e){
@@ -185,6 +190,7 @@ Page({
     let that = this
     console.log(this.data.latitude)
     let locations = wx.getStorageSync('location')
+	console.log(locations)
 	that.setData({
 	    latitude: JSON.parse(locations).latitude,
 	    longitude: JSON.parse(locations).longitude
@@ -308,14 +314,18 @@ console.log(bottom1, bottom2)
   // 去发布
   goPublist: ()=>{
     wx.switchTab({
-      url: '/pages/publish/publish',
+      url: '/pages/publish/publish'
     })
   },
   // 去我的
   goMy: () => {
     wx.switchTab({
-      url: '/pages/my/my',
+      url: '/pages/my/my'
     })
+  },
+  // 下拉加载
+  loadMore: function(){
+	  
   },
   onReady: function(e){
     // this.mapCtx = wx.createMapContext('myMap')

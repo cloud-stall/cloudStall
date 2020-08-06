@@ -93,6 +93,8 @@ Page({
     wx.showTabBar({
       animation: true
     })
+
+    this.getCollection()
   },
 
   /**

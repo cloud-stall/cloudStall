@@ -44,11 +44,11 @@
   <scroll-view class="scrollView" scroll-y="{{true}}" lower-threshold="100" bindscrolltolower="loadMore"  wx:if="{{goodsList.length>0}}">
   <view class="googs-list">
     <view class="goods" wx:for="{{goodsList}}" wx:key="index" 
-    data-id="{{item.commodityid}}" 
+    data-id="{{item.commodityid}}"
     data-latitude="{{latitude}}"
     data-longitude="{{longitude}}"
     data-markers="{{markers}}"
-    data-covers="{{covers}}" 
+    data-covers="{{covers}}"
     bindtap="goDetail">
       <view class="goods-pic">
       <image src="{{item.commoditylogo}}" mode="widthFix"></image>

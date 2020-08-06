@@ -1,0 +1,156 @@
+<!--pages/revise/revise.wxml-->
+<view class="container">
+  <view class="logo">
+    <image src="../../imgs/logo.png" mode="heightFix"></image>
+  </view>
+  <view class="content">
+    <view class="content-text">
+      <view class="left">
+        <text class="red">*</text> 商品类型：
+      </view>
+      <view class="right">
+      <view class="picker1">
+        <picker mode="selector" range="{{goodsTypes}}" range-key="commoditytypename" value="{{typeIndex}}" bindchange="bindchange">
+          <view>
+            {{goodsTypes[typeIndex].commoditytypename}}
+          </view>
+        </picker> 
+      </view>
+         
+      </view>
+    </view>
+    <view class="content-text">
+      <view class="left">
+        <text class="red">*</text> 商品名称：
+      </view>
+      <view class="right">
+      <view class="map-site name">
+       <input type="text" placeholder="请输入商品名称" bindinput="getName"></input>
+      </view>
+        
+        
+      </view>
+    </view> 
+    <view class="content-text">
+      <view class="left">
+        <text class="red">*</text> 交易地点：
+      </view>
+      <view class="right">
+      <view class="map-site">
+        <text class="bord">{{location}}</text>
+        <button bindtap='getLocation' class="select-btn">重新定位</button>
+      </view>
+        
+        
+      </view>
+    </view>    
+    <view class="content-text">
+        <view class="left">
+          <text class="red">*</text> 现     价：
+        </view>
+        <view class="right price">
+          <input type="text" bindinput="getNewPrice" value="" placeholder="现价"></input>
+          <text class="price-text">
+             原价：
+          </text>
+          <input type="text" value="" bindinput="getoldPrice" placeholder="原价"></input>
+        </view>
+    </view>
+    <view class="content-text">
+      <view class="left">
+        <text class="red">*</text> 交易时间：
+      </view>
+      <view class="right">
+       <view class="picker">
+        <picker mode="time" range="{{time}}" value="{{time}}" start="09:01" end="21:01" bindchange="bindchangeTime">
+          <view>
+            {{time}}
+          </view>
+        </picker>  
+        </view>
+        <text class="space10">  -   </text>
+        <view  class="picker">
+          <picker mode="time" range="{{time2}}" value="{{time2}}" start="09:01" end="21:01"  bindchange="bindchangeTime2">
+            <view>
+              {{time2}}
+            </view>
+          </picker> 
+        </view>
+        
+      </view>
+    </view>
+     <view class="content-text">
+      <view class="left">
+        <text class="red">*</text> 产品新旧：
+      </view>
+      <view class="right">
+        <view class="newOrOld"> 
+          <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio" wx:for="{{radioItems}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+          </radio-group>        
+        </view>
+       <view wx:if="{{newValue=='二手'}}" class="oldNumber">
+        <picker mode="selector" range="{{oldValue}}" value="{{index}}" bindchange="bindchange">
+          <view>{{oldValue[index]}}          
+          </view>
+        </picker>  
+        </view>
+      </view>
+    </view>
+    <view class="content-text">
+      <view class="left">
+        商品描述：
+      </view>
+      <view class="textarea">
+        <view class="textarea2">
+          <textarea placeholder=" 输入商品描述" maxlength="100" value="" bindinput="getTextarea"/>
+        </view>
+      </view>
+    </view>
+
+    <!--产品图片--->
+    <view class="content-text">
+      <view class="left">
+        产品图片：
+      </view>
+      <view class="right">
+        <view class="" bindtap="uploadPic">
+          <image src="../../imgs/addpic.png" style="width:260rpx; height:260rpx;"></image>
+        </view>
+      </view>
+    </view>
+    <!--图片展示-->
+<view class="question-images">
+  <block wx:for="{{images}}" >
+    <view class="q-image-wrap">
+
+      <!-- 图片缩略图  -->
+      <image class="q-image" src="{{item}}" mode="aspectFill"  bindtap="handleImagePreview"></image>
+
+      <view class="del">X</view>
+      <!-- 移除图片的按钮  -->
+      <view class="q-image-remover"  bindtap="removeImage">删除</view>
+    </view>
+  </block>
+</view>
+    <!--图片展示end-->
+   <!--阅读--->
+    <view class="content-text">
+      <view class="checkbox">
+        <checkbox value="cb" checked="true"/> 已阅读并同意
+        <text bindtap="goAgree">云地摊发布协议</text>
+      </view>
+    </view> 
+    <!--按钮--->
+    <view class="publish">
+      <button bindtap="publish">确认修改</button>
+    </view> 
+  </view>
+</view>
+<view>
+<!-- <tabbars grade="{{rank}}"></tabbars> -->
+</view>
+
+

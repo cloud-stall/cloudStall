@@ -11,7 +11,8 @@
     "pages/myshop/myshop",
     "pages/myCollection/myCollection",
     "pages/agree/agree",
-    "pages/changename/changename"
+    "pages/changename/changename",
+    "pages/revise/revise"
 
   ],
   "permission": {

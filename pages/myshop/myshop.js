@@ -9,22 +9,50 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    myShopList:[],
+    status:1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.getMyShopList()
   },
 
  //getusercommodityls 获取我的商品列表
  getMyShopList:function(){
+   var that = this;
   myShop.getMyShopList(function(res){
     console.log(res)
+    that.setData({
+      myShopList:res.data
+    })
+
+    console.log(that.data)
+
+  })
+
+  
+ },
+
+ //删除店铺商品
+
+ delcomm:function(e){
+   var id= e.currentTarget.dataset.id
+   var that = this;
+  console.log(id)
+  myShop.delcomm(id,function(res){
+    console.log(res)
+    if(res.data.status){
+      that.getMyShopList()
+    }
   })
  },
+
+
+ //打烊休息/摆摊赚钱
+ 
  
 
   /**
