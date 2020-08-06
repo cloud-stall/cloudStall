@@ -95,7 +95,6 @@ Page({
   })            
   },
   getPhoneNumber: function(e){
-    console.log(e)
     this.setData({
       phoneNumber: e.detail.value
     })

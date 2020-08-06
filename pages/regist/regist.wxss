@@ -40,7 +40,7 @@ button.btn{
 .icon1{
   width:70rpx;
   position: absolute;
-  right:0rpx;
-  margin-top:10rpx;
+  right:15rpx;
+  margin-top:-58rpx;
   z-index:100
 }

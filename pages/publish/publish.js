@@ -118,8 +118,8 @@ Page({
     console.log(commodityimages)
     let obj = {
       commodityname: this.data.commodityname,
-      typeIndex: this.data.goodsTypes[this.data.typeIndex],
-      wxgprs: this.data.location,
+      commoditytypeid: this.data.goodsTypes[this.data.typeIndex].commoditytypeid,
+      address: this.data.location,
       commodityprice: Number(this.data.newPrice),
       commodityoriginal:Number(this.data.oldPrice),
       bigtime: this.data.time,
@@ -128,7 +128,6 @@ Page({
       commodityimages: commodityimages,
       latitude:this.data.latitude,
       longitude: this.data.longitude
-
     }
     console.log(obj)
     let that = this
@@ -140,7 +139,20 @@ Page({
           token: res.data
         })
      console.log(that.data.token)
-    
+     console.log('aaaaa',{
+      commodityname: that.data.commodityname,
+      commoditytypeid: that.data.goodsTypes[that.data.typeIndex].commoditytypeid,
+      address: that.data.location,
+      commodityprice: that.data.newPrice,
+      commodityoriginal:that.data.oldPrice,
+      bigtime: that.data.time,
+      endtime: that.data.time2,
+      commoditydetails: that.data.goodsTextarea, // 商品描述
+      commodityimages: commodityimages,
+      latitude:that.data.latitude,
+      longitude: that.data.longitude,
+      files:that.data.images
+    })
     wx.uploadFile({              
               url: urls + 'commodity/multifileUpload',
               filePath: that.data.filePath,
@@ -152,8 +164,8 @@ Page({
               },
               formData: {
                 commodityname: that.data.commodityname,
-                typeIndex: that.data.goodsTypes[that.data.typeIndex],
-                wxgprs: that.data.location,
+                commoditytypeid: that.data.goodsTypes[that.data.typeIndex].commoditytypeid,
+                address: that.data.location,
                 commodityprice: that.data.newPrice,
                 commodityoriginal:that.data.oldPrice,
                 bigtime: that.data.time,
