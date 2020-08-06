@@ -1,4 +1,12 @@
 <!--index.wxml-->
+<wxs module="dateUtil" src="../../utils/formdata.wxs"></wxs>
+<scroll-view class="scrollView" 
+scroll-y="{{true}}" 
+lower-threshold="200" 
+upper-threshold="50"
+bindscrolltolower="loadMore" 
+bindscrolltoupper="loadUpMore"
+wx:if="{{goodsList.length>0}}">
 <view class="container">
   <view class="map" wx:if="{{menuPosition.top}}">
   <map
@@ -41,7 +49,7 @@
   <!---产品列表-->
   <view wx:if="{{goodsList.length==0}}">此范围内暂无地摊，欢迎你来开摊</view>
 
-  <scroll-view class="scrollView" scroll-y="{{true}}" lower-threshold="100" bindscrolltolower="loadMore"  wx:if="{{goodsList.length>0}}">
+  
   <view class="googs-list">
     <view class="goods" wx:for="{{goodsList}}" wx:key="index" 
     data-id="{{item.commodityid}}"
@@ -54,7 +62,7 @@
       <image src="{{item.commoditylogo}}" mode="widthFix"></image>
       </view>
       <view class="goods-info">
-        <view class="goods-title">{{item.commoditydetails}}</view>
+        <view class="goods-title">{{item.commodityname}}</view>
         <view class="goods-main">
         <view class="goods-text"> 
           <view>{{item.commoditydetails}}</view>  
@@ -62,21 +70,21 @@
             <text  class="red2">现价：{{item.commodityprice}}</text>
             <text>原价： {{item.commodityoriginal}}</text>
           </view>    
-        <view>发布日期：{{item.isvaliddate}}</view>
+        <view>发布日期：{{dateUtil.editdate(item.isvaliddate)}}</view>
         <view>营业时间：{{item.bigtime}} - {{item.endtime}} </view>    
         </view>
-        <view class="km">{{item.distance/1000}}km</view>
+        <view class="km">{{dateUtil.ceil(item.distance)}}km</view>
         </view>
       </view>      
     </view>  
   </view>
-  </scroll-view>
+  
   </view>
   <!---产品列表 end-->
   <view class="menus" style="bottom: {{menuPosition.bottom}}; top: {{menuPosition.top}}">
     <view class="menus-text" >  
-       <text wx:for="{{goodsTypeList}}" wx:key="index" data-goTypeIndex="{{index}}"    
-       bindtap="goGoodsType" class="{{navIndex==index ? 'active': ''}}">{{item.name}}</text>
+       <text wx:for="{{goodsTypeList}}" data-id="{{item.commoditytypeid}}" wx:key="index" data-goTypeIndex="{{index}}"    
+       bindtap="goGoodsType" class="{{navIndex==index ? 'active': ''}}">{{item.commoditytypename}}</text>
     </view>    
   </view>
   <view class="red-bottom" style="bottom:{{redBottom.bottom}}; top: {{redBottom.top}}" bindtap="goTop">
@@ -89,4 +97,5 @@
     <view class="publish" bindtap="goPublist">发布</view>
   </view>
 </view>
+</scroll-view>
 

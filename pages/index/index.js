@@ -20,6 +20,8 @@ Page({
     type:['云摊位','综合','销量','服务'],
     latitude: 0,
     longitude: 0,
+	loadPage:8,
+	loadIndex: 1,
     mapDatas: [],
     markers: [],
     covers: [],
@@ -80,20 +82,18 @@ Page({
     mainTop:0
   },
   onLoad: function(options){
-    // this.getUserInfo()
-    console.log(options);
-    
-    this.getGoods()
-	  this.getGoodsType()
+    // this.getLocation() 
+    this.getLocation() 
+	this.getGoodsType()
   },
   onShow: function(){  
-    
     var that = this
     wx.hideTabBar({
       animation: true
     })
+	
 	this.getLocation() 
-	this.getGoods() 
+
   },
   getLocation: function(){
 	  let that = this
@@ -136,6 +136,7 @@ Page({
 	  			//   }
 	  			// ]
 	  		  })
+			  	this.getGoods() 
 	  
 	  	  // 获取当前位置
 	  	 //  qqmapsdk.reverseGeocoder({
@@ -171,6 +172,7 @@ Page({
 		  },
 		  url: urls+ 'commoditytype/commoditytypelist',
 		  success: function(res){
+			  console.log(res.data)
 			  that.setData({
 				  goodsTypeList: res.data
 			  })
@@ -199,20 +201,8 @@ Page({
 	let index = that.data.siteText.indexOf('k')      
 	let siteText = (that.data.siteText.slice(0, index) * 1000).toString()
 	console.log(that.data.siteText, index)
- //      success (res) {
- //        console.log(res,JSON.parse(res.data).latitude,JSON.parse(res.data).longitude)
- //        that.setData({
- //          latitude: JSON.parse(res.data).latitude,
- //          longitude: JSON.parse(res.data).longitude
- //        })
- //      console.log(that.data.latitude, that.data.longitude)
- //      let index = that.data.siteText.indexOf('k')      
- //      let siteText = (that.data.siteText.slice(0, index) * 1000).toString()
- //      console.log(that.data.siteText, index)
-	//   }
-	// })
       wx.request({
-        url: urls+'/commodity/getcommodityls',
+        url: urls+'/commodity/getcommodityls?page='+that.data.loadPage+'&index='+that.data.loadIndex,
         method: 'POST',
         data: {
           lat: that.data.latitude - 0.1,
@@ -248,7 +238,9 @@ Page({
 		  console.log(markers)
 		  that.setData({
 			  goodsList: dataList,
-			  markers: markers
+			  markers: markers,
+			  loadPage: 16,
+			  loadIndex: 2
 		  })
            //隐藏loading 提示框
            wx.hideLoading();
@@ -261,10 +253,7 @@ Page({
       
     
   },
-  /*时间戳*/
-  formateDate: function(date){
-	 
-  },
+
   /*登录*/
 
   /*登录end*/
@@ -286,7 +275,8 @@ Page({
   },
   // 底部分类
   goGoodsType: function(e){
-    console.log(e.currentTarget.dataset.gotypeindex)
+	  let id = e.currentTarget.dataset.id
+    console.log(e.currentTarget.dataset.id)
     this.setData({
       navIndex: e.currentTarget.dataset.gotypeindex
     })
@@ -323,10 +313,71 @@ console.log(bottom1, bottom2)
       url: '/pages/my/my'
     })
   },
+  // 上拉刷新
+  loadUpMore: function(){
+	  let that = this
+	  wx.showLoading({
+	  		  title: '正在刷新'
+	  })
+	   wx.request({
+	  			   url: urls+'/commodity/getcommodityls?page=8&index=1',
+	  			  method: 'POST',
+	  			  data: {
+	  				lat: that.data.latitude - 0.1,
+	  				lng: that.data.longitude - 0.2,
+	  				distance: (Number(that.data.siteText)*1000).toString()
+	  			  },
+	  			  header: {
+	  				'content-type': 'application/x-www-form-urlencoded', // 默认值
+	  				'token': wx.getStorageSync('token')
+	  			  },
+	  		  success: function(res){
+	  			  that.setData({
+	  				  goodsList: res.data.dataList,
+	  				  loadPage: 8,
+	  				  loadIndex: 1
+	  			  })
+	  			  wx.hideLoading()
+	  		  }
+	  })
+  },
   // 下拉加载
   loadMore: function(){
+	  let that = this
+	  wx.showLoading({
+	  		  title: '正在加载'
+	  })
+	  wx.request({
+			   url: urls+'/commodity/getcommodityls?page='+this.data.loadPage+'&index='+this.data.loadIndex,
+			  method: 'POST',
+			  data: {
+				lat: that.data.latitude - 0.1,
+				lng: that.data.longitude - 0.2,
+				distance: (Number(that.data.siteText)*1000).toString()
+			  },
+			  header: {
+				'content-type': 'application/x-www-form-urlencoded', // 默认值
+				'token': wx.getStorageSync('token')
+			  },
+	  		  success: function(res){
+	  			  console.log(res.data.subjects)
+	  				  that.data.loadPage += 8
+					  that.data.loadIndex++
+	  			  that.setData({
+	  				  goodsList: [...that.data.goodsList,...res.data.dataList],
+	  				  loadPage: that.data.loadPage,
+					  loadIndex: that.data.loadIndex
+	  			  })
+	  			  wx.hideLoading()
+	  		  }
+	  })
+	  
+	  
+	  // 加载分页
+	 
 	  
   },
+  
   onReady: function(e){
     // this.mapCtx = wx.createMapContext('myMap')
     this.data.query = wx.createSelectorQuery()
