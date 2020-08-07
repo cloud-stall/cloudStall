@@ -59,7 +59,7 @@ wx:if="{{goodsList.length>0}}">
     data-covers="{{covers}}"
     bindtap="goDetail">
       <view class="goods-pic">
-      <image src="{{item.commoditylogo}}" mode="widthFix"></image>
+        <image src="{{item.commoditylogo}}" mode="widthFix"></image>
       </view>
       <view class="goods-info">
         <view class="goods-title">{{item.commodityname}}</view>
@@ -82,7 +82,7 @@ wx:if="{{goodsList.length>0}}">
   </view>
   <!---产品列表 end-->
   <view class="menus" style="bottom: {{menuPosition.bottom}}; top: {{menuPosition.top}}">
-    <view class="menus-text" >  
+    <view class="menus-text">
        <text wx:for="{{goodsTypeList}}" data-id="{{item.commoditytypeid}}" wx:key="index" data-goTypeIndex="{{index}}"    
        bindtap="goGoodsType" class="{{navIndex==index ? 'active': ''}}">{{item.commoditytypename}}</text>
     </view>    

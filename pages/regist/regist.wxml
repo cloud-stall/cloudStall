@@ -11,10 +11,10 @@
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="btn">微信授权登录电话</button> -->
     <label 
 	class="icon-box phone-text">
-    <view>输入手机号进行授权：</view>
-	<view>
-		<input type="number" confirm-type="go" bindinput="getPhoneNumber" class="bord" value="{{phoneNumber}}"  placeholder="请输入手机号"></input><icon class="icon-small icon1" type="cancel" size="23" wx:if="{{phoneNumber}}" bindtap="cancelPhone"></icon>
-	</view>  
+    <view class="phone-tit">输入手机号进行授权：</view>
+    <view>
+      <input type="number" confirm-type="go" bindinput="getPhoneNumber" class="bord" value="{{phoneNumber}}"  placeholder="请输入手机号"></input><icon class="icon-small icon1" type="cancel" size="23" wx:if="{{phoneNumber}}" bindtap="cancelPhone"></icon>
+    </view>  
 
     </label>
      

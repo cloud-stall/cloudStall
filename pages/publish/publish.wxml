@@ -86,14 +86,14 @@
       <view class="right">
         <view class="newOrOld"> 
           <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio" wx:for="{{radioItems}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                <radio class="radio" wx:for="{{radioItems}}" wx:key="name"  value="{{item.num}}" checked="{{item.checked}}">
                     <text>{{item.value}}</text>
                 </radio>
           </radio-group>        
         </view>
-       <view wx:if="{{newValue=='二手'}}" class="oldNumber">
-        <picker mode="selector" range="{{oldValue}}" value="{{index}}" bindchange="bindchange">
-          <view>{{oldValue[index]}}          
+       <view wx:if="{{newValue=='10'}}" class="oldNumber">
+        <picker mode="selector" range="{{oldValue}}" value="{{oldindex}}" bindchange="bindchangeOld">
+          <view>{{oldValue[oldindex]}}
           </view>
         </picker>  
         </view>
@@ -110,7 +110,7 @@
       </view>
     </view>
 
-    <!--产品图片--->
+    <!--产品图片-->
     <view class="content-text">
       <view class="left">
         产品图片：

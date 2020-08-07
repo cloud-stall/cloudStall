@@ -172,15 +172,16 @@ page{height: 100%;}
   width: 100%;
   position: fixed;  
   background:#f6f6f6;
-  height:70rpx;
+  min-height:153rpx;
   overflow: hidden;
   transition: all 2s;
+  ali
 }
 .menus-text{
   line-height: 52rpx;
   display: flex;  
   flex-wrap: wrap;
-  justify-content:space-around;
+  justify-content:flex-start;
   flex-direction: row;
 }
 .menus text{

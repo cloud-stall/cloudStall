@@ -1,6 +1,5 @@
 // pages/publish/publish.js
 import {Base} from '../../utils/base'
-const app = getApp()
 //sdk
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
@@ -31,13 +30,11 @@ Page({
     radioItems:[
       {
         value:'全新',
-        checked: true,
-		num: 9
+        checked: true        
       },
       {
         value: '二手',
-        checked: false,
-		num: 0
+        checked: false
       }
     ],
     newValue: false,
@@ -52,7 +49,6 @@ Page({
       '8成新',
       '9成新',
     ],
-	oldindex: 0,
     goodsTextarea: '',
     images: [],
     longitude: 0,
@@ -65,35 +61,22 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  // 选择类型
   bindchange: function(e){
     this.setData({
       typeIndex: e.detail.value
     })
   },
-  //新旧程度
-  bindchangeOld: function(e){
-	console.log(e)
-	console.log((e.detail.value*1+1) * 10)
-    this.setData({
-      oldindex: (e.detail.value*1+1) * 10
-    })
-  },
-  
   radioChange: function(e){
     console.log(e)
     this.setData({
-      newValue: (Number(e.detail.value)+Number(1))* 10
+      newValue: e.detail.value
     })
-	console.log((Number(e.detail.value)+Number(1))* 10)
   },
-  // 开始日期
   bindchangeTime: function(e){
     this.setData({
       time: e.detail.value
     })
   },
-  // 结束日期
   bindchangeTime2: function(e){
     this.setData({
       time2: e.detail.value
@@ -168,8 +151,7 @@ Page({
       commodityimages: commodityimages,
       latitude:that.data.latitude,
       longitude: that.data.longitude,
-      // files:that.data.images,
-	  commodityoldandnew: that.data.newValue
+      files:that.data.images
     })
     wx.uploadFile({              
               url: urls + 'commodity/multifileUpload',
@@ -192,8 +174,7 @@ Page({
 				  commodityimages: commodityimages,
 				  latitude:that.data.latitude,
 				  longitude: that.data.longitude,
-				  // files:that.data.images
-				  commodityoldandnew: that.data.newValue
+				  files:that.data.images
 				},
               success(res){
                 
@@ -240,39 +221,32 @@ Page({
   uploadPic: function(e){
     let that =  this
     wx.chooseImage({
-	  count: 9,
       sizeType:['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success (res) {
         const tempFilePaths = res.tempFilePaths
         const images = that.data.images.concat(res.tempFilePaths)
         that.data.images = images.length <=3 ? images: images.slice(0, 3)
-        console.log('tttt',res, tempFilePaths, images)
-		for(var i=0; i<res.tempFilePaths.length; i++){
-			var imgUrl = res.tempFilePaths[i];
-			wx.uploadFile({
-			  url: urls + 'commodity/muploadimages', //仅为示例，非真实的接口地址
-			  filePath: that.data.images[i],
-			  name: 'files',
-			  header: {
-			    'token': wx.getStorageSync('token')
-			  },
-			  formData: {
-			 
-			  },
-			  success (res){
-			    const data = res.data
-			    //do something
-			    console.log(res)
-				// that.setData({
-				// 	commodityimages: res.data.join(',')
-				// })
-			  }
-			})
-		}
+        console.log('tttt', tempFilePaths, images)
+        that.setData({
+          images: images,
+          filePath: tempFilePaths[0]
+        })
+        // wx.uploadFile({
+        //   url: '/commodity/multifileUpload', //仅为示例，非真实的接口地址
+        //   filePath: tempFilePaths[0],
+        //   name: 'files',
+        //   formData: {
+            
+        //   },
+        //   success (res){
+        //     const data = res.data
+        //     //do something
+        //     console.log(res)
+        //   }
+        // })
       }
     })
-	
   },
   // 手机号授权
   getPhone: function(){

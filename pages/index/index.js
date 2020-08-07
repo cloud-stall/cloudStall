@@ -275,11 +275,34 @@ Page({
   },
   // 底部分类
   goGoodsType: function(e){
+	  let that = this
 	  let id = e.currentTarget.dataset.id
-    console.log(e.currentTarget.dataset.id)
-    this.setData({
-      navIndex: e.currentTarget.dataset.gotypeindex
-    })
+    console.log(id)
+	wx.request({
+				  url: urls+`/commodity/getcommodityls?commoditytypeid=${id}&page=8&index=1`,
+				  method: 'POST',
+				  data: {
+					lat: that.data.latitude - 0.1,
+					lng: that.data.longitude - 0.2,
+					distance: (Number(that.data.siteText)*1000).toString()
+				  },
+				  header: {
+					'content-type': 'application/x-www-form-urlencoded', // 默认值
+					'token': wx.getStorageSync('token')
+				  },
+			  success: function(res){
+				  that.setData({
+					  goodsList: res.data.dataList,
+					  loadPage: 8,
+					  loadIndex: 1,
+					  navIndex: e.currentTarget.dataset.gotypeindex
+				  })
+				  wx.hideLoading()
+			  }
+	})
+    // this.setData({
+    //   
+    // })
   },
   // 去顶部
   goTop: function(){

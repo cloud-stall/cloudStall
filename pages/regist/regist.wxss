@@ -26,21 +26,24 @@ button.btn{
   color: #fff;
 }
 .phone-text{
-  display: flex;
+  padding-top:40rpx;
   align-items: center;
   justify-content: space-around;
 }
+.phone-tit{
+  padding-bottom:40rpx;
+}
 .bord{
-  flex:1;
   border:solid 1px #ccc;
   padding:10rpx;
-  margin-top:20rpx;
   position: relative;
+  width:70%;
+  margin:0 auto;
 }
 .icon1{
   width:70rpx;
   position: absolute;
-  right:15rpx;
+  right:14%;
   margin-top:-58rpx;
   z-index:100
 }
