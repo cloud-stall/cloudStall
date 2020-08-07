@@ -18,6 +18,7 @@ Page({
    */
   onLoad: function (options) {
     this.getMyShopList()
+    this.getStatu()
   },
 
  //getusercommodityls 获取我的商品列表
@@ -30,7 +31,6 @@ Page({
     })
 
     console.log(that.data)
-
   })
 
   
@@ -50,9 +50,29 @@ Page({
   })
  },
 
+ //获取店铺状态
+ getStatu:function(){
+   var that = this
+  myShop.getstatu(function(res){
+    console.log(res)
+    that.setData({
+      status:res.data.status
+    })
+
+  })
+
+  console.log(this.data.status);
+  
+ },
+
 
  //打烊休息/摆摊赚钱
- 
+ setstatu:function(){
+   var that = this;
+    myShop.setstatu(this.data.status,function(res){
+      console.log(res)
+    })
+ },
  
 
   /**

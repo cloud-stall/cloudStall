@@ -45,6 +45,17 @@ class MyShop extends Base{
     this.request(params)
   }
 
+  getstatu(callBack){
+    var params = {
+      url:"user/getstatu",
+      type:"post",
+      sCallBack:function(res){
+        callBack&&callBack(res)
+      }
+    }
+    this.request(params)
+  }
+
   //commodity/delcomm
 }
 

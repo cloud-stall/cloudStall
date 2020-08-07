@@ -164,3 +164,11 @@
   float: right;
   background-color: #777f83;
 }
+
+.on{
+  background-color: #e92828;
+}
+
+.off{
+  background-color: #777f83;
+}
