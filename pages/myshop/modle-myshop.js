@@ -17,6 +17,35 @@ class MyShop extends Base{
     }
     this.request(params)
   }
+  delcomm(id,callBack){
+    var params = {
+      url:"commodity/delcomm",
+      type:"post",
+      data:{
+        commodityid:id
+      },
+      sCallBack:function(res){
+        callBack&&callBack(res)
+      }
+    }
+    this.request(params)
+  }
+//user/setstatu
+  setstatu(status,callBack){
+    var params = {
+      url:"user/setstatu",
+      type:"post",
+      data:{
+        status:status
+      },
+      sCallBack:function(res){
+        callBack&&callBack(res)
+      }
+    }
+    this.request(params)
+  }
+
+  //commodity/delcomm
 }
 
 export { MyShop }

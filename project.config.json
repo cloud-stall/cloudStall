@@ -112,6 +112,12 @@
 					"pathName": "pages/changename/changename",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/revise/revise",
+					"pathName": "pages/revise/revise",
+					"scene": null
 				}
 			]
 		}

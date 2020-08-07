@@ -12,7 +12,28 @@
     </view> 
       <!-- 我的店铺 -->
     <view class="listMyShop">
-        <view class="list-item">
+        <view class="list-item" wx:for="{{myShopList}}" 
+        wx:key="index" data-id="{{item.commodityid}}"
+        >
+          <view class="imgBox"><image src="{{item.commoditylogo}}" /></view>
+          <view class="item-info">
+            <view class="goods-name"><text class="title">{{item.commodityname}}</text></view>
+            <view class="goods-dic">
+              <view>颜色: <text>钛金灰</text> </view>
+              <view>原价: <text class="oldPrice">{{item.commodityoriginal}}元</text> </view>
+              <view>现价: <text class="newPrice">{{item.commodityprice}}元</text> </view>
+            </view>
+            <view class="goods-hot">
+              <view>已收藏: <text>100</text>  </view>
+              <view>浏览量: <text>256</text>  </view>
+            </view>
+          </view>
+          <view class="item-operate">
+            <view><icon class="iconfont iconbianji"></icon><text>编辑</text></view>
+            <view><icon class="iconfont iconshanchu"></icon><text data-id="{{item.commodityid}}" bindtap="delcomm">删除</text></view>
+          </view>
+        </view>
+        <!-- <view class="list-item">
           <view class="imgBox"><image /></view>
           <view class="item-info">
             <view class="goods-name"><text class="title">不锈钢保温水杯滤网</text></view>
@@ -144,26 +165,8 @@
             <view><icon class="iconfont iconbianji"></icon><text>编辑</text></view>
             <view><icon class="iconfont iconshanchu"></icon><text>删除</text></view>
           </view>
-        </view>
-        <view class="list-item">
-          <view class="imgBox"><image /></view>
-          <view class="item-info">
-            <view class="goods-name"><text class="title">不锈钢保温水杯滤网</text></view>
-            <view class="goods-dic">
-              <view>颜色: <text>钛金灰</text> </view>
-              <view>原价: <text class="oldPrice">60</text> </view>
-              <view>颜色: <text class="newPrice">40</text> </view>
-            </view>
-            <view class="goods-hot">
-              <view>已收藏: <text>100</text>  </view>
-              <view>浏览量: <text>256</text>  </view>
-            </view>
-          </view>
-          <view class="item-operate">
-            <view><icon class="iconfont iconbianji"></icon><text>编辑</text></view>
-            <view><icon class="iconfont iconshanchu"></icon><text>删除</text></view>
-          </view>
-        </view>
+        </view> -->
+
     </view>
 
 

@@ -46,7 +46,7 @@ Page({
     //调用详情页数据
     console.log(this.data.id);
     
-    this.getDetailData(20)
+    this.getDetailData(this.data.id)
     // map
     
     wx.getSetting({
@@ -131,11 +131,7 @@ Page({
     console.log(e)
     var that = this
     let id = this.data.id;
-    console.log(id)
-    if(id){
-      id=20;
-    }
-
+   
     if(!this.data.isCollect){
       myDetails.insertcollect(id,function(res){
         console.log(res)
