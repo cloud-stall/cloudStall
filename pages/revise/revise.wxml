@@ -25,7 +25,7 @@
       </view>
       <view class="right">
       <view class="map-site name">
-       <input type="text" placeholder="请输入商品名称" bindinput="getName"></input>
+       <input type="text" value="{{commodityname}}" placeholder="请输入商品名称" bindinput="getName"></input>
       </view>
         
         

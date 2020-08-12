@@ -10,7 +10,7 @@ Page({
    */
   data: {
     myShopList:[],
-    status:1,
+    status:true,
   },
 
   /**
@@ -56,9 +56,8 @@ Page({
   myShop.getstatu(function(res){
     console.log(res)
     that.setData({
-      status:res.data.status
+      status:Boolean(res.data.status)
     })
-
   })
 
   console.log(this.data.status);
@@ -69,9 +68,26 @@ Page({
  //打烊休息/摆摊赚钱
  setstatu:function(){
    var that = this;
-    myShop.setstatu(this.data.status,function(res){
+   this.setData({
+    status:!this.data.status
+   })
+
+   console.log(+this.data.status);
+   
+
+    myShop.setstatu(+this.data.status,function(res){
       console.log(res)
     })
+ },
+
+ //跳转修改页面
+ gotorevise:function(e){
+    var id = e.currentTarget.dataset.id;
+    console.log(id);
+    wx.navigateTo({
+      url: '../revise/revise?id='+id,
+    })
+    
  },
  
 
