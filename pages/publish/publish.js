@@ -2,20 +2,15 @@
 import {Base} from '../../utils/base'
 const app = getApp()
 //sdk
-var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
-var qqmapsdk;
+// var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+// var qqmapsdk;
 //base
 let base = new Base();
 let urls = base.baseRequestUrl
-let locations = ''
-wx.getStorageSync({
-  key: 'location',
-  success (res) {
-    locations = res.data
-  }
-})
+let address = wx.getStorageSync('address')
+let locationsNew = wx.getStorageSync('location')
+console.log(address)
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -23,7 +18,7 @@ Page({
     rank:['a','b'],
     typeIndex:0,
     goodsTypes: [],
-    location:locations,
+    location:address,
     newPrice: 0,
     oldPrice: 0,
     time: '10:00:00',
@@ -40,27 +35,46 @@ Page({
 		num: 0
       }
     ],
-    newValue: false,
+    newValue: 0,
     oldValue: [
-      '1成新',
-      '2成新',
-      '3成新',
-      '4成新',
-      '5成新',
-      '6成新',
-      '7成新',
-      '8成新',
-      '9成新',
+    	{
+    		id: 1, title: '1成新'
+    	},
+    	{
+    		id: 2, title: '2成新'
+    	},
+    	{
+    		id: 3, title: '3成新'
+    	},
+    	{
+    		id: 4, title: '4成新'
+    	},
+    	{
+    		id: 5, title: '5成新'
+    	},
+    	{
+    		id: 6, title: '6成新'
+    	},
+    	{
+    		id: 7, title: '7成新'
+    	},
+    	{
+    		id: 8, title: '8成新'
+    	},
+    	{
+    		id: 9, title: '9成新'
+    	}
     ],
 	oldindex: 0,
     goodsTextarea: '',
     images: [],
-    longitude: 0,
-    latitude: 0,
+    longitude: locationsNew? JSON.parse(locationsNew).longitude : '',
+    latitude: locationsNew?JSON.parse(locationsNew).latitude : '',
     commodityname: '',
     token: '',
-    qqmapsdk:{},
-    filePath: []
+    filePath: [],
+	picSrc:',',
+	imgSrc: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -76,16 +90,17 @@ Page({
 	console.log(e)
 	console.log((e.detail.value*1+1) * 10)
     this.setData({
-      oldindex: (e.detail.value*1+1) * 10
+	  newValue: (e.detail.value*1+1) * 10
     })
   },
   
   radioChange: function(e){
     console.log(e)
     this.setData({
-      newValue: (Number(e.detail.value)+Number(1))* 10
+	  newValue: (e.detail.value*1+1) * 10
+      // oldindex: (Number(e.detail.value)+Number(1))* 10
     })
-	console.log((Number(e.detail.value)+Number(1))* 10)
+	console.log((Number(e.detail.value)))
   },
   // 开始日期
   bindchangeTime: function(e){
@@ -131,11 +146,13 @@ Page({
   },
   // 发布
   publish: function(){
+	let that = this
+	let commoditylogo = this.data.images[0]
     let commodityimages = this.data.images.join(',')
-    console.log(commodityimages)
+    console.log(commodityimages, that.data.goodsTypes[that.data.typeIndex], commoditylogo)
     let obj = {
       commodityname: this.data.commodityname,
-      commoditytypeid: this.data.goodsTypes[this.data.typeIndex].commoditytypeid,
+      commoditytypeid: that.data.goodsTypes[that.data.typeIndex].commoditytypeid,
       address: this.data.location,
       commodityprice: Number(this.data.newPrice),
       commodityoriginal:Number(this.data.oldPrice),
@@ -147,7 +164,6 @@ Page({
       longitude: this.data.longitude
     }
     console.log(obj)
-    let that = this
     wx.getStorage({
       key: 'token',
       success (res) {
@@ -165,22 +181,21 @@ Page({
       bigtime: that.data.time,
       endtime: that.data.time2,
       commoditydetails: that.data.goodsTextarea, // 商品描述
-      commodityimages: commodityimages,
+      commodityimages: that.data.picSrc,
       latitude:that.data.latitude,
       longitude: that.data.longitude,
-      // files:that.data.images,
 	  commodityoldandnew: that.data.newValue
     })
-    wx.uploadFile({              
+    wx.request({              
               url: urls + 'commodity/multifileUpload',
-              filePath: that.data.filePath,
-              name: 'files',
+              // filePath: that.data.filePath,
+              // name: 'files',
               header: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'content-type': 'multipart/form-data',                
+                'content-type': 'application/x-www-form-urlencoded',                
                 'token': that.data.token
               },
-              formData: {
+			  method:'POST',
+				data:{
 				  commodityname: that.data.commodityname,
 				  commoditytypeid: that.data.goodsTypes[that.data.typeIndex].commoditytypeid,
 				  address: that.data.location,
@@ -189,16 +204,15 @@ Page({
 				  bigtime: that.data.time,
 				  endtime: that.data.time2,
 				  commoditydetails: that.data.goodsTextarea, // 商品描述
-				  commodityimages: commodityimages,
+				  commodityimages: that.data.picSrc,
 				  latitude:that.data.latitude,
 				  longitude: that.data.longitude,
-				  // files:that.data.images
-				  commodityoldandnew: that.data.newValue
+				  commodityoldandnew: that.data.newValue,
+				  commoditylogo: commoditylogo
 				},
-              success(res){
-                
+              success(res){                
                 console.log(res.data)
-                let status = JSON.parse(res.data).status
+                let status = res.data.status
                 if(status){
                   wx.showToast({
                     title: '商品发布成功'
@@ -212,10 +226,8 @@ Page({
                 console.log(esr)
               }
             })
-
           }
-        })
-      
+        })      
     // }
   },
   //获取现价
@@ -263,16 +275,41 @@ Page({
 			  success (res){
 			    const data = res.data
 			    //do something
-			    console.log(res)
-				// that.setData({
-				// 	commodityimages: res.data.join(',')
-				// })
+				that.data.picSrc += JSON.parse(res.data).msg + ','
+
+				that.data.imgSrc.push(JSON.parse(res.data).msg)
+			    console.log(that.data.imgSrc)
+				that.setData({
+					picSrc: that.data.picSrc,
+					imgSrc: that.data.imgSrc
+				})
 			  }
 			})
 		}
+		console.log(that.data.imgSrc)
+		that.data.picSrc = that.data.picSrc.slice(1)		
       }
     })
 	
+  },
+  // 图片预览
+  imagePreview(e) {
+    console.log(e)
+    let currentUrl = e.currentTarget.dataset.src
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls: this.data.imgList // 需要预览的图片http链接列表
+    })
+  },
+  // 删除图片
+  delImg: function(e){
+	  console.log(e)
+	  wx.request({
+		  url: '/commodity/delimage',
+		  data: {
+			  
+		  }
+	  })
   },
   // 手机号授权
   getPhone: function(){
@@ -302,18 +339,13 @@ Page({
       success: function(res){
         console.log(res)
         that.setData({
-          goodsTypes: res.data
+          goodsTypes: res.data,
+		  
         })
       }
     })
   },
   onLoad: function (options) {
-    qqmapsdk = new QQMapWX({
-      key: 'PWFBZ-XKLAP-FJODK-LHVW3-W5UB2-D6FVF'
-    });
-    this.setData({
-      qqmapsdk: qqmapsdk
-    })
    this.getTypes()
   },
 
@@ -328,18 +360,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    qqmapsdk.search({
-      keyword: '地摊',
-      success: function (res) {
-          console.log(res);
-      },
-      fail: function (res) {
-          console.log(res);
-      },
-      success: function (res) {
-          console.log(res);
-      }
-    })
+    // qqmapsdk.search({
+    //   keyword: '地摊',
+    //   success: function (res) {
+    //       console.log(res);
+    //   },
+    //   fail: function (res) {
+    //       console.log(res);
+    //   },
+    //   success: function (res) {
+    //       console.log(res);
+    //   }
+    // })
+	this.getTypes()
     wx.showTabBar({
       animation: true
     })

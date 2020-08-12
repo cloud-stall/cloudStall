@@ -6,6 +6,9 @@ let base = new Base();
 let urls = base.baseRequestUrl;
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
+    // qqmapsdk = new QQMapWX({
+    //   key: 'key'
+    // });  
 
 Page({
   data: {
@@ -23,8 +26,55 @@ Page({
     markers: [],
     covers: [],
 	goodsList:[],
-	province:'',
-    goodsTypeList: [],
+    // 商品列表
+    // goodsList: [
+    //   {
+    //     id: 1001,
+    //     picUrl:'',
+    //     title: '扬州新鲜荔枝',
+    //     dis:'味的甜蜜',
+    //     newPrice: 10.00,
+    //     oldPrice: 100.00,
+    //     postTime: '2020-02-20',
+    //     openTime: '2020-10-09',
+    //     latitude: 23.099994,
+    //     longitude: 113.324520
+    //   },
+    //   {
+    //     id: 1002,
+    //     picUrl:'',
+    //     title: 'GCE贴纸套装无纺布箱子套, 和箱子',
+    //     dis:'颜色：浅灰',
+    //     newPrice: 10.00,
+    //     oldPrice: 100.00,
+    //     postTime: '2020-02-20',
+    //     openTime: '2020-10-09',
+    //     latitude: 23.099994,
+    //     longitude: 113.324520
+    //   },
+    //   {
+    //     id: 1003,
+    //     picUrl:'',
+    //     title: '正宗无锡阳山水蜜桃应季',
+    //     dis:'味道爽口',
+    //     newPrice: 10.00,
+    //     oldPrice: 100.00,
+    //     postTime: '2020-02-20',
+    //     openTime: '2020-10-09',
+    //     latitude: 23.099994,
+    //     longitude: 113.324520,
+    //   }
+    // ],
+    goodsTypeList: [
+      // {name:'全部'},
+      // {name:'水果'},
+      // {name:'小家电'},
+      // {name:'家居'},
+      // {name:'日用'},
+      // {name:'电器'},
+      // {name:'盆栽'},
+      // {name:'五金'}
+    ],
     navIndex: 0,
     query: {},
     menuPosition: {bottom:'50rpx', top: 'auto'},
@@ -61,7 +111,7 @@ Page({
 	  			longitude: res2.longitude}))
 	  		  that.setData({
 	  			latitude: res2.latitude,
-	  			longitude: res2.longitude
+	  			longitude: res2.longitude				
 	  		  })
 			  // 获取当前位置
 			  qqmapsdk.reverseGeocoder({
@@ -70,7 +120,7 @@ Page({
 					longitude: res2.longitude
 				  },
 				  success: function (res3) {
-					console.log('address11', res3.result.address)
+					console.log('address11',province, city,res3.result.address)
 					that.setData({
 					  province:res3.result.address
 					})
@@ -157,12 +207,11 @@ Page({
           'token': wx.getStorageSync('token')
         },
         success: function(res){
-			console.log(res)
           // 商品列表
-		  let dataList = res.data.dataList || []
+		  let dataList = res.data.dataList
+		  console.log('dataList', dataList)
 		  // let map数据
 		  let markers = []
-		  if(dataList && dataList.length>0){		  
 		  dataList.forEach(item => {
 			  markers.push({
 					id: item.commodityid,
@@ -179,7 +228,6 @@ Page({
 					}
 			  })
 		  })
-		  }
 		  console.log(markers)
 		  that.setData({
 			  goodsList: dataList,
