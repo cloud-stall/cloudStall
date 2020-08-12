@@ -168,12 +168,9 @@
         </view> -->
 
     </view>
-
-
-
 </view>
 
 <view class="shopStatus">
-  <view class="openShop active"> <icon></icon> <text>摆摊赚钱</text></view>
-  <view class="closeShop"><text>打烊休息</text></view>
+  <view class="openShop {{!status?'on':'off'}}"> <icon></icon> <text>摆摊赚钱</text> </view>
+  <view class="closeShop {{status?'on':'off'}}"><text>打烊休息</text></view>
 </view>
