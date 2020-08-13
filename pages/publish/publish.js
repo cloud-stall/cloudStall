@@ -285,11 +285,11 @@ Page({
 			    const data = res.data
 			    //do something
 				that.data.picSrc += JSON.parse(res.data).msg + ','
-
+				
 				that.data.imgSrc.push(JSON.parse(res.data).msg)
 			    console.log(that.data.imgSrc)
 				that.setData({
-					picSrc: that.data.picSrc,
+					picSrc: that.data.picSrc.substr(0,that.data.picSrc.substr.length-1),
 					imgSrc: that.data.imgSrc
 				})
 			  }
