@@ -67,32 +67,35 @@ Page({
         })
       }
     }
-      })
-  // 
-  
-   let token = wx.getStorageSync('token')
-  wx.request({
-    method: 'POST',
-    header: {
-      'content-type': 'application/x-www-form-urlencoded',
-      'token': token
-    },
-    url: urls + 'weixin/gettoken',
-    data: {
-      city: e.detail.userInfo.city,
-      country: e.detail.userInfo.country,
-      createdate: '',
-      headimgurl: e.detail.userInfo.avatarUrl,
-      iphone: '1579655656',
-      nickname: e.detail.userInfo.nickName,
-      province: e.detail.userInfo.province,
-      sex: e.detail.userInfo.gender
-    },
-    success: (data2)=>{
-      console.log(data2)
-      wx.setStorageSync('token', data2.data.code)
-    }
-  })            
+  })
+  // 获取token
+  setTimeout(function(){
+	  let token = wx.getStorageSync('token')
+	   console.log(token)
+	  wx.request({
+	    method: 'POST',
+	    header: {
+	      'content-type': 'application/x-www-form-urlencoded',
+	      'token': token
+	    },
+	    url: urls + 'weixin/gettoken',
+	    data: {
+	      city: e.detail.userInfo.city,
+	      country: e.detail.userInfo.country,
+	      createdate: '',
+	      headimgurl: e.detail.userInfo.avatarUrl,
+	      iphone: '1579655656',
+	      nickname: e.detail.userInfo.nickName,
+	      province: e.detail.userInfo.province,
+	      sex: e.detail.userInfo.gender
+	    },
+	    success: (data2)=>{
+	      console.log(data2)
+	      wx.setStorageSync('token', data2.data.code)
+	    }
+	  }) 
+  }, 800)
+              
   },
   getPhoneNumber: function(e){
     this.setData({
