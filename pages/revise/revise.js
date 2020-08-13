@@ -1,5 +1,7 @@
 // pages/publish/publish.js
 import {Base} from '../../utils/base'
+import {Revise} from './model-revise'
+var revise = new Revise();
 //sdk
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
@@ -19,6 +21,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:"",
     rank:['a','b'],
     typeIndex:0,
     goodsTypes: [],
@@ -53,7 +56,7 @@ Page({
     images: [],
     longitude: 0,
     latitude: 0,
-    commodityname: '',
+    commodityname: '123',
     token: '',
     qqmapsdk:{},
     filePath: []
@@ -112,81 +115,7 @@ Page({
       commodityname: e.detail.value
     })
   },
-  // 发布
-  publish: function(){
-    let commodityimages = this.data.images.join(',')
-    console.log(commodityimages)
-    let obj = {
-      commodityname: this.data.commodityname,
-      typeIndex: this.data.goodsTypes[this.data.typeIndex],
-      wxgprs: this.data.location,
-      commodityprice: Number(this.data.newPrice),
-      commodityoriginal:Number(this.data.oldPrice),
-      bigtime: this.data.time,
-      endtime: this.data.time2,
-      commoditydetails: this.data.goodsTextarea, // 商品描述
-      commodityimages: commodityimages,
-      latitude:this.data.latitude,
-      longitude: this.data.longitude
-
-    }
-    console.log(obj)
-    let that = this
-    wx.getStorage({
-      key: 'token',
-      success (res) {
-        console.log(res.data)
-        that.setData({
-          token: res.data
-        })
-     console.log(that.data.token)
-    
-    wx.uploadFile({              
-              url: urls + 'commodity/multifileUpload',
-              filePath: that.data.filePath,
-              name: 'files',
-              header: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'content-type': 'multipart/form-data',                
-                'token': that.data.token
-              },
-              formData: {
-                commodityname: that.data.commodityname,
-                typeIndex: that.data.goodsTypes[that.data.typeIndex],
-                wxgprs: that.data.location,
-                commodityprice: that.data.newPrice,
-                commodityoriginal:that.data.oldPrice,
-                bigtime: that.data.time,
-                endtime: that.data.time2,
-                commoditydetails: that.data.goodsTextarea, // 商品描述
-                commodityimages: commodityimages,
-                latitude:that.data.latitude,
-                longitude: that.data.longitude,
-                files:that.data.images
-              },
-              success(res){
-                
-                console.log(res.data)
-                let status = JSON.parse(res.data).status
-                if(status){
-                  wx.showToast({
-                    title: '商品发布成功'
-                  })
-                  wx.navigateTo({
-                    url: '../myshop/myshop'
-                  })
-                }
-              },
-              fail(esr){
-                console.log(esr)
-              }
-            })
-
-          }
-        })
-      
-    // }
-  },
+ 
   //获取现价
   getNewPrice: function(e){
     this.setData({
@@ -205,37 +134,50 @@ Page({
       goodsTextarea: e.detail.value
     })
   },
-  //上传图片
+
+
+
+  //选择图片 并 上传图片
   uploadPic: function(e){
     let that =  this
+    //选择图片
     wx.chooseImage({
       sizeType:['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success (res) {
         const tempFilePaths = res.tempFilePaths
         const images = that.data.images.concat(res.tempFilePaths)
-        that.data.images = images.length <=3 ? images: images.slice(0, 3)
-        console.log('tttt', tempFilePaths, images)
         that.setData({
-          images: images,
-          filePath: tempFilePaths[0]
+          images:images.length <=3 ? images: images.slice(0, 3)
         })
-        // wx.uploadFile({
-        //   url: '/commodity/multifileUpload', //仅为示例，非真实的接口地址
-        //   filePath: tempFilePaths[0],
-        //   name: 'files',
-        //   formData: {
-            
-        //   },
-        //   success (res){
-        //     const data = res.data
-        //     //do something
-        //     console.log(res)
-        //   }
-        // })
+        console.log(that.data.images)
+        that.dbFuc(tempFilePaths)
       }
     })
   },
+
+
+
+  //上传图片请求
+  async dbFuc(arr) {
+    console.log(arr);
+    console.log( arr )
+    let promises = arr.map((doc) => revise.upDataImg(doc));
+    let results = await Promise.all(promises);
+    console.log(results); 
+    var url=[];
+    results.forEach((item)=>{
+      url.push(item.data)
+    })
+
+    console.log(url)
+    console.log(this.data)
+  },
+
+
+  //点击提交按钮 实现修改
+
+
   // 手机号授权
   getPhone: function(){
      let phone = wx.getStorageSync('phone')

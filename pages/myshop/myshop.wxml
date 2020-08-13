@@ -29,7 +29,7 @@
             </view>
           </view>
           <view class="item-operate">
-            <view><icon class="iconfont iconbianji"></icon><text>编辑</text></view>
+            <view data-id="{{item.commodityid}}" bindtap="gotorevise"><icon class="iconfont iconbianji"></icon><text>编辑</text></view>
             <view><icon class="iconfont iconshanchu"></icon><text data-id="{{item.commodityid}}" bindtap="delcomm">删除</text></view>
           </view>
         </view>
@@ -171,6 +171,6 @@
 </view>
 
 <view class="shopStatus">
-  <view class="openShop {{!status?'on':'off'}}"> <icon></icon> <text>摆摊赚钱</text> </view>
-  <view class="closeShop {{status?'on':'off'}}"><text>打烊休息</text></view>
+  <view class="openShop {{!status?'on':'off'}}" bindtap="setstatu"> <icon></icon> <text>摆摊赚钱</text> </view>
+  <view class="closeShop {{status?'on':'off'}}" bindtap="setstatu"><text>打烊休息</text></view>
 </view>
