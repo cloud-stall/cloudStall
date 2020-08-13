@@ -118,8 +118,16 @@ page{
 }
 .del{
   position: absolute;
-  top:0;
-  right:10rpx;
+  top:10rpx;
+  right:18rpx;
+  background:#fff;
+  border-radius:100%;
+  width:24rpx;
+  height:24rpx;
+  text-align: center;
+  line-height: 20rpx;
+  border:solid 1px #eee;
+  color:#999;
 }
 .q-image-wrap{
   flex:1;

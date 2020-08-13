@@ -117,6 +117,7 @@ Page({
   //获取位置
   getLocation(e){
     var that = this
+	
     wx.chooseLocation({
       success: function (res) {
         console.log(res.address)
@@ -124,6 +125,13 @@ Page({
         console.log(res.longitude)
         console.log(res.name)
         var location = res.address
+		// let lat1 = that.data.latitude, lng1 = that.data.longitude
+		// let s = this.getDistance(lat1,lng1,res.latitude,res.longitude)
+		// if(s>5000){
+		// 	showToast({
+		// 		title: '已经超出有限范围，请在5000米内重新定位'
+		// 	})
+		// }
         that.setData({
           latitude: res.latitude,
           longitude: res.longitude,
@@ -147,7 +155,7 @@ Page({
   // 发布
   publish: function(){
 	let that = this
-	let commoditylogo = this.data.images[0]
+	let commoditylogo = this.data.imgSrc[0]
     let commodityimages = this.data.images.join(',')
     console.log(commodityimages, that.data.goodsTypes[that.data.typeIndex], commoditylogo)
     let obj = {
@@ -184,7 +192,8 @@ Page({
       commodityimages: that.data.picSrc,
       latitude:that.data.latitude,
       longitude: that.data.longitude,
-	  commodityoldandnew: that.data.newValue
+	  commodityoldandnew: that.data.newValue,
+	  commoditylogo: commoditylogo
     })
     wx.request({              
               url: urls + 'commodity/multifileUpload',
@@ -292,6 +301,22 @@ Page({
     })
 	
   },
+  // 根据经纬度计算两点之间的距离
+  getDistance: function (lat1, lng1, lat2, lng2) {
+
+  lat1 = lat1 || 0;
+  lng1 = lng1 || 0;
+  lat2 = lat2 || 0;
+  lng2 = lng2 || 0;
+ 
+  var rad1 = lat1 * Math.PI / 180.0;
+  var rad2 = lat2 * Math.PI / 180.0;
+  var a = rad1 - rad2;
+  var b = lng1 * Math.PI / 180.0 - lng2 * Math.PI / 180.0;
+ 
+  var r = 6378137;
+  return r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+},
   // 图片预览
   imagePreview(e) {
     console.log(e)
@@ -305,25 +330,36 @@ Page({
   delImg: function(e){
 	  console.log(e)
 	  wx.request({
-		  url: '/commodity/delimage',
+		  url: urls+'/commodity/delimage',
 		  data: {
-			  
+			  imagepath: e.currentTarget.dataset.img
+		  },
+		  success: res => {
+			  console.log(res)
+			  wx.showModal({
+				  title: '确定要删除图片吗？',
+				  success(){
+					  showToast:{
+						  title: '删除成功'
+					  }
+				  }
+			  })
 		  }
 	  })
   },
   // 手机号授权
-  getPhone: function(){
-     let phone = wx.getStorageSync('phone')
-    console.log(phone)
-    if(!phone){
-      console.log(phone)
-      wx.navigateTo({
-        url: '../regist2/regist2',
-      })
-    } else{
-      return
-    }
-  },
+  // getPhone: function(){
+  //    let phone = wx.getStorageSync('phone')
+  //   console.log(phone)
+  //   if(!phone){
+  //     console.log(phone)
+  //     wx.navigateTo({
+  //       url: '../regist2/regist2',
+  //     })
+  //   } else{
+  //     return
+  //   }
+  // },
   // 获取类型
   getTypes: function(){
     console.log(2)

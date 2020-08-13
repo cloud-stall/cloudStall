@@ -3,7 +3,6 @@
     "pages/regist/regist",
     "pages/index/index",        
     "pages/home/home",    
-    "pages/regist2/regist2",
     "pages/my/my",
     "pages/details/details",
     "pages/publish/publish",
@@ -49,7 +48,7 @@
     "navigationBarBackgroundColor": "#ED1B1C",
     "navigationBarTitleText": "云地摊",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "sitemapLocation": "sitemap.json"
 }

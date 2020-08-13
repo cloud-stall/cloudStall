@@ -118,7 +118,7 @@
       </view>
       <view class="right">
         <view class="" bindtap="uploadPic">
-          <image src="../../imgs/addpic.png" style="width:534rpx; height:84rpx;"></image>
+          <image src="../../imgs/addpic.png" style="width:480rpx; height:84rpx;"></image>
         </view>
       </view>
     </view>
@@ -128,7 +128,7 @@
     <view class="q-image-wrap">
       <!-- 图片缩略图  -->
       <image class="q-image" src="{{item}}" data-src="{{item}}" mode="aspectFill"  bindtap="imagePreview"></image>
-      <view class="del" data-index="{{index}}" bindtap="delImg">x</view>
+      <view class="del" data-index="{{index}}" data-img="{{item}}" bindtap="delImg">x</view>
       <!-- 移除图片的按钮  -->
       <view class="q-image-remover"  bindtap="removeImage">删除</view>
     </view>
