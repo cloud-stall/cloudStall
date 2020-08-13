@@ -88,7 +88,7 @@ Page({
       
     })
     myDetails.getDetails(id,function(res){
-      console.log(res);
+      console.log(res)
       that.setData({
         latitude: res.data.latitude,
         longitude: res.data.longitude ,
@@ -122,7 +122,7 @@ Page({
         })
       }
       
-      console.log(that.data)
+      console.log(that.data.banner)
 
     })
   },

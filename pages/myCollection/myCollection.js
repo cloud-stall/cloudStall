@@ -9,36 +9,36 @@ Page({
    */
   data: {
     collectList:[
-      {
-      bigtime: "14:00:00",
-      commoditydetails: "dioasofuqwesdafewqrwq",
-      commodityid: 10,
-      commodityimages: "http://file.rongdukj.com/yunditan/tbAOVrvi.jpg",
-      commoditylogo: "http://file.rongdukj.com/yunditan/SiQMcvlogo宽.jpg",
-      commodityname: "dddfsdfasv",
-      commoditytypeid: 1,
-      endtime: "17:00:00"
-    },
-    {
-      bigtime: "14:00:00",
-      commoditydetails: "dioasofuqwesdafewqrwq",
-      commodityid: 11,
-      commodityimages: "http://file.rongdukj.com/yunditan/tbAOVrvi.jpg",
-      commoditylogo: "http://file.rongdukj.com/yunditan/SiQMcvlogo宽.jpg",
-      commodityname: "dddfsdfasv",
-      commoditytypeid: 1,
-      endtime: "17:00:00"
-    },
-    {
-      bigtime: "14:00:00",
-      commoditydetails: "dioasofuqwesdafewqrwq",
-      commodityid: 12,
-      commodityimages: "http://file.rongdukj.com/yunditan/tbAOVrvi.jpg",
-      commoditylogo: "http://file.rongdukj.com/yunditan/SiQMcvlogo宽.jpg",
-      commodityname: "dddfsdfasv",
-      commoditytypeid: 1,
-      endtime: "17:00:00"
-    }
+    //   {
+    //   bigtime: "14:00:00",
+    //   commoditydetails: "dioasofuqwesdafewqrwq",
+    //   commodityid: 10,
+    //   commodityimages: "http://file.rongdukj.com/yunditan/tbAOVrvi.jpg",
+    //   commoditylogo: "http://file.rongdukj.com/yunditan/SiQMcvlogo宽.jpg",
+    //   commodityname: "dddfsdfasv",
+    //   commoditytypeid: 1,
+    //   endtime: "17:00:00"
+    // },
+    // {
+    //   bigtime: "14:00:00",
+    //   commoditydetails: "dioasofuqwesdafewqrwq",
+    //   commodityid: 11,
+    //   commodityimages: "http://file.rongdukj.com/yunditan/tbAOVrvi.jpg",
+    //   commoditylogo: "http://file.rongdukj.com/yunditan/SiQMcvlogo宽.jpg",
+    //   commodityname: "dddfsdfasv",
+    //   commoditytypeid: 1,
+    //   endtime: "17:00:00"
+    // },
+    // {
+    //   bigtime: "14:00:00",
+    //   commoditydetails: "dioasofuqwesdafewqrwq",
+    //   commodityid: 12,
+    //   commodityimages: "http://file.rongdukj.com/yunditan/tbAOVrvi.jpg",
+    //   commoditylogo: "http://file.rongdukj.com/yunditan/SiQMcvlogo宽.jpg",
+    //   commodityname: "dddfsdfasv",
+    //   commoditytypeid: 1,
+    //   endtime: "17:00:00"
+    // }
 
 ]
   },
