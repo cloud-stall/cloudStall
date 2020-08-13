@@ -193,6 +193,7 @@ page{height: 100%;}
   flex-wrap: wrap;
   justify-content:flex-start;
   flex-direction: row;
+  height: 116rpx;
 }
 .menus text{
   margin-top:8rpx;

@@ -179,18 +179,18 @@ Page({
 
 
   // 手机号授权
-  getPhone: function(){
-     let phone = wx.getStorageSync('phone')
-    console.log(phone)
-    if(!phone){
-      console.log(phone)
-      wx.navigateTo({
-        url: '../regist2/regist2',
-      })
-    } else{
-      return
-    }
-  },
+  // getPhone: function(){
+  //    let phone = wx.getStorageSync('phone')
+  //   console.log(phone)
+  //   if(!phone){
+  //     console.log(phone)
+  //     wx.navigateTo({
+  //       url: '../regist2/regist2',
+  //     })
+  //   } else{
+  //     return
+  //   }
+  // },
   // 获取类型
   getTypes: function(){
     console.log(2)

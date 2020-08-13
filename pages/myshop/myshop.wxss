@@ -150,7 +150,7 @@
   width:48%;
   height:64rpx;
   text-align:center;
-  font-size: 24rpx;
+  font-size: 32rpx;
   color:#fff;
   line-height: 64rpx;
   border: 2rpx solid #a9abac;

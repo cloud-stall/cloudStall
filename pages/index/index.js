@@ -27,12 +27,11 @@ Page({
     goodsTypeList: [],
     navIndex: 0,
     query: {},
-    menuPosition: {bottom:'50rpx', top: 'auto'},
+    menuPosition: {bottom:'74rpx', top: 'auto'},
     redBottom: {bottom:0, top: 'auto'},
     mainTop:0
   },
   onLoad: function(options){
-    // this.getLocation() 
 	qqmapsdk = new QQMapWX({
 	  key: 'PWFBZ-XKLAP-FJODK-LHVW3-W5UB2-D6FVF'
 	});
@@ -48,7 +47,14 @@ Page({
       animation: true
     })
 	
+	qqmapsdk = new QQMapWX({
+	  key: 'PWFBZ-XKLAP-FJODK-LHVW3-W5UB2-D6FVF'
+	});
+	this.setData({
+	  qqmapsdk: qqmapsdk
+	})
 	this.getLocation() 
+	this.getGoodsType()
 
   },
   getLocation: function(){
@@ -179,14 +185,15 @@ Page({
 					}
 			  })
 		  })
-		  }
-		  console.log(markers)
-		  that.setData({
-			  goodsList: dataList,
-			  markers: markers,
-			  loadPage: 16,
-			  loadIndex: 2
+		   that.setData({
+		  			  goodsList: dataList,
+		  			  markers: markers,
+		  			  loadPage: 16,
+		  			  loadIndex: 2
 		  })
+		  }
+		 
+		 
            //隐藏loading 提示框
            wx.hideLoading();
            //隐藏导航条加载动画
