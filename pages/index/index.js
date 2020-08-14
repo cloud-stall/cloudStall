@@ -185,14 +185,24 @@ Page({
 					}
 			  })
 		  })
-		   that.setData({
-		  			  goodsList: dataList,
-		  			  markers: markers,
-		  			  loadPage: 16,
-		  			  loadIndex: 2
-		  })
+		  if(dataList.length > 8){
+			  that.setData({
+			  			  goodsList: dataList,
+			  			  markers: markers,
+			  			  loadPage: 16,
+			  			  loadIndex: 2
+			  })
 		  }
-		 
+		  else {
+			  that.setData({
+			  			  goodsList: dataList,
+			  			  markers: markers,
+			  			  loadPage: 8,
+			  			  loadIndex: 1
+			  })
+		  }
+		  
+		  }
 		 
            //隐藏loading 提示框
            wx.hideLoading();
@@ -295,7 +305,7 @@ console.log(bottom1, bottom2)
 	  		  title: '正在刷新'
 	  })
 	   wx.request({
-	  			   url: urls+'/commodity/getcommodityls?page=8&index=1',
+	  			  url: urls+'/commodity/getcommodityls?page=8&index=1',
 	  			  method: 'POST',
 	  			  data: {
 	  				lat: that.data.latitude - 0.1,
@@ -310,7 +320,7 @@ console.log(bottom1, bottom2)
 	  			  that.setData({
 	  				  goodsList: res.data.dataList,
 	  				  loadPage: 8,
-	  				  loadIndex: 1
+	  				  loadIndex: 2
 	  			  })
 	  			  wx.hideLoading()
 	  		  }
@@ -335,14 +345,22 @@ console.log(bottom1, bottom2)
 				'token': wx.getStorageSync('token')
 			  },
 	  		  success: function(res){
-	  			  console.log(res.data.subjects)
-	  				  that.data.loadPage += 8
+	  			  console.log(res.data.dataList)
+	  				  that.data.loadPage = 8
 					  that.data.loadIndex++
-	  			  that.setData({
-	  				  goodsList: [...that.data.goodsList,...res.data.dataList],
-	  				  loadPage: that.data.loadPage,
-					  loadIndex: that.data.loadIndex
-	  			  })
+					  if(res.data.dataList.length>8){
+						  that.setData({
+						  	  				  goodsList: [...that.data.goodsList,...res.data.dataList],
+						  	  				  loadPage: that.data.loadPage,
+						  					  loadIndex: that.data.loadIndex
+						  })
+					  } else {
+						   that.setData({
+						  	  				  goodsList: res.data.dataList,
+						  					  loadIndex: 1
+						  })
+					  }
+	  			  
 	  			  wx.hideLoading()
 	  		  }
 	  })
