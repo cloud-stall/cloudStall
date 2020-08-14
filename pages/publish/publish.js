@@ -73,7 +73,8 @@ Page({
     commodityname: '',
     token: '',
     filePath: [],
-	picSrc:',',
+	picSrc:[],
+	picSrcs:'',
 	imgSrc: []
   },
   /**
@@ -167,7 +168,7 @@ Page({
       bigtime: this.data.time,
       endtime: this.data.time2,
       commoditydetails: this.data.goodsTextarea, // 商品描述
-      commodityimages: commodityimages,
+      commodityimages: this.data.picSrcs,
       latitude:this.data.latitude,
       longitude: this.data.longitude
     }
@@ -189,7 +190,7 @@ Page({
       bigtime: that.data.time,
       endtime: that.data.time2,
       commoditydetails: that.data.goodsTextarea, // 商品描述
-      commodityimages: that.data.picSrc,
+      commodityimages: that.data.picSrcs,
       latitude:that.data.latitude,
       longitude: that.data.longitude,
 	  commodityoldandnew: that.data.newValue,
@@ -213,7 +214,7 @@ Page({
 				  bigtime: that.data.time,
 				  endtime: that.data.time2,
 				  commoditydetails: that.data.goodsTextarea, // 商品描述
-				  commodityimages: that.data.picSrc,
+				  commodityimages: that.data.picSrcs,
 				  latitude:that.data.latitude,
 				  longitude: that.data.longitude,
 				  commodityoldandnew: that.data.newValue,
@@ -284,19 +285,23 @@ Page({
 			  success (res){
 			    const data = res.data
 			    //do something
-				that.data.picSrc += JSON.parse(res.data).msg + ','
-				
+				// that.data.picSrc += JSON.parse(res.data).msg + ','
+				// this.data.picSrc.push(JSON.parse(res.data).msg)				
 				that.data.imgSrc.push(JSON.parse(res.data).msg)
 			    console.log(that.data.imgSrc)
 				that.setData({
-					picSrc: that.data.picSrc.substr(0,that.data.picSrc.substr.length-1),
+					// picSrc: that.data.picSrc,
 					imgSrc: that.data.imgSrc
+				})
+				let picSrcs = that.data.imgSrc.join(',')		
+				that.setData({
+					picSrcs: picSrcs
 				})
 			  }
 			})
 		}
-		console.log(that.data.imgSrc)
-		that.data.picSrc = that.data.picSrc.slice(1)		
+		
+		
       }
     })
 	
