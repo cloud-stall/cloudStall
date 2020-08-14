@@ -277,7 +277,7 @@ console.log(bottom1, bottom2)
         redBottom: {top: '70rpx', bottom: 'auto'},
         mainTop: '140rpx'
       })
-    } else {
+    } else { 
       this.setData({
         menuPosition: {top: 'auto', bottom:'50rpx'},
         redBottom: {top: 'auto', bottom: '0'},
