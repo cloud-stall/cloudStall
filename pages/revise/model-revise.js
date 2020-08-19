@@ -33,6 +33,22 @@ class Revise extends Base{
 
    return  asyncData.requests(params)
   }
+
+
+  updataCurrentData(id,callBack){
+    var params = {
+      url:"commodity/updalmultifileUpload",
+      data:{
+        
+        commodityid:id
+      },
+      type:"post",
+      sCallBack:function(res){
+        callBack&&callBack(res)
+      }
+    }
+    this.request(params)
+  }
  
 
   // async dbFuc(arr) {
