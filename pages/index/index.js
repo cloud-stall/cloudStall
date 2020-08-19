@@ -27,7 +27,7 @@ Page({
     goodsTypeList: [],
     navIndex: 0,
     query: {},
-    menuPosition: {bottom:'74rpx', top: 'auto'},
+    menuPosition: {bottom:'50rpx', top: 'auto'},
     redBottom: {bottom:0, top: 'auto'},
     mainTop:0
   },
@@ -55,7 +55,6 @@ Page({
 	})
 	this.getLocation() 
 	this.getGoodsType()
-
   },
   getLocation: function(){
 	  let that = this
@@ -185,11 +184,11 @@ Page({
 					}
 			  })
 		  })
-		  if(dataList.length > 8){
+		  if( res.data.totalRecords > 8){
 			  that.setData({
 			  			  goodsList: dataList,
 			  			  markers: markers,
-			  			  loadPage: 16,
+			  			  loadPage: 8,
 			  			  loadIndex: 2
 			  })
 		  }
@@ -270,12 +269,12 @@ Page({
   goTop: function(){
     let bottom1 = this.data.menuPosition.bottom
     let bottom2 = this.data.redBottom.bottom
-console.log(bottom1, bottom2)
+    console.log(bottom1, bottom2)
     if( bottom1 == '50rpx' && bottom2 == '0'){
       this.setData({
-        menuPosition: {top: 0, bottom:'auto'},
-        redBottom: {top: '70rpx', bottom: 'auto'},
-        mainTop: '140rpx'
+        menuPosition: {top: '0rpx', bottom:'auto'},
+        redBottom: {top: '138rpx', bottom: 'auto'},
+        mainTop: '180rpx'
       })
     } else { 
       this.setData({
@@ -347,17 +346,18 @@ console.log(bottom1, bottom2)
 	  		  success: function(res){
 	  			  console.log(res.data.dataList)
 	  				  that.data.loadPage = 8
-					  that.data.loadIndex++
-					  if(res.data.dataList.length>8){
+					  
+					  if(res.data.totalRecords > 8){
+						  that.data.loadIndex++
 						  that.setData({
 						  	  				  goodsList: [...that.data.goodsList,...res.data.dataList],
-						  	  				  loadPage: that.data.loadPage,
+						  	  				  loadPage: 8,
 						  					  loadIndex: that.data.loadIndex
 						  })
 					  } else {
 						   that.setData({
 						  	  				  goodsList: res.data.dataList,
-						  					  loadIndex: 1
+						  					  loadIndex: that.data.loadIndex
 						  })
 					  }
 	  			  

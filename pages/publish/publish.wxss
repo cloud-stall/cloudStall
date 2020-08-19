@@ -105,8 +105,9 @@ page{
 /*图片*/
 .question-images{
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   text-align: center;
+  flex-wrap:wrap;
 }
 .name input{
   width:95%;
@@ -130,14 +131,14 @@ page{
   color:#999;
 }
 .q-image-wrap{
-  flex:1;
+  width:30.3%;
   border:solid 1px #eee;
   background:#fff;
   border-radius: 10rpx;
   text-align: center;
   margin:10rpx 10rpx;
   padding:20rpx 0;
-  height:270rpx;
+  height:190rpx;
   overflow: hidden;
   position: relative;
 }

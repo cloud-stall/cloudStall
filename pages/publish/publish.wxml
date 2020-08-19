@@ -49,11 +49,11 @@
           <text class="red">*</text> 现     价：
         </view>
         <view class="right price">
-          <input type="text" bindinput="getNewPrice" value="" placeholder="现价"></input>
+          <input type="text" bindinput="getNewPrice" value="" placeholder="现价" type="number"></input>
           <text class="price-text">
              原价：
           </text>
-          <input type="text" value="" bindinput="getoldPrice" placeholder="原价"></input>
+          <input type="text" value="" bindinput="getoldPrice" placeholder="原价" type="number"></input>
         </view>
     </view>
     <view class="content-text">
@@ -106,7 +106,7 @@
       </view>
       <view class="textarea">
         <view class="textarea2">
-          <textarea placeholder=" 输入商品描述" maxlength="100" value="" bindinput="getTextarea"/>
+          <textarea placeholder="输入商品描述" maxlength="100" value="" bindinput="getTextarea"/>
         </view>
       </view>
     </view>

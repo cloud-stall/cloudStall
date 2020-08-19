@@ -1,6 +1,6 @@
 class Base {
   constructor(){
-    this.baseRequestUrl = "http://192.168.16.34/"
+    this.baseRequestUrl = "http://192.168.32.23/"
   }
   //http://192.168.32.177/swagger-ui.html#/
   request(params){
