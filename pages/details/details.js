@@ -121,9 +121,8 @@ Page({
           condition:"旧货"
         })
       }
-      
-      console.log(that.data.banner)
 
+      console.log( that.data.banner )
     })
   },
   //添加收藏

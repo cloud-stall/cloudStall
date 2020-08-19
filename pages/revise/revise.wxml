@@ -1,4 +1,4 @@
-<!--pages/revise/revise.wxml-->
+<!--pages/publish/publish.wxml-->
 <view class="container">
   <view class="logo">
     <image src="../../imgs/logo.png" mode="heightFix"></image>
@@ -25,7 +25,7 @@
       </view>
       <view class="right">
       <view class="map-site name">
-       <input type="text" value="{{commodityname}}" placeholder="请输入商品名称" bindinput="getName"></input>
+       <input type="text" value="{{goodsName}}" placeholder="请输入商品名称" bindinput="getName"></input>
       </view>
         
         
@@ -37,7 +37,7 @@
       </view>
       <view class="right">
       <view class="map-site">
-        <text class="bord">{{location}}</text>
+        <text class="bord">{{address}}</text>
         <button bindtap='getLocation' class="select-btn">重新定位</button>
       </view>
         
@@ -49,11 +49,11 @@
           <text class="red">*</text> 现     价：
         </view>
         <view class="right price">
-          <input type="text" bindinput="getNewPrice" value="" placeholder="现价"></input>
+          <input type="text" bindinput="getNewPrice" value="{{newPrice}}" placeholder="现价"></input>
           <text class="price-text">
              原价：
           </text>
-          <input type="text" value="" bindinput="getoldPrice" placeholder="原价"></input>
+          <input type="text" value="{{oldPrice}}" bindinput="getoldPrice" placeholder="原价"></input>
         </view>
     </view>
     <view class="content-text">
@@ -68,7 +68,7 @@
           </view>
         </picker>  
         </view>
-        <text class="space10">  -   </text>
+        <text class="space10">  -  </text>
         <view  class="picker">
           <picker mode="time" range="{{time2}}" value="{{time2}}" start="09:01" end="21:01"  bindchange="bindchangeTime2">
             <view>
@@ -86,16 +86,17 @@
       <view class="right">
         <view class="newOrOld"> 
           <radio-group class="radio-group" bindchange="radioChange">
-                <radio class="radio" wx:for="{{radioItems}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                <radio class="radio" wx:for="{{radioItems}}" wx:key="name"  value="{{item.num}}" checked="{{item.checked}}">
                     <text>{{item.value}}</text>
                 </radio>
           </radio-group>        
         </view>
-       <view wx:if="{{newValue=='二手'}}" class="oldNumber">
-        <picker mode="selector" range="{{oldValue}}" value="{{index}}" bindchange="bindchange">
-          <view>{{oldValue[index]}}          
+       <view wx:if="{{oldindex!=10}}" class="oldNumber">
+        <picker mode="selector" range="{{oldValue}}" value="{{oldindex}}" range-key="title" bindchange="bindchangeOld">
+          <view>{{oldValue[0].title}}
           </view>
-        </picker>  
+        </picker>
+		
         </view>
       </view>
     </view>
@@ -105,52 +106,49 @@
       </view>
       <view class="textarea">
         <view class="textarea2">
-          <textarea placeholder=" 输入商品描述" maxlength="100" value="" bindinput="getTextarea"/>
+          <textarea placeholder=" 输入商品描述" maxlength="100" value="{{goodsTextarea}}" bindinput="getTextarea"/>
         </view>
       </view>
     </view>
 
-    <!--产品图片--->
+    <!--产品图片-->
     <view class="content-text">
       <view class="left">
         产品图片：
       </view>
       <view class="right">
         <view class="" bindtap="uploadPic">
-          <image src="../../imgs/addpic.png" style="width:260rpx; height:260rpx;"></image>
+          <image src="../../imgs/addpic.png" style="width:480rpx; height:84rpx;"></image>
         </view>
       </view>
     </view>
     <!--图片展示-->
 <view class="question-images">
-  <block wx:for="{{images}}" >
+  <block wx:for="{{images}}" wx:key="index">
     <view class="q-image-wrap">
-
       <!-- 图片缩略图  -->
-      <image class="q-image" src="{{item}}" mode="aspectFill"  bindtap="handleImagePreview"></image>
-
-      <view class="del">X</view>
+      <image class="q-image" src="{{item}}" data-src="{{item}}" mode="aspectFill"  bindtap="imagePreview"></image>
+      <view class="del" data-index="{{index}}" data-img="{{item}}" bindtap="delImg">x</view>
       <!-- 移除图片的按钮  -->
       <view class="q-image-remover"  bindtap="removeImage">删除</view>
     </view>
   </block>
 </view>
     <!--图片展示end-->
-   <!--阅读--->
+   <!--阅读-->
     <view class="content-text">
       <view class="checkbox">
         <checkbox value="cb" checked="true"/> 已阅读并同意
         <text bindtap="goAgree">云地摊发布协议</text>
       </view>
     </view> 
-    <!--按钮--->
+    <!--按钮-->
     <view class="publish">
-      <button bindtap="publish">确认修改</button>
+      <button bindtap="publish">确认提交</button>
     </view> 
   </view>
 </view>
 <view>
 <!-- <tabbars grade="{{rank}}"></tabbars> -->
 </view>
-
 

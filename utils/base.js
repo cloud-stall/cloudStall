@@ -2,7 +2,7 @@ class Base {
   constructor(){
     this.baseRequestUrl = "http://192.168.32.23/"
   }
-  //http://192.168.32.177/swagger-ui.html#/
+  //http://192.168.32.227/swagger-ui.html#/
   request(params){
    // console.log(params.type)
     if(!params.type){

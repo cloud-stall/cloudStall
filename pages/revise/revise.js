@@ -25,6 +25,7 @@ Page({
     rank:['a','b'],
     typeIndex:0,
     goodsTypes: [],
+    goodsName: "",
     location:locations,
     newPrice: 0,
     oldPrice: 0,
@@ -59,7 +60,9 @@ Page({
     commodityname: '123',
     token: '',
     qqmapsdk:{},
-    filePath: []
+    filePath: [],
+    oldindex:0,
+    address:""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -136,6 +139,49 @@ Page({
   },
 
 
+  //获取原来的数据
+  getCurrentData(id){
+    let that = this;
+    revise.getCurrentData(id,function(res){
+      console.log(res)
+
+      if(res.data.commodityoldandnew<100){
+        that.setData({
+          radioItems:[
+            {
+              value:'全新',
+              checked: !that.data.radioItems[0].checked        
+            },
+            {
+              value:'二手',
+              checked: !that.data.radioItems[1].checked        
+            }
+          ]
+        })
+        
+      }
+
+
+
+      that.setData({
+        time:res.data.bigtime,
+        time2:res.data.endtime,
+        newPrice:res.data.commodityprice,
+        oldPrice:res.data.commodityoriginal,
+        typeIndex:res.data.commoditytypeid-1,
+        oldindex:res.data.commodityoldandnew/10-1,
+        goodsName:res.data.commodityname,
+        goodsTextarea:res.data.commoditydetails,
+        images:res.data.commodityimages.split(","),
+        address:res.data.address,
+        longitude: res.data.longitude,
+        latitude: res.data.latitude
+
+      })
+    })
+  },
+
+
 
   //选择图片 并 上传图片
   uploadPic: function(e){
@@ -147,9 +193,8 @@ Page({
       success (res) {
         const tempFilePaths = res.tempFilePaths
         const images = that.data.images.concat(res.tempFilePaths)
-        that.setData({
-          images:images.length <=3 ? images: images.slice(0, 3)
-        })
+        
+        //that.data.images=images.length <=9 ? images: images.slice(0, 9)
         console.log(that.data.images)
         that.dbFuc(tempFilePaths)
       }
@@ -167,12 +212,19 @@ Page({
     console.log(results); 
     var url=[];
     results.forEach((item)=>{
-      url.push(item.data)
+      url.push(JSON.parse(item.data).msg)
     })
 
     console.log(url)
-    console.log(this.data)
+    this.setData({
+      images:url
+    })
+    console.log(this.data.images)
   },
+
+
+
+  
 
 
   //点击提交按钮 实现修改
@@ -215,10 +267,14 @@ Page({
     qqmapsdk = new QQMapWX({
       key: 'PWFBZ-XKLAP-FJODK-LHVW3-W5UB2-D6FVF'
     });
+
     this.setData({
-      qqmapsdk: qqmapsdk
+      qqmapsdk: qqmapsdk,
+      id:options.id
     })
    this.getTypes()
+
+   this.getCurrentData(this.data.id)
   },
 
   /**
